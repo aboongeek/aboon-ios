@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>94703206187-tkmob9s4ist4bf8nnbsvi954aq4e8cim.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.94703206187-tkmob9s4ist4bf8nnbsvi954aq4e8cim</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBS8lZx6jaeZqSKqLk3EUqJV7scsclNa4w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>94703206187</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>jp.aboon.aboon-ios</string>
+	<key>PROJECT_ID</key>
+	<string>aboon-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>aboon-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<true/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:94703206187:ios:16dfce727e13f917</string>
+	<key>DATABASE_URL</key>
+	<string>https://aboon-app.firebaseio.com</string>
+</dict>
+</plist>

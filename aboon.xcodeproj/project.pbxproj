@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		082E9D6120D13A1A00ED6A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E9D6020D13A1A00ED6A22 /* AppDelegate.swift */; };
 		082E9D6320D13A1B00ED6A22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E9D6220D13A1B00ED6A22 /* ViewController.swift */; };
-		082E9D6620D13A1B00ED6A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082E9D6420D13A1B00ED6A22 /* Main.storyboard */; };
 		082E9D6820D13A1B00ED6A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 082E9D6720D13A1B00ED6A22 /* Assets.xcassets */; };
 		082E9D6B20D13A1B00ED6A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082E9D6920D13A1B00ED6A22 /* LaunchScreen.storyboard */; };
 		082E9D7620D13A1B00ED6A22 /* aboonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E9D7520D13A1B00ED6A22 /* aboonTests.swift */; };
 		082E9D8120D13A1B00ED6A22 /* aboonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E9D8020D13A1B00ED6A22 /* aboonUITests.swift */; };
 		383FA1BE1A3370D07D14A6AD /* Pods_aboon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F953135DB05226712AEA5D63 /* Pods_aboon.framework */; };
 		4A3FA8655465D631572F2808 /* Pods_aboonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2486C9AC553972A4E04E3527 /* Pods_aboonUITests.framework */; };
+		75193E4820DBB6B300EF417E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75193E4720DBB6B300EF417E /* GoogleService-Info.plist */; };
+		75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75193E4A20DBB8FA00EF417E /* Debug.swift */; };
 		FD6875039EF257792E92961A /* Pods_aboonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A10372EDE4AE4D4F6A1966C /* Pods_aboonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +42,6 @@
 		082E9D5D20D13A1A00ED6A22 /* aboon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aboon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		082E9D6020D13A1A00ED6A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		082E9D6220D13A1B00ED6A22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		082E9D6520D13A1B00ED6A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		082E9D6720D13A1B00ED6A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		082E9D6A20D13A1B00ED6A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		082E9D6C20D13A1B00ED6A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		2486C9AC553972A4E04E3527 /* Pods_aboonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aboonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B35FBDFE453D9603C5F4A35 /* Pods-aboonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboonUITests/Pods-aboonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5AE6F603202A8DA8EA190F33 /* Pods-aboonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		75193E4720DBB6B300EF417E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		75193E4A20DBB8FA00EF417E /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		BA40E4C99D656DF5EFD3CD07 /* Pods-aboonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.release.xcconfig"; sourceTree = "<group>"; };
 		C98318E252737C6A37E482FE /* Pods-aboon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.release.xcconfig"; sourceTree = "<group>"; };
 		C9F010AEA949126B9A4B3709 /* Pods-aboon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -116,10 +118,11 @@
 			children = (
 				082E9D6020D13A1A00ED6A22 /* AppDelegate.swift */,
 				082E9D6220D13A1B00ED6A22 /* ViewController.swift */,
-				082E9D6420D13A1B00ED6A22 /* Main.storyboard */,
 				082E9D6720D13A1B00ED6A22 /* Assets.xcassets */,
 				082E9D6920D13A1B00ED6A22 /* LaunchScreen.storyboard */,
 				082E9D6C20D13A1B00ED6A22 /* Info.plist */,
+				75193E4720DBB6B300EF417E /* GoogleService-Info.plist */,
+				75193E4A20DBB8FA00EF417E /* Debug.swift */,
 			);
 			path = aboon;
 			sourceTree = "<group>";
@@ -177,7 +180,6 @@
 				082E9D5A20D13A1A00ED6A22 /* Frameworks */,
 				082E9D5B20D13A1A00ED6A22 /* Resources */,
 				28BB4B6E5D49E468C0396E86 /* [CP] Embed Pods Frameworks */,
-				8BD585E07D396A5E8F074A3C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,7 +281,7 @@
 			files = (
 				082E9D6B20D13A1B00ED6A22 /* LaunchScreen.storyboard in Resources */,
 				082E9D6820D13A1B00ED6A22 /* Assets.xcassets in Resources */,
-				082E9D6620D13A1B00ED6A22 /* Main.storyboard in Resources */,
+				75193E4820DBB6B300EF417E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,42 +311,22 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-aboon/Pods-aboon-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,28 +350,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8BD585E07D396A5E8F074A3C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-aboon/Pods-aboon-resources.sh",
-				"${PODS_ROOT}/FirebaseInvites/Resources/GINInviteResources.bundle",
-				"${PODS_ROOT}/FirebaseInvites/Resources/GPPACLPickerResources.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GINInviteResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GPPACLPickerResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aboon/Pods-aboon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B09CAD0DBED9DA00B088E997 /* [CP] Check Pods Manifest.lock */ = {
@@ -436,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				082E9D6320D13A1B00ED6A22 /* ViewController.swift in Sources */,
+				75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */,
 				082E9D6120D13A1A00ED6A22 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,14 +433,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		082E9D6420D13A1B00ED6A22 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				082E9D6520D13A1B00ED6A22 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		082E9D6920D13A1B00ED6A22 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -539,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -590,7 +543,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -604,10 +557,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4XKKKM86RN;
 				INFOPLIST_FILE = aboon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.aboon.aboon;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.aboon.aboon-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -620,10 +574,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4XKKKM86RN;
 				INFOPLIST_FILE = aboon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.aboon.aboon;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.aboon.aboon-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -706,7 +661,7 @@
 				082E9D8420D13A1B00ED6A22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		082E9D8520D13A1B00ED6A22 /* Build configuration list for PBXNativeTarget "aboon" */ = {
 			isa = XCConfigurationList;
@@ -715,7 +670,7 @@
 				082E9D8720D13A1B00ED6A22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		082E9D8820D13A1B00ED6A22 /* Build configuration list for PBXNativeTarget "aboonTests" */ = {
 			isa = XCConfigurationList;
@@ -724,7 +679,7 @@
 				082E9D8A20D13A1B00ED6A22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		082E9D8B20D13A1B00ED6A22 /* Build configuration list for PBXNativeTarget "aboonUITests" */ = {
 			isa = XCConfigurationList;
@@ -733,7 +688,7 @@
 				082E9D8D20D13A1B00ED6A22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
