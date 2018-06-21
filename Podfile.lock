@@ -35,7 +35,7 @@ PODS:
     - gRPC-ProtoRPC (~> 1.0)
     - leveldb-library (~> 1.18)
     - Protobuf (~> 3.1)
-  - FirebaseInstanceID (3.1.0):
+  - FirebaseInstanceID (3.1.1):
     - FirebaseCore (~> 5.0)
   - GoogleToolboxForMac/Defines (2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
@@ -113,7 +113,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
   FirebaseCore: cafc814b2d84fc8733f09e653041cc2165332ad7
   FirebaseFirestore: f686b8e83f3cf8bbc37db6e98e01029a14f01f55
-  FirebaseInstanceID: 05d779cbb97bd5bd5c51a38a903fc9cfe1b2454a
+  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   gRPC: 9362451032695e2dfb7bafcd3740e3a27939e4ff
   gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
