@@ -8,19 +8,27 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, UICollectionViewDelegate {
 
+    private let categoryModel = CategoryModel()
+    
+    override func loadView() {
+        self.view = CategoryView(model: categoryModel)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let categoryView = self.view as! CategoryView
+        categoryView.categoryCollectionView.delegate = self
+        categoryView.categoryCollectionView.dataSource = categoryModel
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
-    
 
     /*
     // MARK: - Navigation
