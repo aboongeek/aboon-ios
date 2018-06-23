@@ -14,7 +14,6 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         addChildViewControllers()
-        // Do any additional setup after loading the view.
     }
     
     private func addChildViewControllers () {
@@ -22,10 +21,10 @@ class TabBarController: UITabBarController {
         let ticketViewController: UIViewController = TicketViewController()
         
         categoryViewController.tabBarItem.image = UIImage(named: "home-7.png")
-        categoryViewController.title = "Category"
+        categoryViewController.title = "カテゴリ"
         
         ticketViewController.tabBarItem.image = UIImage(named: "wallet-7.png")
-        ticketViewController.title = "Tickets"
+        ticketViewController.title = "チケット"
         
         addChildViewController(categoryViewController)
         addChildViewController(ticketViewController)
