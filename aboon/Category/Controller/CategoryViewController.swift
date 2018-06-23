@@ -8,20 +8,10 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController, UICollectionViewDelegate {
-
-    private let categoryModel = CategoryModel()
-    
-    override func loadView() {
-        self.view = CategoryView(model: categoryModel)
-    }
+class CategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let categoryView = self.view as! CategoryView
-        categoryView.categoryCollectionView.delegate = self
-        categoryView.categoryCollectionView.dataSource = categoryModel
         
     }
 
