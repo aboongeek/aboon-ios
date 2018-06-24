@@ -1,14 +1,14 @@
 //
-//  TicketViewController.swift
+//  EditProfileViewController.swift
 //  aboon
 //
-//  Created by 原口和音 on 2018/06/23.
+//  Created by 原口和音 on 2018/06/24.
 //  Copyright © 2018 aboon. All rights reserved.
 //
 
 import UIKit
 
-class TicketViewController: UIViewController {
+class EditProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

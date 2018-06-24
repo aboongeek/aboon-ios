@@ -14,7 +14,6 @@
 		082E9D8120D13A1B00ED6A22 /* aboonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E9D8020D13A1B00ED6A22 /* aboonUITests.swift */; };
 		2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC3D20DE108500F0F8E8 /* TabBarController.swift */; };
 		2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */; };
-		2C0EDC4420DE119100F0F8E8 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC4320DE119100F0F8E8 /* TicketViewController.swift */; };
 		2C0EDD1620DE245B00F0F8E8 /* pie-chart-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0EDC4E20DE245A00F0F8E8 /* pie-chart-7.png */; };
 		2C0EDD1720DE245B00F0F8E8 /* book-cover-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0EDC4F20DE245A00F0F8E8 /* book-cover-7.png */; };
 		2C0EDD1820DE245B00F0F8E8 /* layout-arrange-07-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0EDC5020DE245A00F0F8E8 /* layout-arrange-07-7.png */; };
@@ -215,6 +214,15 @@
 		2C0EDDDB20DE245B00F0F8E8 /* command-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0EDD1320DE245A00F0F8E8 /* command-7.png */; };
 		2C0EDDDC20DE245B00F0F8E8 /* photo-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0EDD1420DE245A00F0F8E8 /* photo-7.png */; };
 		2C0EDDDD20DE245B00F0F8E8 /* server-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0EDD1520DE245A00F0F8E8 /* server-7.png */; };
+		2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */; };
+		2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */; };
+		2CD6214E20DF527600C81DF7 /* FriendsInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */; };
+		2CD6215020DF529C00C81DF7 /* CouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214F20DF529C00C81DF7 /* CouponListViewController.swift */; };
+		2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215120DF52A900C81DF7 /* CouponDetailViewController.swift */; };
+		2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215720DF538600C81DF7 /* SignInViewController.swift */; };
+		2CD6215E20DF679A00C81DF7 /* CategoryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215D20DF679A00C81DF7 /* CategoryNavigationController.swift */; };
+		2CD6216020DF68FF00C81DF7 /* MyCouponNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215F20DF68FF00C81DF7 /* MyCouponNavigationController.swift */; };
+		2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */; };
 		383FA1BE1A3370D07D14A6AD /* Pods_aboon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F953135DB05226712AEA5D63 /* Pods_aboon.framework */; };
 		4A3FA8655465D631572F2808 /* Pods_aboonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2486C9AC553972A4E04E3527 /* Pods_aboonUITests.framework */; };
 		75193E4820DBB6B300EF417E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75193E4720DBB6B300EF417E /* GoogleService-Info.plist */; };
@@ -257,7 +265,6 @@
 		2B35FBDFE453D9603C5F4A35 /* Pods-aboonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboonUITests/Pods-aboonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C0EDC3D20DE108500F0F8E8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		2C0EDC4320DE119100F0F8E8 /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		2C0EDC4E20DE245A00F0F8E8 /* pie-chart-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pie-chart-7.png"; sourceTree = "<group>"; };
 		2C0EDC4F20DE245A00F0F8E8 /* book-cover-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book-cover-7.png"; sourceTree = "<group>"; };
 		2C0EDC5020DE245A00F0F8E8 /* layout-arrange-07-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layout-arrange-07-7.png"; sourceTree = "<group>"; };
@@ -458,6 +465,15 @@
 		2C0EDD1320DE245A00F0F8E8 /* command-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "command-7.png"; sourceTree = "<group>"; };
 		2C0EDD1420DE245A00F0F8E8 /* photo-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-7.png"; sourceTree = "<group>"; };
 		2C0EDD1520DE245A00F0F8E8 /* server-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "server-7.png"; sourceTree = "<group>"; };
+		2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponViewController.swift; sourceTree = "<group>"; };
+		2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponDetailViewController.swift; sourceTree = "<group>"; };
+		2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInvitationViewController.swift; sourceTree = "<group>"; };
+		2CD6214F20DF529C00C81DF7 /* CouponListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListViewController.swift; sourceTree = "<group>"; };
+		2CD6215120DF52A900C81DF7 /* CouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponDetailViewController.swift; sourceTree = "<group>"; };
+		2CD6215720DF538600C81DF7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		2CD6215D20DF679A00C81DF7 /* CategoryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNavigationController.swift; sourceTree = "<group>"; };
+		2CD6215F20DF68FF00C81DF7 /* MyCouponNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponNavigationController.swift; sourceTree = "<group>"; };
+		2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		5AE6F603202A8DA8EA190F33 /* Pods-aboonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		75193E4720DBB6B300EF417E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75193E4A20DBB8FA00EF417E /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
@@ -520,16 +536,17 @@
 		082E9D5F20D13A1A00ED6A22 /* aboon */ = {
 			isa = PBXGroup;
 			children = (
-				2C0EDC4D20DE245A00F0F8E8 /* iconbeast lite 200 - png */,
-				2C0EDC4620DE1E0700F0F8E8 /* Tickets */,
 				2C0EDC4520DE1DFD00F0F8E8 /* Category */,
+				2C0EDC4620DE1E0700F0F8E8 /* My Coupon */,
 				2C0EDC3920DE0FAC00F0F8E8 /* Tabbar */,
+				2CD6215320DF533B00C81DF7 /* My Page */,
 				082E9D6020D13A1A00ED6A22 /* AppDelegate.swift */,
 				082E9D6720D13A1B00ED6A22 /* Assets.xcassets */,
 				082E9D6920D13A1B00ED6A22 /* LaunchScreen.storyboard */,
 				082E9D6C20D13A1B00ED6A22 /* Info.plist */,
 				75193E4720DBB6B300EF417E /* GoogleService-Info.plist */,
 				75193E4A20DBB8FA00EF417E /* Debug.swift */,
+				2C0EDC4D20DE245A00F0F8E8 /* iconbeast lite 200 - png */,
 			);
 			path = aboon;
 			sourceTree = "<group>";
@@ -594,14 +611,14 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		2C0EDC4620DE1E0700F0F8E8 /* Tickets */ = {
+		2C0EDC4620DE1E0700F0F8E8 /* My Coupon */ = {
 			isa = PBXGroup;
 			children = (
 				2C0EDC4C20DE1E5E00F0F8E8 /* Controller */,
 				2C0EDC4B20DE1E5A00F0F8E8 /* View */,
 				2C0EDC4A20DE1E5500F0F8E8 /* Model */,
 			);
-			path = Tickets;
+			path = "My Coupon";
 			sourceTree = "<group>";
 		};
 		2C0EDC4720DE1E3300F0F8E8 /* Model */ = {
@@ -621,7 +638,10 @@
 		2C0EDC4920DE1E4C00F0F8E8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2CD6215D20DF679A00C81DF7 /* CategoryNavigationController.swift */,
 				2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */,
+				2CD6214F20DF529C00C81DF7 /* CouponListViewController.swift */,
+				2CD6215120DF52A900C81DF7 /* CouponDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -643,7 +663,10 @@
 		2C0EDC4C20DE1E5E00F0F8E8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2C0EDC4320DE119100F0F8E8 /* TicketViewController.swift */,
+				2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */,
+				2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */,
+				2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */,
+				2CD6215F20DF68FF00C81DF7 /* MyCouponNavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -853,6 +876,39 @@
 				2C0EDD1520DE245A00F0F8E8 /* server-7.png */,
 			);
 			path = "iconbeast lite 200 - png";
+			sourceTree = "<group>";
+		};
+		2CD6215320DF533B00C81DF7 /* My Page */ = {
+			isa = PBXGroup;
+			children = (
+				2CD6215620DF536A00C81DF7 /* Controller */,
+				2CD6215520DF536400C81DF7 /* View */,
+				2CD6215420DF535A00C81DF7 /* Model */,
+			);
+			path = "My Page";
+			sourceTree = "<group>";
+		};
+		2CD6215420DF535A00C81DF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2CD6215520DF536400C81DF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2CD6215620DF536A00C81DF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2CD6215720DF538600C81DF7 /* SignInViewController.swift */,
+				2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		2D0EE62CDDB1724EED6A5AAF /* Pods */ = {
@@ -1307,10 +1363,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
+				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
+				2CD6215020DF529C00C81DF7 /* CouponListViewController.swift in Sources */,
+				2CD6215E20DF679A00C81DF7 /* CategoryNavigationController.swift in Sources */,
+				2CD6216020DF68FF00C81DF7 /* MyCouponNavigationController.swift in Sources */,
+				2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */,
 				2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */,
-				2C0EDC4420DE119100F0F8E8 /* TicketViewController.swift in Sources */,
+				2CD6214E20DF527600C81DF7 /* FriendsInvitationViewController.swift in Sources */,
 				2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */,
+				2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */,
 				75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */,
+				2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */,
 				082E9D6120D13A1A00ED6A22 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,28 +1,26 @@
 //
-//  CategoryViewController.swift
+//  MyCouponDetailViewController.swift
 //  aboon
 //
-//  Created by 原口和音 on 2018/06/23.
+//  Created by 原口和音 on 2018/06/24.
 //  Copyright © 2018 aboon. All rights reserved.
 //
 
 import UIKit
 
-class CategoryViewController: UIViewController {
-    
+class MyCouponDetailViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let testLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        testLabel.text = "Category"
-        self.view.addSubview(testLabel)
-        
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
+        // Dispose of any resources that can be recreated.
     }
+    
 
     /*
     // MARK: - Navigation

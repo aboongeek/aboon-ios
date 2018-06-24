@@ -18,16 +18,16 @@ class TabBarController: UITabBarController {
     
     private func addChildViewControllers () {
         let categoryViewController: UIViewController = CategoryViewController()
-        let ticketViewController: UIViewController = TicketViewController()
+        let myCouponViewController: UIViewController = MyCouponViewController()
         
         categoryViewController.tabBarItem.image = UIImage(named: "home-7.png")
         categoryViewController.title = "カテゴリ"
         
-        ticketViewController.tabBarItem.image = UIImage(named: "wallet-7.png")
-        ticketViewController.title = "チケット"
+        myCouponViewController.tabBarItem.image = UIImage(named: "wallet-7.png")
+        myCouponViewController.title = "所持クーポン"
         
         addChildViewController(categoryViewController)
-        addChildViewController(ticketViewController)
+        addChildViewController(myCouponViewController)
         
     }
 
