@@ -22,7 +22,7 @@ target 'aboon' do
   pod 'XLPagerTabStrip'      , '~> 8.0.1'
   pod 'R.swift'              , '~> 4.0.0'
   pod 'Kingfisher'           , '~> 4.8.0'
-  
+  pod 'SideMenu'             , '~> 4.0.0'
   # Pods for aboon
 
   target 'aboonTests' do
