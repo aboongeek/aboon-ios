@@ -13,13 +13,21 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "カテゴリー"
+        
+        let testLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 100))
+        testLabel.text = "Category"
+        self.view.addSubview(testLabel)
+        
+        self.view.backgroundColor = .white
+                
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-
+    
     /*
     // MARK: - Navigation
 

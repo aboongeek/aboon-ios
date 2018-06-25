@@ -29,6 +29,7 @@ PODS:
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
+  - SideMenu (4.0.0)
   - SwiftyJSON (4.0.0)
   - XLPagerTabStrip (8.0.1)
 
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - Firebase/Core (~> 5.3.0)
   - Kingfisher (~> 4.8.0)
   - R.swift (~> 4.0.0)
+  - SideMenu (~> 4.0.0)
   - XLPagerTabStrip (~> 8.0.1)
 
 SPEC REPOS:
@@ -52,6 +54,7 @@ SPEC REPOS:
     - nanopb
     - R.swift
     - R.swift.Library
+    - SideMenu
     - SwiftyJSON
     - XLPagerTabStrip
 
@@ -67,9 +70,10 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
+  SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
 
-PODFILE CHECKSUM: 81af29cd94a5258bea42958bf1da273be55f10b3
+PODFILE CHECKSUM: 88013696ff92d6b9534b78d5957849c1342fa9c9
 
 COCOAPODS: 1.5.3
