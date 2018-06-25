@@ -1,14 +1,14 @@
 //
-//  CategoryNavigationController.swift
+//  NavigationController.swift
 //  aboon
 //
-//  Created by 原口和音 on 2018/06/24.
+//  Created by 原口和音 on 2018/06/25.
 //  Copyright © 2018 aboon. All rights reserved.
 //
 
 import UIKit
 
-class CategoryNavigationController: UINavigationController {
+class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,8 +12,15 @@ class MyCouponViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "マイクーポン"
 
-        // Do any additional setup after loading the view.
+        let testLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 100))
+        testLabel.text = "My Coupon"
+        self.view.addSubview(testLabel)
+        
+        self.view.backgroundColor = .white
+        
     }
 
     override func didReceiveMemoryWarning() {

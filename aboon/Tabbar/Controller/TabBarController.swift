@@ -17,17 +17,17 @@ class TabBarController: UITabBarController {
     }
     
     private func addChildViewControllers () {
-        let categoryViewController: UIViewController = CategoryViewController()
-        let myCouponViewController: UIViewController = MyCouponViewController()
         
-        categoryViewController.tabBarItem.image = UIImage(named: "home-7.png")
-        categoryViewController.title = "カテゴリ"
+        let categoryNavigationController = NavigationController(rootViewController: CategoryViewController())
+        let myCouponNavigationController = NavigationController(rootViewController: MyCouponViewController())
         
-        myCouponViewController.tabBarItem.image = UIImage(named: "wallet-7.png")
-        myCouponViewController.title = "所持クーポン"
+        categoryNavigationController.tabBarItem.image = UIImage(named: "home-7.png")
+        categoryNavigationController.title = "カテゴリ"
         
-        addChildViewController(categoryViewController)
-        addChildViewController(myCouponViewController)
+        myCouponNavigationController.tabBarItem.image = UIImage(named: "wallet-7.png")
+        myCouponNavigationController.title = "所持クーポン"
+        
+        setViewControllers([categoryNavigationController, myCouponNavigationController], animated: false)
         
     }
 
