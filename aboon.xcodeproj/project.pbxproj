@@ -17,7 +17,6 @@
 		2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC3D20DE108500F0F8E8 /* TabBarController.swift */; };
 		2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */; };
 		2CD0154E20E1007E008F16F6 /* MyMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0154D20E1007E008F16F6 /* MyMenuController.swift */; };
-		2CD0155020E1087B008F16F6 /* MyMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0154F20E1087B008F16F6 /* MyMenuModel.swift */; };
 		2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */; };
 		2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */; };
 		2CD6214E20DF527600C81DF7 /* FriendsInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */; };
@@ -71,7 +70,6 @@
 		2C0EDC3D20DE108500F0F8E8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		2CD0154D20E1007E008F16F6 /* MyMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuController.swift; sourceTree = "<group>"; };
-		2CD0154F20E1087B008F16F6 /* MyMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuModel.swift; sourceTree = "<group>"; };
 		2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponViewController.swift; sourceTree = "<group>"; };
 		2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponDetailViewController.swift; sourceTree = "<group>"; };
 		2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInvitationViewController.swift; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 		2CD6215420DF535A00C81DF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2CD0154F20E1087B008F16F6 /* MyMenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -577,7 +574,6 @@
 				75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */,
 				2CD6216920DF7EE700C81DF7 /* UIColorHex.swift in Sources */,
 				2C04E51520E0B5A900AECC8E /* NavigationBar.swift in Sources */,
-				2CD0155020E1087B008F16F6 /* MyMenuModel.swift in Sources */,
 				2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */,
 				082E9D6120D13A1A00ED6A22 /* AppDelegate.swift in Sources */,
 			);
