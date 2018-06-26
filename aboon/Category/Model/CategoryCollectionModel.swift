@@ -8,19 +8,22 @@
 
 import UIKit
 
-class CategoryCollectionModel: NSObject, UICollectionViewDataSource {
-    
-    let dumImages = [R.image.airplaneSymbol7(), R.image.albumSimple7(), R.image.dotMore7(), R.image.heart7()]
+class CategoryCollectionModel: NSObject {
+    let categories = ["スポーツ", "カフェ", "ダイニング", "ビューティー", "リラクゼーション", "スペシャル", "カップル"]
+}
+
+extension CategoryCollectionModel: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categories.count
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = CategoryCollectionViewCell()
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
-        cell.configure(image: dumImages[indexPath.row]!)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
+        cell.textLabel?.text = categories[indexPath.row]
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
+}
 
+extension CategoryCollectionModel: UICollectionViewDelegate {
+    
 }
