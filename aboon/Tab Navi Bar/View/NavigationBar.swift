@@ -14,6 +14,7 @@ class NavigationBar: UINavigationBar {
         super.init(frame: frame)
         self.barTintColor = UIColor(hex: "FF7856")
         self.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.isTranslucent = false
     }
     
     required init?(coder aDecoder: NSCoder) {

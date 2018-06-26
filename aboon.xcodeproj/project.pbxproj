@@ -16,7 +16,6 @@
 		2C04E51520E0B5A900AECC8E /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04E51420E0B5A900AECC8E /* NavigationBar.swift */; };
 		2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC3D20DE108500F0F8E8 /* TabBarController.swift */; };
 		2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */; };
-		2C1541BD20E203A9001941ED /* CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541BC20E203A9001941ED /* CategoryCollectionView.swift */; };
 		2C1541BF20E208C8001941ED /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541BE20E208C8001941ED /* NavigationItem.swift */; };
 		2C1541C120E22AA3001941ED /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */; };
 		2C1541C320E22DAD001941ED /* CategoryCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */; };
@@ -30,6 +29,7 @@
 		2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */; };
 		2CD6216920DF7EE700C81DF7 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */; };
 		383FA1BE1A3370D07D14A6AD /* Pods_aboon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F953135DB05226712AEA5D63 /* Pods_aboon.framework */; };
+		49ADCD8E20E2955400EB1181 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCD8D20E2955400EB1181 /* CategoryView.swift */; };
 		4A3FA8655465D631572F2808 /* Pods_aboonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2486C9AC553972A4E04E3527 /* Pods_aboonUITests.framework */; };
 		7507BE3F20E145A900749F59 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507BE3E20E145A900749F59 /* R.generated.swift */; };
 		75193E4820DBB6B300EF417E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75193E4720DBB6B300EF417E /* GoogleService-Info.plist */; };
@@ -74,7 +74,6 @@
 		2C04E51420E0B5A900AECC8E /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		2C0EDC3D20DE108500F0F8E8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		2C1541BC20E203A9001941ED /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
 		2C1541BE20E208C8001941ED /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
 		2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionModel.swift; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 		2CD6215720DF538600C81DF7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
+		49ADCD8D20E2955400EB1181 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		5AE6F603202A8DA8EA190F33 /* Pods-aboonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7507BE3E20E145A900749F59 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		75193E4720DBB6B300EF417E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		2C0EDC4820DE1E4600F0F8E8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2C1541BC20E203A9001941ED /* CategoryCollectionView.swift */,
+				49ADCD8D20E2955400EB1181 /* CategoryView.swift */,
 				2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */,
 			);
 			path = View;
@@ -317,9 +317,9 @@
 		2CD6215620DF536A00C81DF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2CD0154D20E1007E008F16F6 /* MyMenuController.swift */,
 				2CD6215720DF538600C81DF7 /* SignInViewController.swift */,
 				2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */,
-				2CD0154D20E1007E008F16F6 /* MyMenuController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -491,24 +491,38 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-aboon/Pods-aboon-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,13 +605,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1541BF20E208C8001941ED /* NavigationItem.swift in Sources */,
-				2C1541BD20E203A9001941ED /* CategoryCollectionView.swift in Sources */,
 				2CD0154E20E1007E008F16F6 /* MyMenuController.swift in Sources */,
 				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
 				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
 				2CD6215020DF529C00C81DF7 /* CouponListViewController.swift in Sources */,
 				2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */,
 				2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */,
+				49ADCD8E20E2955400EB1181 /* CategoryView.swift in Sources */,
 				2CD6214E20DF527600C81DF7 /* FriendsInvitationViewController.swift in Sources */,
 				2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */,
 				2C1541C120E22AA3001941ED /* CategoryCollectionViewCell.swift in Sources */,
