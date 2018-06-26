@@ -15,7 +15,7 @@ target 'aboon' do
   #pod 'Firebase/Auth'         , '~>5.3.0'
   #pod 'Firebase/Storage'      , '~>5.3.0'
   #pod 'Firebase/Performance'  , '~>5.3.0'
-  #pod 'Firebase/Firestore'    , '~>5.3.0'
+  pod 'Firebase/Firestore'    , '~>5.3.0'
   #pod 'Firebase/Functions'    , '~>5.3.0'  
 
   pod 'Alamofire-SwiftyJSON' , '~> 3.0.0'
