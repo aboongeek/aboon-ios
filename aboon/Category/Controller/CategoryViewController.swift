@@ -8,19 +8,21 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, UICollectionViewDelegate {
+    
+    let categoryView = CategoryCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
+    
+    override func loadView() {
+        self.view = categoryView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "カテゴリー"
+        let model = CategoryCollectionModel()
+        categoryView.dataSource = model
+        categoryView.delegate = self
         
-        let testLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 100))
-        testLabel.text = "Category"
-        self.view.addSubview(testLabel)
-        
-        self.view.backgroundColor = .white
-                
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,14 +30,4 @@ class CategoryViewController: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
