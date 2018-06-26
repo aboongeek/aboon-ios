@@ -16,6 +16,10 @@
 		2C04E51520E0B5A900AECC8E /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04E51420E0B5A900AECC8E /* NavigationBar.swift */; };
 		2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC3D20DE108500F0F8E8 /* TabBarController.swift */; };
 		2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */; };
+		2C1541BD20E203A9001941ED /* CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541BC20E203A9001941ED /* CategoryCollectionView.swift */; };
+		2C1541BF20E208C8001941ED /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541BE20E208C8001941ED /* NavigationItem.swift */; };
+		2C1541C120E22AA3001941ED /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */; };
+		2C1541C320E22DAD001941ED /* CategoryCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */; };
 		2CD0154E20E1007E008F16F6 /* MyMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0154D20E1007E008F16F6 /* MyMenuController.swift */; };
 		2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */; };
 		2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */; };
@@ -70,6 +74,10 @@
 		2C04E51420E0B5A900AECC8E /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		2C0EDC3D20DE108500F0F8E8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		2C1541BC20E203A9001941ED /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
+		2C1541BE20E208C8001941ED /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
+		2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionModel.swift; sourceTree = "<group>"; };
 		2CD0154D20E1007E008F16F6 /* MyMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuController.swift; sourceTree = "<group>"; };
 		2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponViewController.swift; sourceTree = "<group>"; };
 		2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponDetailViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +153,7 @@
 				7507BE3E20E145A900749F59 /* R.generated.swift */,
 				2C0EDC4520DE1DFD00F0F8E8 /* Category */,
 				2C0EDC4620DE1E0700F0F8E8 /* My Coupon */,
-				2C0EDC3920DE0FAC00F0F8E8 /* Tabbar */,
+				2C0EDC3920DE0FAC00F0F8E8 /* Tab Navi Bar */,
 				2CD6215320DF533B00C81DF7 /* My Page */,
 				2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */,
 				082E9D6020D13A1A00ED6A22 /* AppDelegate.swift */,
@@ -176,14 +184,14 @@
 			path = aboonUITests;
 			sourceTree = "<group>";
 		};
-		2C0EDC3920DE0FAC00F0F8E8 /* Tabbar */ = {
+		2C0EDC3920DE0FAC00F0F8E8 /* Tab Navi Bar */ = {
 			isa = PBXGroup;
 			children = (
 				2C0EDC3C20DE0FED00F0F8E8 /* Controller */,
 				2C0EDC3B20DE0FE300F0F8E8 /* View */,
 				2C0EDC3A20DE0FC400F0F8E8 /* Model */,
 			);
-			path = Tabbar;
+			path = "Tab Navi Bar";
 			sourceTree = "<group>";
 		};
 		2C0EDC3A20DE0FC400F0F8E8 /* Model */ = {
@@ -197,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				2C04E51420E0B5A900AECC8E /* NavigationBar.swift */,
+				2C1541BE20E208C8001941ED /* NavigationItem.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 		2C0EDC4720DE1E3300F0F8E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,6 +250,8 @@
 		2C0EDC4820DE1E4600F0F8E8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C1541BC20E203A9001941ED /* CategoryCollectionView.swift */,
+				2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -578,6 +590,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1541BF20E208C8001941ED /* NavigationItem.swift in Sources */,
+				2C1541BD20E203A9001941ED /* CategoryCollectionView.swift in Sources */,
 				2CD0154E20E1007E008F16F6 /* MyMenuController.swift in Sources */,
 				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
 				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
@@ -586,10 +600,12 @@
 				2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */,
 				2CD6214E20DF527600C81DF7 /* FriendsInvitationViewController.swift in Sources */,
 				2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */,
+				2C1541C120E22AA3001941ED /* CategoryCollectionViewCell.swift in Sources */,
 				2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */,
 				2C04E51320E0AFB500AECC8E /* NavigationController.swift in Sources */,
 				75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */,
 				7507BE3F20E145A900749F59 /* R.generated.swift in Sources */,
+				2C1541C320E22DAD001941ED /* CategoryCollectionModel.swift in Sources */,
 				2CD6216920DF7EE700C81DF7 /* UIColorHex.swift in Sources */,
 				2C04E51520E0B5A900AECC8E /* NavigationBar.swift in Sources */,
 				2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */,
