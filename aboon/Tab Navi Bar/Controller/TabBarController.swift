@@ -24,11 +24,11 @@ class TabBarController: UITabBarController {
         categoryNavigationController.viewControllers = [CategoryViewController()]
         myCouponNavigationController.viewControllers = [MyCouponViewController()]
         
-        categoryNavigationController.tabBarItem.image = #imageLiteral(resourceName: "home-7")
-        categoryNavigationController.title = "カテゴリ"
+        categoryNavigationController.tabBarItem.image = R.image.home7()
+        categoryNavigationController.title = "カテゴリー"
         
-        myCouponNavigationController.tabBarItem.image = #imageLiteral(resourceName: "wallet-7")
-        myCouponNavigationController.title = "所持クーポン"
+        myCouponNavigationController.tabBarItem.image = R.image.wallet7()
+        myCouponNavigationController.title = "マイクーポン"
         
         setViewControllers([categoryNavigationController, myCouponNavigationController], animated: false)
         
