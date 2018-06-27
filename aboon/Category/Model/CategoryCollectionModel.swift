@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoryCollectionModel: NSObject {
-    let categories = ["スポーツ", "カフェ", "ダイニング", "ビューティー", "リラクゼーション", "スペシャル", "カップル"]
+    let categories = ["スポーツ", "カフェ/ダイニング", "ビューティー", "リラクゼーション", "スペシャル", "カップル"]
 }
 
 extension CategoryCollectionModel: UICollectionViewDataSource {
