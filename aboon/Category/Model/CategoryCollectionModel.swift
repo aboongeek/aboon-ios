@@ -9,6 +9,14 @@
 import UIKit
 
 class CategoryCollectionModel: NSObject {
+    enum Categories: String {
+        case sports      = "スポーツ"
+        case cafeDining  = "カフェ/ダイニング"
+        case beauty      = "ビューティー"
+        case relaxation  = "リラクゼーション"
+        case special     = "スペシャル"
+        case couple      = "カップル"
+    }
     let categories = ["スポーツ", "カフェ/ダイニング", "ビューティー", "リラクゼーション", "スペシャル", "カップル"]
 }
 
@@ -22,8 +30,4 @@ extension CategoryCollectionModel: UICollectionViewDataSource {
         cell.textLabel?.text = categories[indexPath.row]
         return cell
     }
-}
-
-extension CategoryCollectionModel: UICollectionViewDelegate {
-    
 }
