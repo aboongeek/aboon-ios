@@ -20,6 +20,8 @@
 		2C1541C120E22AA3001941ED /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */; };
 		2C1541C320E22DAD001941ED /* CategoryCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */; };
 		2C1541C520E364BF001941ED /* CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C420E364BF001941ED /* CategoryCollectionView.swift */; };
+		2C3B1D8220E38F79009115C0 /* CouponListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B1D8120E38F79009115C0 /* CouponListView.swift */; };
+		2CA3DA6720E3C23D00D3A9CA /* CouponListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA3DA6620E3C23D00D3A9CA /* CouponListCollectionView.swift */; };
 		2CD0154E20E1007E008F16F6 /* MyMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0154D20E1007E008F16F6 /* MyMenuController.swift */; };
 		2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */; };
 		2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */; };
@@ -79,6 +81,8 @@
 		2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionModel.swift; sourceTree = "<group>"; };
 		2C1541C420E364BF001941ED /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
+		2C3B1D8120E38F79009115C0 /* CouponListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListView.swift; sourceTree = "<group>"; };
+		2CA3DA6620E3C23D00D3A9CA /* CouponListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListCollectionView.swift; sourceTree = "<group>"; };
 		2CD0154D20E1007E008F16F6 /* MyMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuController.swift; sourceTree = "<group>"; };
 		2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponViewController.swift; sourceTree = "<group>"; };
 		2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponDetailViewController.swift; sourceTree = "<group>"; };
@@ -252,9 +256,8 @@
 		2C0EDC4820DE1E4600F0F8E8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				49ADCD8D20E2955400EB1181 /* CategoryView.swift */,
-				2C1541C420E364BF001941ED /* CategoryCollectionView.swift */,
-				2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */,
+				2C3B1D8020E38F23009115C0 /* Coupon List View */,
+				2C3B1D7E20E38EF4009115C0 /* Category View */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +294,25 @@
 				2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		2C3B1D7E20E38EF4009115C0 /* Category View */ = {
+			isa = PBXGroup;
+			children = (
+				49ADCD8D20E2955400EB1181 /* CategoryView.swift */,
+				2C1541C420E364BF001941ED /* CategoryCollectionView.swift */,
+				2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */,
+			);
+			path = "Category View";
+			sourceTree = "<group>";
+		};
+		2C3B1D8020E38F23009115C0 /* Coupon List View */ = {
+			isa = PBXGroup;
+			children = (
+				2C3B1D8120E38F79009115C0 /* CouponListView.swift */,
+				2CA3DA6620E3C23D00D3A9CA /* CouponListCollectionView.swift */,
+			);
+			path = "Coupon List View";
 			sourceTree = "<group>";
 		};
 		2CD6215320DF533B00C81DF7 /* My Page */ = {
@@ -612,6 +634,7 @@
 				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
 				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
 				2CD6215020DF529C00C81DF7 /* CouponListViewController.swift in Sources */,
+				2CA3DA6720E3C23D00D3A9CA /* CouponListCollectionView.swift in Sources */,
 				2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */,
 				2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */,
 				49ADCD8E20E2955400EB1181 /* CategoryView.swift in Sources */,
@@ -625,6 +648,7 @@
 				7507BE3F20E145A900749F59 /* R.generated.swift in Sources */,
 				2C1541C320E22DAD001941ED /* CategoryCollectionModel.swift in Sources */,
 				2CD6216920DF7EE700C81DF7 /* UIColorHex.swift in Sources */,
+				2C3B1D8220E38F79009115C0 /* CouponListView.swift in Sources */,
 				2C04E51520E0B5A900AECC8E /* NavigationBar.swift in Sources */,
 				2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */,
 				082E9D6120D13A1A00ED6A22 /* AppDelegate.swift in Sources */,
