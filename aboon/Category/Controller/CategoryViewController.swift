@@ -13,8 +13,7 @@ class CategoryViewController: UIViewController {
     let model = CategoryCollectionModel()
     
     override func loadView() {
-        let categoryView = CategoryView()
-        self.view = categoryView
+        self.view = CategoryView()
     }
     
     override func viewDidLoad() {
