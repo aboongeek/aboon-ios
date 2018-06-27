@@ -26,10 +26,7 @@ class TabBarController: UITabBarController {
         myCouponNavigationController.viewControllers = [MyCouponViewController()]
         
         categoryNavigationController.tabBarItem.image = R.image.home7()
-        categoryNavigationController.title = "カテゴリー"
-        
         myCouponNavigationController.tabBarItem.image = R.image.wallet7()
-        myCouponNavigationController.title = "マイクーポン"
         
         setViewControllers([categoryNavigationController, myCouponNavigationController], animated: false)
         
