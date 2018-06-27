@@ -23,7 +23,7 @@ class CategoryView: UIView {
             flowLayout.minimumInteritemSpacing = margin
             flowLayout.minimumLineSpacing = margin
             flowLayout.estimatedItemSize = CGSize(width: 160, height: 128)
-            flowLayout.sectionInset = UIEdgeInsetsMake(97, margin, 0, margin)
+            flowLayout.sectionInset = UIEdgeInsetsMake(margin, margin, 0, margin)
             return flowLayout
         }()
         let categoryCollectionView = CategoryCollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), collectionViewLayout: customFlowLayout)
