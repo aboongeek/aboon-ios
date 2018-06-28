@@ -12,8 +12,8 @@ class FriendsInvitationViewController: UIViewController {
     
     private let titleName: String
     
-    init(titleName: String) {
-        self.titleName = titleName
+    init(withTitle: String) {
+        self.titleName = withTitle
         super.init(nibName: nil, bundle: nil)
     }
     

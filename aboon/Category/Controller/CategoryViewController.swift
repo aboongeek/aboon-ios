@@ -10,32 +10,39 @@ import UIKit
 
 class CategoryViewController: UIViewController {
     
+    let model = CategoryCollectionModel()
+    
+    override func loadView() {
+        let categoryView = CategoryView()
+        self.view = categoryView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "カテゴリー"
+        self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
         
-        let testLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 100))
-        testLabel.text = "Category"
-        self.view.addSubview(testLabel)
+        let categoryCollectionView = (self.view as! CategoryView).createCollectionView()
+        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
         
-        self.view.backgroundColor = .white
-                
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = model
+        (self.view as! CategoryView).appendCollectionView(collectionView: categoryCollectionView)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-    
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension CategoryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let couponListViewController = CouponListViewController(withTitle: model.categories[indexPath.row])
+        self.navigationController?.pushViewController(couponListViewController, animated: true)
     }
-    */
 
 }

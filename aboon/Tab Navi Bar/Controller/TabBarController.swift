@@ -13,6 +13,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBar.isTranslucent = false
         addChildViewControllers()
     }
     
@@ -24,11 +25,8 @@ class TabBarController: UITabBarController {
         categoryNavigationController.viewControllers = [CategoryViewController()]
         myCouponNavigationController.viewControllers = [MyCouponViewController()]
         
-        categoryNavigationController.tabBarItem.image = #imageLiteral(resourceName: "home-7")
-        categoryNavigationController.title = "カテゴリ"
-        
-        myCouponNavigationController.tabBarItem.image = #imageLiteral(resourceName: "wallet-7")
-        myCouponNavigationController.title = "所持クーポン"
+        categoryNavigationController.tabBarItem.image = R.image.home7()
+        myCouponNavigationController.tabBarItem.image = R.image.wallet7()
         
         setViewControllers([categoryNavigationController, myCouponNavigationController], animated: false)
         
