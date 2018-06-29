@@ -20,9 +20,11 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        (self.view as! CategoryView).setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
+        
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
         
-        let categoryCollectionView = (self.view as! CategoryView).createCollectionView()
+        let categoryCollectionView = (self.view as! CategoryView).createCollectionView(model: model)
         categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
         
         categoryCollectionView.delegate = self
