@@ -71,6 +71,7 @@ PODS:
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
   - SideMenu (4.0.0)
+  - SnapKit (4.0.0)
   - SwiftyJSON (4.0.0)
   - XLPagerTabStrip (8.0.1)
 
@@ -81,6 +82,7 @@ DEPENDENCIES:
   - Kingfisher (~> 4.8.0)
   - R.swift (~> 4.0.0)
   - SideMenu (~> 4.0.0)
+  - SnapKit (~> 4.0.0)
   - XLPagerTabStrip (~> 8.0.1)
 
 SPEC REPOS:
@@ -105,6 +107,7 @@ SPEC REPOS:
     - R.swift
     - R.swift.Library
     - SideMenu
+    - SnapKit
     - SwiftyJSON
     - XLPagerTabStrip
 
@@ -129,9 +132,10 @@ SPEC CHECKSUMS:
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
 
-PODFILE CHECKSUM: 568ad3925d72e4aa486b1d1b62585b7132172a0e
+PODFILE CHECKSUM: 726012a9fdbe532f3093dba56753024510f7f656
 
 COCOAPODS: 1.5.3
