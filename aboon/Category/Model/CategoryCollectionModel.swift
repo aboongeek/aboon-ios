@@ -53,6 +53,7 @@ extension CategoryCollectionModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
         cell.textLabel?.text = categoryNames[indexPath.row]
+        cell.backGroundImageView?.image = categoryImages[indexPath.row]
         return cell
     }
 }
