@@ -16,6 +16,7 @@ protocol CategoryCollectionModelDelegate {
 
 class CategoryCollectionModel: NSObject {
     let db = Firestore.firestore()
+    let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
     
     var delegate: CategoryCollectionModelDelegate? = nil
     
