@@ -12,7 +12,7 @@ class CouponListCollectionView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.backgroundColor = UIColor(red: 245, green: 245, blue: 245, alpha: 255)
+        self.backgroundColor = .white
     }
     
     required init?(coder aDecoder: NSCoder) {
