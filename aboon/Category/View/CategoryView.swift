@@ -10,6 +10,9 @@ import UIKit
 
 class CategoryView: UIView {
     
+    var categoryCollectionView: CategoryCollectionView!
+    var activityIndicator: UIActivityIndicatorView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
