@@ -19,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //      Firebaseの初期化
         FirebaseApp.configure()
         
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+
+
 //      Storyboardの代わりにViewControllerのViewをセットする
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = TabBarController()
