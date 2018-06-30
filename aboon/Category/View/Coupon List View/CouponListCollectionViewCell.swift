@@ -26,8 +26,9 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //initialization of couponNameLabel
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         //settings for texts
+        couponNameLabel?.font = UIFont(name: "Courier", size: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.textColor = .black
-        couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
+        //couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
         //constraint settings
         addSubview(couponNameLabel!)
@@ -40,6 +41,7 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //initialazation of couponDetailLabel
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         //setting texts
+        couponDetailLabel?.font = UIFont(name:"Calibri", size: (couponNameLabel?.font.pointSize)!/2)
         couponDetailLabel?.textColor = .black
         couponDetailLabel?.text = "nil"
         //constraint settings
