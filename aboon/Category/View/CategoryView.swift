@@ -24,42 +24,25 @@ class CategoryView: UIView {
         self.frame = CGRect(origin: frame.origin, size: frameSize)
     }
     
-    public func createCollectionView(model: CategoryCollectionModel) -> CategoryCollectionView {
-        let customFlowLayout: UICollectionViewFlowLayout = {
-            let flowLayout = UICollectionViewFlowLayout()
-           
-            //constants
-            let margin: CGFloat = 20
-            let itemRatio: CGFloat = 5/4
-            
-            //
-            let numberOfItems = model.categories.count
-            
-            //calculated properties
-            let itemWidth: CGFloat = (frame.width - 3 * margin) / 2
-            let itemSize = CGSize(width: itemWidth , height: itemWidth / itemRatio)
-            let numberOfRows = CGFloat(numberOfItems / 2)
-            let topInset: CGFloat = (frame.height - (itemSize.height * numberOfRows + margin * (numberOfRows - 1))) / 2
-            
-            //layout settings
-            flowLayout.minimumInteritemSpacing = margin
-            flowLayout.minimumLineSpacing = margin
-            flowLayout.estimatedItemSize = itemSize
-            
-            if (topInset > margin) {
-                flowLayout.sectionInset = UIEdgeInsetsMake(topInset, margin, margin, margin)
-            } else {
-                flowLayout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin)
-            }
-            
-            return flowLayout
-        }()
-        let categoryCollectionView = CategoryCollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), collectionViewLayout: customFlowLayout)
+    public func appendActivityIndicator () {
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator.center = center
+        addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
+    public func stopActivityIndicator () {
+        activityIndicator.stopAnimating()
+    }
+    
+    public func initializeCollectionView(numberOfCells: Int) -> CategoryCollectionView {
+        categoryCollectionView = CategoryCollectionView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), collectionViewLayout: UICollectionViewFlowLayout())
+        categoryCollectionView.setCollectionViewLayout(numberOfCells: numberOfCells)
         return categoryCollectionView
     }
     
-    public func appendCollectionView(collectionView: CategoryCollectionView) {
-        self.addSubview(collectionView)
+    public func appendCollectionView() {
+        self.addSubview(categoryCollectionView)
     }
     
     required init?(coder aDecoder: NSCoder) {
