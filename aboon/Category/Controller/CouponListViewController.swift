@@ -9,17 +9,10 @@
 import UIKit
 
 class CouponListViewController: UIViewController {
-
-    private let titleName: String
     
-    init(withTitle: String) {
-        self.titleName = withTitle
-        super.init(nibName: nil, bundle: nil)
-    }
+    let model = CouponListCollectionModel()
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private let titleName: String = ""
     
     override func loadView() {
         self.view = CouponListView()
@@ -29,12 +22,17 @@ class CouponListViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = titleName
-
-        let testLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 100))
-        testLabel.text = "Coupon List"
-        self.view.addSubview(testLabel)
-        
         self.view.backgroundColor = .white
+        
+        let couponListCollectionView = (self.view as! CouponListView).createCollectionView()
+        couponListCollectionView.register(CouponListCollectionViewCell.self, forCellWithReuseIdentifier: "CouponListCollectionCell")
+        
+        couponListCollectionView.delegate = self
+        couponListCollectionView.dataSource = model as UICollectionViewDataSource
+        (self.view as! CouponListView).appendCollectionView(couponListCollectionView)
+        
+        
+        
         
     }
 
@@ -43,15 +41,8 @@ class CouponListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension CouponListViewController: UICollectionViewDelegate{
+    
 }

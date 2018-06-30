@@ -14,16 +14,11 @@ class CouponListView: UIView {
         self.frame = UIScreen.main.bounds
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     public func createCollectionView () -> CouponListCollectionView {
         let customFlowLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             
             //layout property settings to be added
-            
             return layout
         }()
         let collectionView = CouponListCollectionView(frame: self.frame, collectionViewLayout: customFlowLayout)
@@ -32,6 +27,11 @@ class CouponListView: UIView {
     
     public func appendCollectionView (_ collectionView: UICollectionView) {
         self.addSubview(collectionView)
+        dLog("CouponListCollectionView Appended")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }
