@@ -21,6 +21,7 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = .white
         //initialization of imageview
         couponImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width/2, height: frame.height))
+        //using scaleAspectFill considering images that are not cropped
         couponImageView?.contentMode = .scaleAspectFill
         addSubview(couponImageView!)
         //initialization of couponNameLabel
@@ -31,12 +32,12 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
         //constraint settings
-        addSubview(couponNameLabel!)
-        
         couponNameLabel?.snp.makeConstraints({ (make) in
             make.height.equalTo(frame.height*2/7)
             make.left.equalTo(frame.width/2)
         })
+        
+        addSubview(couponNameLabel!)
         
         //initialazation of couponDetailLabel
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
@@ -45,14 +46,13 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         couponDetailLabel?.textColor = UIColor(hex: "000000", alpha: 0.5)
         couponDetailLabel?.text = "nil"
         //constraint settings
-        
-        addSubview(couponDetailLabel!)
-        
         couponDetailLabel?.snp.makeConstraints({ (make) in
             make.height.equalTo(frame.height)
             make.left.equalTo(frame.width/2)
         })
-
+        
+        addSubview(couponDetailLabel!)
+        
         roundEdge()
     }
     
