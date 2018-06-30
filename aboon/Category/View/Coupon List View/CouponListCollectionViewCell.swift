@@ -42,7 +42,7 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         //setting texts
         couponDetailLabel?.font = UIFont(name:"Calibri", size: (couponNameLabel?.font.pointSize)!/2)
-        couponDetailLabel?.textColor = .black
+        couponDetailLabel?.textColor = UIColor(hex: "000000", alpha: 0.5)
         couponDetailLabel?.text = "nil"
         //constraint settings
         
