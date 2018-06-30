@@ -41,8 +41,6 @@ class CategoryCollectionModel: NSObject {
     }
     
     func didFetchData () {
-        categoryNames = self.categories.map {$0["categoryName"] as! String}
-        categoryImagePaths = self.categories.map {$0["imagePath"] as! String}
         delegate?.dataDidLoad()
     }
 }
