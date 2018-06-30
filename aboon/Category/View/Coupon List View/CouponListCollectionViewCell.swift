@@ -17,9 +17,9 @@ class CouponListCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .gray
+        self.backgroundColor = .white
         //initialization of imageview
-        couponImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        couponImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width/2, height: frame.height))
         addSubview(couponImageView!)
         //initialization of couponNameLabel
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
