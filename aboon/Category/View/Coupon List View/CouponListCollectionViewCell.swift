@@ -24,7 +24,7 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //クーポンタイトルの初期化
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         couponNameLabel?.textAlignment = .left
-        couponNameLabel?.textColor = .white
+        couponNameLabel?.textColor = .black
         couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
         
@@ -32,7 +32,7 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //クーポンの説明文の初期化
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         couponDetailLabel?.textAlignment = .left
-        couponDetailLabel?.textColor = .white
+        couponDetailLabel?.textColor = .black
         couponDetailLabel?.text = "nil"
         
         addSubview((couponDetailLabel!))
