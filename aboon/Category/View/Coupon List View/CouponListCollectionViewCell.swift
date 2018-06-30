@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+
 class CouponListCollectionViewCell: UICollectionViewCell {
     
     var couponImageView: UIImageView?
@@ -21,7 +22,6 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //initialization of imageview
         couponImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width/2, height: frame.height))
         couponImageView?.contentMode = .scaleAspectFill
-        
         addSubview(couponImageView!)
         //initialization of couponNameLabel
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
@@ -30,8 +30,13 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
         //constraint settings
-        
         addSubview(couponNameLabel!)
+        
+        couponNameLabel?.snp.makeConstraints({ (make) in
+            make.height.equalTo(frame.height*2/7)
+            make.left.equalTo(frame.width/2)
+        })
+        
         //initialazation of couponDetailLabel
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         //setting texts
@@ -39,9 +44,13 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         couponDetailLabel?.text = "nil"
         //constraint settings
         
-        
         addSubview(couponDetailLabel!)
         
+        couponDetailLabel?.snp.makeConstraints({ (make) in
+            make.height.equalTo(frame.height)
+            make.left.equalTo(frame.width/2)
+        })
+
         roundEdge()
     }
     
