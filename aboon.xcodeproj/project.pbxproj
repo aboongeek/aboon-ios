@@ -30,10 +30,10 @@
 		2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */; };
 		2CD6216920DF7EE700C81DF7 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */; };
 		383FA1BE1A3370D07D14A6AD /* Pods_aboon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F953135DB05226712AEA5D63 /* Pods_aboon.framework */; };
+		4988C8FF20E7C3E4003EF9CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4988C8FE20E7C3E4003EF9CC /* GoogleService-Info.plist */; };
 		49ADCD8E20E2955400EB1181 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCD8D20E2955400EB1181 /* CategoryView.swift */; };
 		4A3FA8655465D631572F2808 /* Pods_aboonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2486C9AC553972A4E04E3527 /* Pods_aboonUITests.framework */; };
 		7507BE3F20E145A900749F59 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507BE3E20E145A900749F59 /* R.generated.swift */; };
-		75193E4820DBB6B300EF417E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75193E4720DBB6B300EF417E /* GoogleService-Info.plist */; };
 		75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75193E4A20DBB8FA00EF417E /* Debug.swift */; };
 		FD6875039EF257792E92961A /* Pods_aboonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A10372EDE4AE4D4F6A1966C /* Pods_aboonTests.framework */; };
 /* End PBXBuildFile section */
@@ -88,10 +88,10 @@
 		2CD6215720DF538600C81DF7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
+		4988C8FE20E7C3E4003EF9CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49ADCD8D20E2955400EB1181 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		5AE6F603202A8DA8EA190F33 /* Pods-aboonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7507BE3E20E145A900749F59 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		75193E4720DBB6B300EF417E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75193E4A20DBB8FA00EF417E /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		BA40E4C99D656DF5EFD3CD07 /* Pods-aboonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.release.xcconfig"; sourceTree = "<group>"; };
 		C98318E252737C6A37E482FE /* Pods-aboon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 				082E9D6720D13A1B00ED6A22 /* Assets.xcassets */,
 				082E9D6920D13A1B00ED6A22 /* LaunchScreen.storyboard */,
 				082E9D6C20D13A1B00ED6A22 /* Info.plist */,
-				75193E4720DBB6B300EF417E /* GoogleService-Info.plist */,
+				4988C8FE20E7C3E4003EF9CC /* GoogleService-Info.plist */,
 				75193E4A20DBB8FA00EF417E /* Debug.swift */,
 			);
 			path = aboon;
@@ -463,8 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				082E9D6B20D13A1B00ED6A22 /* LaunchScreen.storyboard in Resources */,
+				4988C8FF20E7C3E4003EF9CC /* GoogleService-Info.plist in Resources */,
 				082E9D6820D13A1B00ED6A22 /* Assets.xcassets in Resources */,
-				75193E4820DBB6B300EF417E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +495,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -515,6 +516,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
