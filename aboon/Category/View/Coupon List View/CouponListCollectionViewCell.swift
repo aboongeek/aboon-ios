@@ -33,10 +33,11 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         couponDetailLabel?.textAlignment = .left
         couponDetailLabel?.textColor = .white
-        couponDetailLabel?.font = UIFont.boldSystemFont(ofSize: (couponDetailLabel?.font.pointSize)!)
         couponDetailLabel?.text = "nil"
         
         addSubview((couponDetailLabel!))
+        
+        //この後影をつける
         
         roundEdge()
     }

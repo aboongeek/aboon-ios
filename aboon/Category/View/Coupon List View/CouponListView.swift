@@ -17,6 +17,7 @@ class CouponListView: UIView {
     public func createCollectionView () -> CouponListCollectionView {
         let customFlowLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
+            //relatively set
             let margin: CGFloat = frame.width/18
             layout.minimumLineSpacing = margin
             layout.estimatedItemSize = CGSize(width: frame.width-margin*2-10, height: 128)
