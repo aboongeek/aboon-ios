@@ -43,7 +43,7 @@ class CategoryView: UIView {
             flowLayout.minimumLineSpacing = margin
             flowLayout.estimatedItemSize = itemSize
             
-            if (topInset <= frame.height) {
+            if (topInset > margin) {
                 flowLayout.sectionInset = UIEdgeInsetsMake(topInset, margin, margin, margin)
             } else {
                 flowLayout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin)
