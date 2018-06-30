@@ -26,15 +26,12 @@ class CategoryCollectionModel: NSObject {
     var categoryImages: [UIImage]!
   
     func fetchCategories () {
-        dLog("function called")
         db.collection("categories").getDocuments(completion: { (querySnapshot, err) in
-            dLog("closure called")
             if let err = err {
                 dLog("error occured: \(err)")
             } else {
                 for document in querySnapshot!.documents {
                     self.categories.append(document.data())
-                    dLog(document.data()["categoryName"])
                 }
                 self.didFetchData()
             }
