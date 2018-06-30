@@ -14,17 +14,46 @@ protocol CategoryCollectionModelDelegate {
 }
 
 class CategoryCollectionModel: NSObject {
-    let categories = ["スポーツ", "カフェ/ダイニング", "ビューティー", "リラクゼーション", "スペシャル", "カップル"]
+    let db = Firestore.firestore()
+    
+    var delegate: CategoryCollectionModelDelegate? = nil
+    
+    var categories = [[String : Any]]()
+    var categoryNames: [String]!
+    var categoryImagePaths: [String]!
+    var categoryImages: [UIImage]!
+  
+    func fetchCategories () {
+        dLog("function called")
+        db.collection("categories").getDocuments(completion: { (querySnapshot, err) in
+            dLog("closure called")
+            if let err = err {
+                dLog("error occured: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.categories.append(document.data())
+                    dLog(document.data()["categoryName"])
+                }
+                self.didFetchData()
+            }
+        })
+    }
+    
+    func didFetchData () {
+        categoryNames = self.categories.map {$0["categoryName"] as! String}
+        categoryImagePaths = self.categories.map {$0["imagePath"] as! String}
+        delegate?.dataDidLoad()
+    }
 }
 
 extension CategoryCollectionModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return self.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
-        cell.textLabel?.text = categories[indexPath.row]
+        cell.textLabel?.text = categoryNames[indexPath.row]
         return cell
     }
 }
