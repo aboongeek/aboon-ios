@@ -33,8 +33,10 @@ class CategoryCollectionModel: NSObject {
                 for document in querySnapshot!.documents {
                     self.categories.append(document.data())
                 }
-                self.didFetchData()
             }
+            self.categoryNames = self.categories.map {$0["categoryName"] as! String}
+            self.categoryImagePaths = self.categories.map {$0["imagePath"] as! String}
+            self.fetchCategoryImages()
         })
     }
     
