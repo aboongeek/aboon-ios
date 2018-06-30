@@ -23,6 +23,7 @@ target 'aboon' do
   pod 'R.swift'              , '~> 4.0.0'
   pod 'Kingfisher'           , '~> 4.8.0'
   pod 'SideMenu'             , '~> 4.0.0'
+  pod 'SnapKit'              , '~> 4.0.0'
   # Pods for aboon
 
   target 'aboonTests' do

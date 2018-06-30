@@ -7,14 +7,14 @@
 //
 
 import UIKit
-
+import SnapKit
 class CouponListCollectionViewCell: UICollectionViewCell {
     
     var couponImageView: UIImageView?
     var couponNameLabel: UILabel?
     var couponDetailLabel: UILabel?
     
-    override init(frame: CGRect) {
+    override init(frame: CGRect){
         super.init(frame: frame)
         
         self.backgroundColor = .white
@@ -26,24 +26,21 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //initialization of couponNameLabel
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         //settings for texts
-        couponNameLabel?.textAlignment = .right
         couponNameLabel?.textColor = .black
         couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
-        //constraints for the label
-        
+        //constraint settings
         
         addSubview(couponNameLabel!)
         //initialazation of couponDetailLabel
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         //setting texts
-        couponDetailLabel?.textAlignment = .left
         couponDetailLabel?.textColor = .black
         couponDetailLabel?.text = "nil"
+        //constraint settings
         
-        addSubview((couponDetailLabel!))
         
-        //この後影をつける
+        addSubview(couponDetailLabel!)
         
         roundEdge()
     }
