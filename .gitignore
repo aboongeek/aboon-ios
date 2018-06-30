@@ -69,3 +69,6 @@ fastlane/test_output
 
 #RSwift
 *.generated.swift
+
+#.DS_Store
+/.DS_Store
