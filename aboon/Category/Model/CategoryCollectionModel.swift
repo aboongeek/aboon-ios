@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 protocol CategoryCollectionModelDelegate {
     func dataDidLoad()
