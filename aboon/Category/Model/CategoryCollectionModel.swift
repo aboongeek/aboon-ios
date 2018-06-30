@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Firebase
+
+protocol CategoryCollectionModelDelegate {
+    func dataDidLoad()
+}
 
 class CategoryCollectionModel: NSObject {
     let categories = ["スポーツ", "カフェ/ダイニング", "ビューティー", "リラクゼーション", "スペシャル", "カップル"]
