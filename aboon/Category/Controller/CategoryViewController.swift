@@ -40,13 +40,9 @@ extension CategoryViewController: CategoryCollectionModelDelegate {
         categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = model
-        (self.view as! CategoryView).appendCollectionView(collectionView: categoryCollectionView)
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
+        (self.view as! CategoryView).appendCollectionView()
+        (self.view as! CategoryView).stopActivityIndicator()
+        (self.view as! CategoryView).setNeedsLayout()
     }
 }
 
