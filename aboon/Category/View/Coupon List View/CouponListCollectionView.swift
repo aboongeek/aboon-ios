@@ -12,8 +12,8 @@ class CouponListCollectionView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        //white → 0.96 
-        self.backgroundColor = UIColor(white: 0.8, alpha: 1)
+        //white → 0.96
+        self.backgroundColor = UIColor(white: 0.96, alpha: 1)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -20,11 +20,13 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = .white
         //initialization of imageview
         couponImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width/2, height: frame.height))
+        couponImageView?.contentMode = .scaleAspectFill
+        
         addSubview(couponImageView!)
         //initialization of couponNameLabel
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         //settings for texts
-        couponNameLabel?.textAlignment = .left
+        couponNameLabel?.textAlignment = .right
         couponNameLabel?.textColor = .black
         couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
