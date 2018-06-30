@@ -22,8 +22,8 @@ class CategoryViewController: UIViewController {
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
         
         let categoryCollectionView = (self.view as! CategoryView).createCollectionView()
-        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
         
+        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = model
         (self.view as! CategoryView).appendCollectionView(collectionView: categoryCollectionView)

@@ -9,19 +9,19 @@
 import UIKit
 
 class CouponListCollectionModel: NSObject {
-    var shops = ["coupon1", "coupon2", "coupon3", "coupon4", "coupon5", "coupon6"]
+    var coupons = ["coupon1", "coupon2", "coupon3", "coupon4", "coupon5", "coupon6"]
     var details = ["a", "b", "c", "d", "e", "f"]
    
 }
 extension CouponListCollectionModel: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shops.count
+        return coupons.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponListCollectionCell", for: indexPath) as! CouponListCollectionViewCell
-        cell.couponNameLabel?.text = shops[indexPath.row]
+        cell.couponNameLabel?.text = coupons[indexPath.row]
         return cell
     }
 }

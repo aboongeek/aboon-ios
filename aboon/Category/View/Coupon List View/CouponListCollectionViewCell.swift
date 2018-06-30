@@ -18,19 +18,23 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.backgroundColor = .gray
-        //クーポンに紐付ける画像の初期化
+        //initialization of imageview
         couponImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         addSubview(couponImageView!)
-        //クーポンタイトルの初期化
+        //initialization of couponNameLabel
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        //settings for texts
         couponNameLabel?.textAlignment = .left
         couponNameLabel?.textColor = .black
         couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
+        //constraints for the label
+        
         
         addSubview(couponNameLabel!)
-        //クーポンの説明文の初期化
+        //initialazation of couponDetailLabel
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        //setting texts
         couponDetailLabel?.textAlignment = .left
         couponDetailLabel?.textColor = .black
         couponDetailLabel?.text = "nil"

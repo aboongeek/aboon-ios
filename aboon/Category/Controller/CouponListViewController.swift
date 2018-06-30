@@ -42,7 +42,7 @@ extension CouponListViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let couponDetailViewController = CouponDetailViewController(withTitle: model.shops[indexPath.row])
+        let couponDetailViewController = CouponDetailViewController(withTitle: model.coupons[indexPath.row])
         self.navigationController?.pushViewController(couponDetailViewController, animated: true)
     }
 }
