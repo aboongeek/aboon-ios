@@ -23,7 +23,7 @@ class CategoryCollectionModel: NSObject {
     var categories = [[String : Any]]()
     var categoryNames: [String]!
     var categoryImagePaths: [String]!
-    var categoryImages: [UIImage]!
+    var categoryImages = [UIImage]()
   
     func fetchCategories () {
         db.collection("categories").getDocuments(completion: { (querySnapshot, err) in
@@ -38,6 +38,22 @@ class CategoryCollectionModel: NSObject {
             self.categoryImagePaths = self.categories.map {$0["imagePath"] as! String}
             self.fetchCategoryImages()
         })
+    }
+    
+    func fetchCategoryImages () {
+        for imagePath in categoryImagePaths {
+            imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+                if let error = error {
+                    dLog(error)
+                } else {
+                    self.categoryImages.append(UIImage(data: data!)!)
+                }
+            }
+        }
+        wait({self.categoryImages.count != self.categories.count}) {
+            self.didFetchData()
+        }
+        
     }
     
     func didFetchData () {
