@@ -22,7 +22,7 @@ class CouponListViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = titleName
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor(hex: "F5F5F5", alpha: 1.0)
         
         let couponListCollectionView = (self.view as! CouponListView).createCollectionView()
         couponListCollectionView.register(CouponListCollectionViewCell.self, forCellWithReuseIdentifier: "CouponListCollectionCell")
@@ -30,19 +30,19 @@ class CouponListViewController: UIViewController {
         couponListCollectionView.delegate = self
         couponListCollectionView.dataSource = model as UICollectionViewDataSource
         (self.view as! CouponListView).appendCollectionView(couponListCollectionView)
-        
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
 
 extension CouponListViewController: UICollectionViewDelegate{
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let couponDetailViewController = CouponDetailViewController(withTitle: model.shops[indexPath.row])
+        self.navigationController?.pushViewController(couponDetailViewController, animated: true)
+    }
 }

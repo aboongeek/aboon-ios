@@ -9,24 +9,19 @@
 import UIKit
 
 class CouponListCollectionModel: NSObject {
-    var sports = ["フットサル"]
-    var cafeDining = ["俺のカフェ"]
-    var beauty = ["髪の毛"]
-    var relaxation = ["リラックスー"]
-    var special = ["キラキラ"]
-    var couple = ["きゃっきゃうふふ"]
-    var coupons = ["coupon1", "coupon2"]
+    var shops = ["coupon1", "coupon2", "coupon3", "coupon4", "coupon5", "coupon6"]
+    var details = ["a", "b", "c", "d", "e", "f"]
    
 }
 extension CouponListCollectionModel: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coupons.count
+        return shops.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponListCollectionCell", for: indexPath) as! CouponListCollectionViewCell
-        cell.couponNameLabel?.text = coupons[indexPath.row]
+        cell.couponNameLabel?.text = shops[indexPath.row]
         return cell
     }
 }

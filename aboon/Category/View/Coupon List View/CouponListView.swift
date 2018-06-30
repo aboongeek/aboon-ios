@@ -17,6 +17,10 @@ class CouponListView: UIView {
     public func createCollectionView () -> CouponListCollectionView {
         let customFlowLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
+            let margin: CGFloat = frame.width/18
+            layout.minimumLineSpacing = margin
+            layout.estimatedItemSize = CGSize(width: frame.width-margin*2-10, height: 128)
+            layout.sectionInset = UIEdgeInsets(top: margin+5, left: margin+5, bottom: 0, right: margin)
             
             //layout property settings to be added
             return layout
@@ -29,7 +33,6 @@ class CouponListView: UIView {
         self.addSubview(collectionView)
         dLog("CouponListCollectionView Appended")
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

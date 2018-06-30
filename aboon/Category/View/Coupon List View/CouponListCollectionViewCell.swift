@@ -24,7 +24,7 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //クーポンタイトルの初期化
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         couponNameLabel?.textAlignment = .left
-        couponNameLabel?.textColor = .black
+        couponNameLabel?.textColor = .white
         couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
         
@@ -32,11 +32,18 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         //クーポンの説明文の初期化
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         couponDetailLabel?.textAlignment = .left
-        couponDetailLabel?.textColor = .black
+        couponDetailLabel?.textColor = .white
         couponDetailLabel?.font = UIFont.boldSystemFont(ofSize: (couponDetailLabel?.font.pointSize)!)
         couponDetailLabel?.text = "nil"
         
         addSubview((couponDetailLabel!))
+        
+        roundEdge()
+    }
+    
+    func roundEdge() {
+        self.layer.cornerRadius = self.frame.size.width * 0.05
+        self.clipsToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {
