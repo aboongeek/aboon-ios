@@ -40,7 +40,7 @@ extension CategoryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let couponListViewController = CouponListViewController()
+        let couponListViewController = CouponListViewController(withTitle: model.categories[indexPath.row])
         couponListViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(couponListViewController, animated: true)
     }

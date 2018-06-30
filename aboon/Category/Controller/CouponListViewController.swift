@@ -12,7 +12,16 @@ class CouponListViewController: UIViewController {
     
     let model = CouponListCollectionModel()
     
-    private let titleName: String = ""
+    private var titleName: String = ""
+    
+    init(withTitle: String) {
+        self.titleName = withTitle
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         self.view = CouponListView()
