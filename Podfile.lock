@@ -79,6 +79,9 @@ PODS:
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
+  - RxCocoa (4.2.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.2.0)
   - SideMenu (4.0.0)
   - SnapKit (4.0.0)
   - SwiftyJSON (4.0.0)
@@ -91,6 +94,8 @@ DEPENDENCIES:
   - Firebase/Storage (~> 5.3.0)
   - Kingfisher (~> 4.8.0)
   - R.swift (~> 4.0.0)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
   - SideMenu (~> 4.0.0)
   - SnapKit (~> 4.0.0)
   - XLPagerTabStrip (~> 8.0.1)
@@ -118,6 +123,8 @@ SPEC REPOS:
     - Protobuf
     - R.swift
     - R.swift.Library
+    - RxCocoa
+    - RxSwift
     - SideMenu
     - SnapKit
     - SwiftyJSON
@@ -145,11 +152,13 @@ SPEC CHECKSUMS:
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
+  RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
+  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
 
-PODFILE CHECKSUM: 28adfe3df089406a3aaa7908cf7140619b940833
+PODFILE CHECKSUM: 0dffa2d8ac34b13be309c5fd26f57f47f715e4ce
 
 COCOAPODS: 1.5.3

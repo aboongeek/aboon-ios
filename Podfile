@@ -24,6 +24,8 @@ target 'aboon' do
   pod 'Kingfisher'           , '~> 4.8.0'
   pod 'SideMenu'             , '~> 4.0.0'
   pod 'SnapKit'              , '~> 4.0.0'
+  pod 'RxSwift'		     , '~> 4.0'
+  pod 'RxCocoa'		     , '~> 4.0'
 
   # Pods for aboon
 
