@@ -23,7 +23,7 @@ class CategoryCollectionModel: NSObject {
     var categories = [[String : Any]]()
     var categoryNames: [String]!
     var categoryImagePaths: [String]!
-    var categoryImages = [UIImage]()
+    var categoryImages = [String : UIImage]()
   
     func fetchCategories () {
         db.collection("categories").getDocuments(completion: { (querySnapshot, err) in
@@ -46,7 +46,7 @@ class CategoryCollectionModel: NSObject {
                 if let error = error {
                     dLog(error)
                 } else {
-                    self.categoryImages.append(UIImage(data: data!)!)
+                    self.categoryImages[imagePath] = UIImage(data: data!)
                 }
             }
         }
@@ -69,7 +69,7 @@ extension CategoryCollectionModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
         cell.textLabel?.text = categoryNames[indexPath.row]
-        cell.backGroundImageView?.image = categoryImages[indexPath.row]
+        cell.backGroundImageView?.image = categoryImages[categories[indexPath.row]["imagePath"] as! String]
         return cell
     }
 }
