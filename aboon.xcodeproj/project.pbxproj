@@ -35,7 +35,7 @@
 		7507BE3F20E145A900749F59 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507BE3E20E145A900749F59 /* R.generated.swift */; };
 		75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75193E4A20DBB8FA00EF417E /* Debug.swift */; };
 		7909383220E94DC200DE7F01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7909383020E94A9F00DE7F01 /* GoogleService-Info.plist */; };
-		7909383320E94DC500DE7F01 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7909383120E94A9F00DE7F01 /* GoogleService-Info-Release.plist */; };
+		7909383620E9508B00DE7F01 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7909383520E9508B00DE7F01 /* GoogleService-Info-Release.plist */; };
 		FD6875039EF257792E92961A /* Pods_aboonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A10372EDE4AE4D4F6A1966C /* Pods_aboonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +94,7 @@
 		7507BE3E20E145A900749F59 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		75193E4A20DBB8FA00EF417E /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		7909383020E94A9F00DE7F01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7909383120E94A9F00DE7F01 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
+		7909383520E9508B00DE7F01 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-Release.plist"; path = "../../../Downloads/GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
 		BA40E4C99D656DF5EFD3CD07 /* Pods-aboonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.release.xcconfig"; sourceTree = "<group>"; };
 		C98318E252737C6A37E482FE /* Pods-aboon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.release.xcconfig"; sourceTree = "<group>"; };
 		C9F010AEA949126B9A4B3709 /* Pods-aboon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -346,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				7909383020E94A9F00DE7F01 /* GoogleService-Info.plist */,
-				7909383120E94A9F00DE7F01 /* GoogleService-Info-Release.plist */,
+				7909383520E9508B00DE7F01 /* GoogleService-Info-Release.plist */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -473,10 +473,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7909383620E9508B00DE7F01 /* GoogleService-Info-Release.plist in Resources */,
 				082E9D6B20D13A1B00ED6A22 /* LaunchScreen.storyboard in Resources */,
 				082E9D6820D13A1B00ED6A22 /* Assets.xcassets in Resources */,
 				7909383220E94DC200DE7F01 /* GoogleService-Info.plist in Resources */,
-				7909383320E94DC500DE7F01 /* GoogleService-Info-Release.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
