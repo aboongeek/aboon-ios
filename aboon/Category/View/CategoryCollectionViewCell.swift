@@ -16,9 +16,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .gray
+        self.backgroundColor = .black
         
         backGroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        backGroundImageView?.alpha = 0.7
         addSubview(backGroundImageView!)
 
         textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
