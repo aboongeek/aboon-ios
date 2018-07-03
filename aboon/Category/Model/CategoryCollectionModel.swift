@@ -18,6 +18,8 @@ class CategoryCollectionModel: NSObject {
     
     var categories = [[String : Any]]()
     var categoryImages = [String : UIImage]()
+    
+    var imageCount = BehaviorRelay<Int>(value: 0)
   
     func fetchCategories () -> Observable<[String: Any]> {
         return Observable.create({ (observer) -> Disposable in
