@@ -17,8 +17,6 @@ class CategoryCollectionModel: NSObject {
     let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
     
     var categories = [[String : Any]]()
-    var categoryNames: [String]!
-    var categoryImagePaths: [String]!
     var categoryImages = [String : UIImage]()
   
     func fetchCategories () -> Observable<[String: Any]> {
