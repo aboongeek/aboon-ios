@@ -12,7 +12,22 @@ import RxCocoa
 
 class CategoryViewController: UIViewController {
     
-    let model = CategoryCollectionModel()
+    var model: CategoryCollectionModel!
+    var categoryCollectionView: CategoryCollectionView?
+    
+    func categoriesDidLoad() {
+        categoryCollectionView = (self.view as! CategoryView).initializeCollectionView(numberOfCells: model.categories.count)
+        categoryCollectionView?.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
+        categoryCollectionView?.delegate = self
+    }
+    
+    func imagesDidLoad() {
+        dLog("images loaded")
+        categoryCollectionView?.dataSource = model
+        (self.view as! CategoryView).appendCollectionView()
+        (self.view as! CategoryView).stopActivityIndicator()
+        (self.view as! CategoryView).setNeedsLayout()
+    }
     
     override func loadView() {
         let categoryView = CategoryView()
@@ -34,18 +49,7 @@ class CategoryViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
-}
-
-extension CategoryViewController: CategoryCollectionModelDelegate {
-    func dataDidLoad() {
-        let categoryCollectionView = (self.view as! CategoryView).initializeCollectionView(numberOfCells: model.categories.count)
-        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
-        categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = model
-        (self.view as! CategoryView).appendCollectionView()
-        (self.view as! CategoryView).stopActivityIndicator()
-        (self.view as! CategoryView).setNeedsLayout()
-    }
+    
 }
 
 extension CategoryViewController: UICollectionViewDelegate {
