@@ -58,7 +58,6 @@ class CouponListCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(frame.height)
             make.left.equalTo(frame.width/2)
         })
-       
     }
     
     func roundEdge() {

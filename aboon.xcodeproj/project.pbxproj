@@ -304,8 +304,8 @@
 		2C3B1D7E20E38EF4009115C0 /* Category View */ = {
 			isa = PBXGroup;
 			children = (
-				49ADCD8D20E2955400EB1181 /* CategoryView.swift */,
 				2C1541C420E364BF001941ED /* CategoryCollectionView.swift */,
+				49ADCD8D20E2955400EB1181 /* CategoryView.swift */,
 				2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */,
 			);
 			path = "Category View";
@@ -315,8 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				2C3B1D8120E38F79009115C0 /* CouponListView.swift */,
-				869A985D20E725F300BF924F /* CouponListCollectionViewCell.swift */,
 				2CA3DA6620E3C23D00D3A9CA /* CouponListCollectionView.swift */,
+				869A985D20E725F300BF924F /* CouponListCollectionViewCell.swift */,
 			);
 			path = "Coupon List View";
 			sourceTree = "<group>";
