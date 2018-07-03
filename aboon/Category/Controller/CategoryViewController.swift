@@ -31,8 +31,6 @@ class CategoryViewController: UIViewController {
                 onNext: { (data) in
                     self.model.categories.append(data)
                     
-                    dLog("CATEGORIES FETCHING")
-                    
                     _ = self.model.fetchCategoryImage(imagePath: data["imagePath"] as! String)
                         .observeOn(MainScheduler.instance)
                         .subscribe(
@@ -52,7 +50,6 @@ class CategoryViewController: UIViewController {
                         .subscribe(onNext: { (count) in
                             if count == self.model.categories.count {
                                 self.imagesDidLoad()
-                                dLog("IMAGES LOADED")
                                 dLog(self.model.categoryImages)
                             }
                         })
@@ -74,7 +71,6 @@ class CategoryViewController: UIViewController {
     }
     
     func imagesDidLoad() {
-        dLog("images loaded")
         categoryCollectionView?.dataSource = model
         (self.view as! CategoryView).appendCollectionView()
         (self.view as! CategoryView).stopActivityIndicator()
