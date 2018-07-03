@@ -40,9 +40,7 @@ class CategoryViewController: UIViewController {
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
         (self.view as! CategoryView).setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
         (self.view as! CategoryView).appendActivityIndicator()
-       
-        model.fetchCategories()
-        model.delegate = self
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +54,7 @@ extension CategoryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let couponListViewController = CouponListViewController(withTitle: model.categoryNames[indexPath.row])
+        let couponListViewController = CouponListViewController(withTitle: model.categories[indexPath.row]["categoryName"] as! String)
         couponListViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(couponListViewController, animated: true)
     }
