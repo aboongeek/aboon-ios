@@ -37,9 +37,19 @@ class CategoryCollectionModel: NSObject {
         
     }
     
-    func didFetchData () {
-        delegate?.dataDidLoad()
+    func fetchCategoryImage (imagePath: String) -> Observable<(UIImage, String)> {
+        return Observable.create({ (observer) -> Disposable in
+            self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+                if let error = error {
+                    observer.onError(error)
+                } else {
+                    observer.onNext((UIImage(data: data!)!, imagePath))
+                }
+            }
+            return Disposables.create()
+        })
     }
+
 }
 
 extension CategoryCollectionModel: UICollectionViewDataSource {
