@@ -15,25 +15,16 @@ class CategoryViewController: UIViewController {
     var model: CategoryCollectionModel!
     var categoryCollectionView: CategoryCollectionView?
     
-    func categoriesDidLoad() {
-        categoryCollectionView = (self.view as! CategoryView).initializeCollectionView(numberOfCells: model.categories.count)
-        categoryCollectionView?.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
-        categoryCollectionView?.delegate = self
-    }
-    
-    func imagesDidLoad() {
-        dLog("images loaded")
-        categoryCollectionView?.dataSource = model
-        (self.view as! CategoryView).appendCollectionView()
-        (self.view as! CategoryView).stopActivityIndicator()
-        (self.view as! CategoryView).setNeedsLayout()
-    }
-    
     override func loadView() {
         let categoryView = CategoryView()
         self.view = categoryView
-
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
         model = CategoryCollectionModel()
+        
         _ = model.fetchCategories()
             .observeOn(MainScheduler.instance)
             .subscribe(
@@ -66,7 +57,6 @@ class CategoryViewController: UIViewController {
                             }
                         })
             })
-        
     }
     
     override func viewDidLoad() {
@@ -75,14 +65,32 @@ class CategoryViewController: UIViewController {
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
         (self.view as! CategoryView).setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
         (self.view as! CategoryView).appendActivityIndicator()
-    
     }
+    
+    func categoriesDidLoad() {
+        categoryCollectionView = (self.view as! CategoryView).initializeCollectionView(numberOfCells: model.categories.count)
+        categoryCollectionView?.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
+        categoryCollectionView?.delegate = self
+    }
+    
+    func imagesDidLoad() {
+        dLog("images loaded")
+        categoryCollectionView?.dataSource = model
+        (self.view as! CategoryView).appendCollectionView()
+        (self.view as! CategoryView).stopActivityIndicator()
+        (self.view as! CategoryView).setNeedsLayout()
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
-    
 }
 
 extension CategoryViewController: UICollectionViewDelegate {
