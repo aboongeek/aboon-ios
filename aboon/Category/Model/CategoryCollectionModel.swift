@@ -9,10 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseStorage
-
-protocol CategoryCollectionModelDelegate {
-    func dataDidLoad()
-}
+import RxSwift
+import RxCocoa
 
 class CategoryCollectionModel: NSObject {
     let db = Firestore.firestore()
