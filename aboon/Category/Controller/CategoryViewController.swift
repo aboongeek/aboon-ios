@@ -32,6 +32,41 @@ class CategoryViewController: UIViewController {
     override func loadView() {
         let categoryView = CategoryView()
         self.view = categoryView
+
+        model = CategoryCollectionModel()
+        _ = model.fetchCategories()
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { (data) in
+                    self.model.categories.append(data)
+                    
+                    dLog("CATEGORIES FETCHING")
+                    
+                    _ = self.model.fetchCategoryImage(imagePath: data["imagePath"] as! String)
+                        .observeOn(MainScheduler.instance)
+                        .subscribe(
+                            onNext: {(image, path) in
+                                self.model.categoryImages.updateValue(image, forKey: path)
+                                self.model.imageCount.accept(self.model.imageCount.value + 1)
+                        }, onError: { (error) in
+                            dLog("Error Loading Image: \(error)")
+                        })
+            },
+                onError: { (error) in
+                    dLog("Error Loading: \(error)")
+            },
+                onCompleted: {
+                    self.categoriesDidLoad()
+                    _ = self.model.imageCount
+                        .subscribe(onNext: { (count) in
+                            if count == self.model.categories.count {
+                                self.imagesDidLoad()
+                                dLog("IMAGES LOADED")
+                                dLog(self.model.categoryImages)
+                            }
+                        })
+            })
+        
     }
     
     override func viewDidLoad() {
