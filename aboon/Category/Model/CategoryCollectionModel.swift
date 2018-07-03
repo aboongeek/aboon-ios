@@ -21,34 +21,21 @@ class CategoryCollectionModel: NSObject {
     var categoryImagePaths: [String]!
     var categoryImages = [String : UIImage]()
   
-    func fetchCategories () {
-        db.collection("categories").getDocuments(completion: { (querySnapshot, err) in
-            if let err = err {
-                dLog("error occured: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    self.categories.append(document.data())
-                }
-            }
-            self.categoryNames = self.categories.map {$0["categoryName"] as! String}
-            self.categoryImagePaths = self.categories.map {$0["imagePath"] as! String}
-            self.fetchCategoryImages()
-        })
-    }
-    
-    func fetchCategoryImages () {
-        for imagePath in categoryImagePaths {
-            imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+    func fetchCategories () -> Observable<[String: Any]> {
+        return Observable.create({ (observer) -> Disposable in
+            self.db.collection("categories").getDocuments(completion:
+                { querySnapshot, error in
                 if let error = error {
-                    dLog(error)
+                    observer.onError(error)
                 } else {
-                    self.categoryImages[imagePath] = UIImage(data: data!)
+                    for document in querySnapshot!.documents {
+                        observer.onNext(document.data())
+                    }
+                    observer.onCompleted()
                 }
-            }
-        }
-        wait({self.categoryImages.count != self.categories.count}) {
-            self.didFetchData()
-        }
+            })
+            return Disposables.create()
+        })
         
     }
     
