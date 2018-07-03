@@ -31,11 +31,6 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         couponNameLabel?.textColor = .black
         //couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
-        //constraint settings
-        couponNameLabel?.snp.makeConstraints({ (make) in
-            make.height.equalTo(frame.height*2/7)
-            make.left.equalTo(frame.width/2)
-        })
         
         addSubview(couponNameLabel!)
         
@@ -45,15 +40,25 @@ class CouponListCollectionViewCell: UICollectionViewCell {
         couponDetailLabel?.font = UIFont(name:"Calibri", size: (couponNameLabel?.font.pointSize)!/2)
         couponDetailLabel?.textColor = UIColor(hex: "000000", alpha: 0.5)
         couponDetailLabel?.text = "nil"
-        //constraint settings
-        couponDetailLabel?.snp.makeConstraints({ (make) in
-            make.height.equalTo(frame.height)
-            make.left.equalTo(frame.width/2)
-        })
         
         addSubview(couponDetailLabel!)
         
         roundEdge()
+        //set constraints
+        updateConstraintsIfNeeded()
+    }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
+        couponNameLabel?.snp.makeConstraints { (make) in
+            make.height.equalTo(frame.height/4)
+            make.left.equalTo(frame.width/2)
+        }
+        couponDetailLabel?.snp.makeConstraints({ (make) in
+            make.height.equalTo(frame.height)
+            make.left.equalTo(frame.width/2)
+        })
+       
     }
     
     func roundEdge() {
