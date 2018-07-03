@@ -16,8 +16,6 @@ class CategoryCollectionModel: NSObject {
     let db = Firestore.firestore()
     let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
     
-    var delegate: CategoryCollectionModelDelegate? = nil
-    
     var categories = [[String : Any]]()
     var categoryNames: [String]!
     var categoryImagePaths: [String]!
