@@ -23,6 +23,8 @@ class CategoryViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
+        let disposeBag = DisposeBag()
+
         model = CategoryCollectionModel()
         
         _ = model.fetchCategories()
@@ -39,7 +41,7 @@ class CategoryViewController: UIViewController {
                                 self.model.imageCount.accept(self.model.imageCount.value + 1)
                         }, onError: { (error) in
                             dLog("Error Loading Image: \(error)")
-                        })
+                        }).disposed(by: disposeBag)
             },
                 onError: { (error) in
                     dLog("Error Loading: \(error)")
@@ -53,7 +55,7 @@ class CategoryViewController: UIViewController {
                                 dLog(self.model.categoryImages)
                             }
                         })
-            })
+            }).disposed(by: disposeBag)
     }
     
     override func viewDidLoad() {
