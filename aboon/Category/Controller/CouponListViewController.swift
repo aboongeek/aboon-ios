@@ -9,10 +9,8 @@
 import UIKit
 
 class CouponListViewController: UIViewController {
-    
-    let model = CouponListCollectionModel()
-    
-    private var titleName: String = ""
+
+    private let titleName: String
     
     init(withTitle: String) {
         self.titleName = withTitle
@@ -23,35 +21,33 @@ class CouponListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        self.view = CouponListView()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = titleName
-        self.view.backgroundColor = UIColor(hex: "F5F5F5", alpha: 1.0)
+
+        let testLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 100))
+        testLabel.text = "Coupon List"
+        self.view.addSubview(testLabel)
         
-        let couponListCollectionView = (self.view as! CouponListView).createCollectionView()
-        couponListCollectionView.register(CouponListCollectionViewCell.self, forCellWithReuseIdentifier: "CouponListCollectionCell")
+        self.view.backgroundColor = .white
         
-        couponListCollectionView.delegate = self
-        couponListCollectionView.dataSource = model as UICollectionViewDataSource
-        (self.view as! CouponListView).appendCollectionView(couponListCollectionView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-}
+    
 
-extension CouponListViewController: UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        
-        let couponDetailViewController = CouponDetailViewController(withTitle: model.coupons[indexPath.row])
-        self.navigationController?.pushViewController(couponDetailViewController, animated: true)
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
+
 }
