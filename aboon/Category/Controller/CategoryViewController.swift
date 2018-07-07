@@ -13,7 +13,8 @@ class CategoryViewController: UIViewController {
     let model = CategoryCollectionModel()
     
     override func loadView() {
-        self.view = CategoryView()
+        let categoryView = CategoryView()
+        self.view = categoryView
     }
     
     override func viewDidLoad() {
@@ -24,8 +25,8 @@ class CategoryViewController: UIViewController {
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
         
         let categoryCollectionView = (self.view as! CategoryView).createCollectionView(model: model)
-        
         categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
+        
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = model
         (self.view as! CategoryView).appendCollectionView(collectionView: categoryCollectionView)
