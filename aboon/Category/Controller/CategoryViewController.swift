@@ -16,8 +16,7 @@ class CategoryViewController: UIViewController {
     var categoryCollectionView: CategoryCollectionView?
     
     override func loadView() {
-        let categoryView = CategoryView()
-        self.view = categoryView
+        self.view = CategoryView()
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -60,6 +59,7 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
+        
         (self.view as! CategoryView).setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
         (self.view as! CategoryView).appendActivityIndicator()
     }
@@ -77,8 +77,7 @@ class CategoryViewController: UIViewController {
         (self.view as! CategoryView).setNeedsLayout()
     }
     
-    
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
