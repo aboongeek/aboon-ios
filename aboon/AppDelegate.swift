@@ -16,9 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         dLog("****** DEBUG ******")
-//      Firebaseの初期化
-        FirebaseApp.configure()
         
+//      Firebaseの初期化
+        #if DEBUG
+            let firebasePlist = "GoogleService-Info"
+            dLog("DEBUG SCHEME")
+        #elseif RELEASE
+            let firebasePlist = "GoogleService-Info-Release"
+            dLog("RELEASE SCHEME")
+        #endif
+        
+        let firebaseOptions = FirebaseOptions(contentsOfFile: Bundle.main.path(forResource: firebasePlist, ofType: "plist")!)
+        FirebaseApp.configure(options: firebaseOptions!)
+        
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+
+
 //      Storyboardの代わりにViewControllerのViewをセットする
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = TabBarController()

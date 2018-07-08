@@ -13,7 +13,7 @@ target 'aboon' do
   #pod 'Firebase/Crash'        , '~>5.3.0'
   #pod 'Firebase/RemoteConfig' , '~>5.3.0'
   #pod 'Firebase/Auth'         , '~>5.3.0'
-  #pod 'Firebase/Storage'      , '~>5.3.0'
+  pod 'Firebase/Storage'      , '~>5.3.0'
   #pod 'Firebase/Performance'  , '~>5.3.0'
   pod 'Firebase/Firestore'    , '~>5.3.0'
   #pod 'Firebase/Functions'    , '~>5.3.0'  
@@ -24,6 +24,8 @@ target 'aboon' do
   pod 'Kingfisher'           , '~> 4.8.0'
   pod 'SideMenu'             , '~> 4.0.0'
   pod 'SnapKit'              , '~> 4.0.0'
+  pod 'RxSwift'		     , '~> 4.0'
+  pod 'RxCocoa'		     , '~> 4.0'
 
   # Pods for aboon
 
