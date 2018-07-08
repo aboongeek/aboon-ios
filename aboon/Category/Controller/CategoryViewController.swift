@@ -16,8 +16,7 @@ class CategoryViewController: UIViewController {
     var categoryCollectionView: CategoryCollectionView?
     
     override func loadView() {
-        let categoryView = CategoryView()
-        self.view = categoryView
+        self.view = CategoryView()
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -77,9 +76,15 @@ class CategoryViewController: UIViewController {
         (self.view as! CategoryView).setNeedsLayout()
     }
     
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
+        let categoryCollectionView = (self.view as! CategoryView).createCollectionView(model: model)
+        
+        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = model
+        (self.view as! CategoryView).appendCollectionView(collectionView: categoryCollectionView)
     }
     
     
