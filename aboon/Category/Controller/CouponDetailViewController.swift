@@ -31,6 +31,7 @@ class CouponDetailViewController: UIViewController {
         self.view.addSubview(testLabel)
         
         self.view.backgroundColor = .white
+        
     }
 
     override func didReceiveMemoryWarning() {
