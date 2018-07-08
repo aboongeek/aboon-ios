@@ -40,27 +40,25 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
-  - gRPC (1.13.0):
-    - gRPC-RxLibrary (= 1.13.0)
-    - gRPC/Main (= 1.13.0)
-  - gRPC-Core (1.13.0):
-    - gRPC-Core/Implementation (= 1.13.0)
-    - gRPC-Core/Interface (= 1.13.0)
-  - gRPC-Core/Implementation (1.13.0):
+  - gRPC (1.12.0):
+    - gRPC-RxLibrary (= 1.12.0)
+    - gRPC/Main (= 1.12.0)
+  - gRPC-Core (1.12.0):
+    - gRPC-Core/Implementation (= 1.12.0)
+    - gRPC-Core/Interface (= 1.12.0)
+  - gRPC-Core/Implementation (1.12.0):
     - BoringSSL (~> 10.0)
-    - gRPC-Core/Interface (= 1.13.0)
+    - gRPC-Core/Interface (= 1.12.0)
     - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.13.0)
-  - gRPC-ProtoRPC (1.13.0):
-    - gRPC-ProtoRPC/Main (= 1.13.0)
-  - gRPC-ProtoRPC/Main (1.13.0):
-    - gRPC (= 1.13.0)
-    - gRPC-RxLibrary (= 1.13.0)
+  - gRPC-Core/Interface (1.12.0)
+  - gRPC-ProtoRPC (1.12.0):
+    - gRPC (= 1.12.0)
+    - gRPC-RxLibrary (= 1.12.0)
     - Protobuf (~> 3.0)
-  - gRPC-RxLibrary (1.13.0)
-  - gRPC/Main (1.13.0):
-    - gRPC-Core (= 1.13.0)
-    - gRPC-RxLibrary (= 1.13.0)
+  - gRPC-RxLibrary (1.12.0)
+  - gRPC/Main (1.12.0):
+    - gRPC-Core (= 1.12.0)
+    - gRPC-RxLibrary (= 1.12.0)
   - Kingfisher (4.8.0)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
@@ -123,10 +121,10 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 53f6fe858494c39dbfd5237655e0641152a88c89
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
-  gRPC: 81b990caa01d7c32605d300c2ffd1b5ba0ef9e49
-  gRPC-Core: a56b086a8ef5ced6f6ba5be5bc0a63fca185015a
-  gRPC-ProtoRPC: 842797fbe05dfcf891afb4a5048e5ccf5f06ef86
-  gRPC-RxLibrary: fa6852f98d6ec0b73c0ec2f6406c26943099d501
+  gRPC: 9362451032695e2dfb7bafcd3740e3a27939e4ff
+  gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
+  gRPC-ProtoRPC: a1bd56fb1991a8dae4581250d7259eddabb66779
+  gRPC-RxLibrary: 1ed5314e8b38cd6e55c9bfa048387136ae925ce9
   Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
