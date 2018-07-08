@@ -162,19 +162,16 @@
 		082E9D5F20D13A1A00ED6A22 /* aboon */ = {
 			isa = PBXGroup;
 			children = (
-				75FC808920F228F4007ED73B /* Configurations */,
 				7507BE3E20E145A900749F59 /* R.generated.swift */,
-				2C0EDC4520DE1DFD00F0F8E8 /* Category */,
-				2C0EDC4620DE1E0700F0F8E8 /* My Coupon */,
-				2C0EDC3920DE0FAC00F0F8E8 /* Tab Navi Bar */,
-				2CD6215320DF533B00C81DF7 /* My Page */,
-				2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */,
+				75FC808C20F22A92007ED73B /* Classes */,
+				75FC808E20F22B10007ED73B /* Models */,
+				75FC809220F22BD7007ED73B /* Utilities */,
+				75FC808920F228F4007ED73B /* Configurations */,
 				082E9D6020D13A1A00ED6A22 /* AppDelegate.swift */,
 				082E9D6720D13A1B00ED6A22 /* Assets.xcassets */,
 				082E9D6920D13A1B00ED6A22 /* LaunchScreen.storyboard */,
 				75FC808720F228E9007ED73B /* GoogleService-Info.plist */,
 				082E9D6C20D13A1B00ED6A22 /* Info.plist */,
-				75193E4A20DBB8FA00EF417E /* Debug.swift */,
 			);
 			path = aboon;
 			sourceTree = "<group>";
@@ -197,21 +194,13 @@
 			path = aboonUITests;
 			sourceTree = "<group>";
 		};
-		2C0EDC3920DE0FAC00F0F8E8 /* Tab Navi Bar */ = {
+		2C0EDC3920DE0FAC00F0F8E8 /* NavigationTabBar */ = {
 			isa = PBXGroup;
 			children = (
 				2C0EDC3C20DE0FED00F0F8E8 /* Controller */,
 				2C0EDC3B20DE0FE300F0F8E8 /* View */,
-				2C0EDC3A20DE0FC400F0F8E8 /* Model */,
 			);
-			path = "Tab Navi Bar";
-			sourceTree = "<group>";
-		};
-		2C0EDC3A20DE0FC400F0F8E8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = NavigationTabBar;
 			sourceTree = "<group>";
 		};
 		2C0EDC3B20DE0FE300F0F8E8 /* View */ = {
@@ -237,35 +226,25 @@
 			children = (
 				2C0EDC4920DE1E4C00F0F8E8 /* Controller */,
 				2C0EDC4820DE1E4600F0F8E8 /* View */,
-				2C0EDC4720DE1E3300F0F8E8 /* Model */,
 			);
 			path = Category;
 			sourceTree = "<group>";
 		};
-		2C0EDC4620DE1E0700F0F8E8 /* My Coupon */ = {
+		2C0EDC4620DE1E0700F0F8E8 /* MyCoupon */ = {
 			isa = PBXGroup;
 			children = (
 				2C0EDC4C20DE1E5E00F0F8E8 /* Controller */,
 				2C0EDC4B20DE1E5A00F0F8E8 /* View */,
-				2C0EDC4A20DE1E5500F0F8E8 /* Model */,
 			);
-			path = "My Coupon";
-			sourceTree = "<group>";
-		};
-		2C0EDC4720DE1E3300F0F8E8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */,
-				869A985F20E731FB00BF924F /* CouponListCollectionModel.swift */,
-			);
-			path = Model;
+			path = MyCoupon;
 			sourceTree = "<group>";
 		};
 		2C0EDC4820DE1E4600F0F8E8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2C3B1D8020E38F23009115C0 /* Coupon List View */,
-				2C3B1D7E20E38EF4009115C0 /* Category View */,
+				2C1541C420E364BF001941ED /* CategoryCollectionView.swift */,
+				49ADCD8D20E2955400EB1181 /* CategoryView.swift */,
+				2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,17 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				2C0EDC4120DE111200F0F8E8 /* CategoryViewController.swift */,
-				2CD6214F20DF529C00C81DF7 /* CouponListViewController.swift */,
-				2CD6215120DF52A900C81DF7 /* CouponDetailViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		2C0EDC4A20DE1E5500F0F8E8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		2C0EDC4B20DE1E5A00F0F8E8 /* View */ = {
@@ -304,41 +274,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		2C3B1D7E20E38EF4009115C0 /* Category View */ = {
-			isa = PBXGroup;
-			children = (
-				2C1541C420E364BF001941ED /* CategoryCollectionView.swift */,
-				49ADCD8D20E2955400EB1181 /* CategoryView.swift */,
-				2C1541C020E22AA3001941ED /* CategoryCollectionViewCell.swift */,
-			);
-			path = "Category View";
-			sourceTree = "<group>";
-		};
-		2C3B1D8020E38F23009115C0 /* Coupon List View */ = {
-			isa = PBXGroup;
-			children = (
-				2C3B1D8120E38F79009115C0 /* CouponListView.swift */,
-				2CA3DA6620E3C23D00D3A9CA /* CouponListCollectionView.swift */,
-				869A985D20E725F300BF924F /* CouponListCollectionViewCell.swift */,
-			);
-			path = "Coupon List View";
-			sourceTree = "<group>";
-		};
-		2CD6215320DF533B00C81DF7 /* My Page */ = {
+		2CD6215320DF533B00C81DF7 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
 				2CD6215620DF536A00C81DF7 /* Controller */,
 				2CD6215520DF536400C81DF7 /* View */,
-				2CD6215420DF535A00C81DF7 /* Model */,
 			);
-			path = "My Page";
-			sourceTree = "<group>";
-		};
-		2CD6215420DF535A00C81DF7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		2CD6215520DF536400C81DF7 /* View */ = {
@@ -377,6 +319,184 @@
 				75FC808A20F228F4007ED73B /* GoogleService-Info.plist */,
 			);
 			path = Configurations;
+			sourceTree = "<group>";
+		};
+		75FC808C20F22A92007ED73B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2CD6215320DF533B00C81DF7 /* MyPage */,
+				2C0EDC4620DE1E0700F0F8E8 /* MyCoupon */,
+				2C0EDC4520DE1DFD00F0F8E8 /* Category */,
+				75FC808F20F22B73007ED73B /* Coupon */,
+				2C0EDC3920DE0FAC00F0F8E8 /* NavigationTabBar */,
+				75FC809320F22C6E007ED73B /* Login */,
+				75FC809520F22CA3007ED73B /* Error */,
+				75FC809620F22CD1007ED73B /* Search */,
+				75FC809420F22C7D007ED73B /* Payment */,
+				75FC809F20F22DBE007ED73B /* Setting */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		75FC808E20F22B10007ED73B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */,
+				869A985F20E731FB00BF924F /* CouponListCollectionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		75FC808F20F22B73007ED73B /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				75FC809020F22B80007ED73B /* Controller */,
+				75FC809120F22B89007ED73B /* View */,
+			);
+			path = Coupon;
+			sourceTree = "<group>";
+		};
+		75FC809020F22B80007ED73B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2CD6214F20DF529C00C81DF7 /* CouponListViewController.swift */,
+				2CD6215120DF52A900C81DF7 /* CouponDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		75FC809120F22B89007ED73B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C3B1D8120E38F79009115C0 /* CouponListView.swift */,
+				2CA3DA6620E3C23D00D3A9CA /* CouponListCollectionView.swift */,
+				869A985D20E725F300BF924F /* CouponListCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75FC809220F22BD7007ED73B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				75193E4A20DBB8FA00EF417E /* Debug.swift */,
+				2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		75FC809320F22C6E007ED73B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				75FC809720F22D5A007ED73B /* Controller */,
+				75FC809820F22D61007ED73B /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		75FC809420F22C7D007ED73B /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				75FC809E20F22D93007ED73B /* Controller */,
+				75FC809D20F22D8E007ED73B /* View */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		75FC809520F22CA3007ED73B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				75FC809A20F22D7B007ED73B /* Controller */,
+				75FC809920F22D75007ED73B /* View */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		75FC809620F22CD1007ED73B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				75FC809C20F22D87007ED73B /* Controller */,
+				75FC809B20F22D83007ED73B /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		75FC809720F22D5A007ED73B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		75FC809820F22D61007ED73B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75FC809920F22D75007ED73B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75FC809A20F22D7B007ED73B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		75FC809B20F22D83007ED73B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75FC809C20F22D87007ED73B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		75FC809D20F22D8E007ED73B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75FC809E20F22D93007ED73B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		75FC809F20F22DBE007ED73B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				75FC80A120F22DCA007ED73B /* Controller */,
+				75FC80A020F22DC6007ED73B /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		75FC80A020F22DC6007ED73B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75FC80A120F22DCA007ED73B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		86D7F2D23514E05DD8DC2A1C /* Frameworks */ = {
