@@ -30,7 +30,7 @@ class CouponListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
+        self.view.setFrame(navBar: navigationController?.navigationBar as! NavigationBar)
         self.navigationItem.title = titleName
         self.view.backgroundColor = UIColor(hex: "F5F5F5", alpha: 1.0)
         
