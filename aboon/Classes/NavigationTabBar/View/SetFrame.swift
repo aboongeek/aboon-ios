@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-    public func setFrame (tabBar: UITabBar, navBar: NavigationBar) {
+    func setFrame (tabBar: UITabBar, navBar: NavigationBar) {
         let frameHeight = UIScreen.main.bounds.size.height - tabBar.frame.size.height - navBar.frame.size.height - UIApplication.shared.statusBarFrame.height
         let frameSize = CGSize(width: UIScreen.main.bounds.size.width, height: frameHeight)
         self.frame = CGRect(origin: frame.origin, size: frameSize)
