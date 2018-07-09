@@ -12,7 +12,7 @@ class CouponListViewController: UIViewController {
     
     let model = CouponListCollectionModel()
     
-    private var titleName: String = ""
+    private var titleName = String()
     
     init(withTitle: String) {
         self.titleName = withTitle
