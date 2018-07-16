@@ -6,7 +6,7 @@
 //  Copyright © 平成30年 aboon. All rights reserved.
 //
 
-import UIKit
+
 
 class CouponListCollectionModel: NSObject {
     //test data

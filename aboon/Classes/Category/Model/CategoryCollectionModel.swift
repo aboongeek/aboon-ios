@@ -6,11 +6,10 @@
 //  Copyright © 2018 aboon. All rights reserved.
 //
 
-import UIKit
 import Firebase
 import FirebaseStorage
 import RxSwift
-import RxCocoa
+//import RxCocoa
 
 class CategoryCollectionModel: NSObject {
     let db = Firestore.firestore()

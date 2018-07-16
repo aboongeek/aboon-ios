@@ -233,6 +233,7 @@
 			children = (
 				2C0EDC4920DE1E4C00F0F8E8 /* Controller */,
 				2C0EDC4820DE1E4600F0F8E8 /* View */,
+				754707C520FCAE02000635E8 /* Model */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -242,6 +243,7 @@
 			children = (
 				2C0EDC4C20DE1E5E00F0F8E8 /* Controller */,
 				2C0EDC4B20DE1E5A00F0F8E8 /* View */,
+				754707C620FCAE1C000635E8 /* Model */,
 			);
 			path = MyCoupon;
 			sourceTree = "<group>";
@@ -320,6 +322,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		754707C420FCADEF000635E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				869A985F20E731FB00BF924F /* CouponListCollectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		754707C520FCAE02000635E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		754707C620FCAE1C000635E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		75FC808920F228F4007ED73B /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,9 +374,6 @@
 		75FC808E20F22B10007ED73B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */,
-				869A985F20E731FB00BF924F /* CouponListCollectionModel.swift */,
-				FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */,
 				FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */,
 			);
 			path = Models;
@@ -361,6 +384,7 @@
 			children = (
 				75FC809020F22B80007ED73B /* Controller */,
 				75FC809120F22B89007ED73B /* View */,
+				754707C420FCADEF000635E8 /* Model */,
 			);
 			path = Coupon;
 			sourceTree = "<group>";
