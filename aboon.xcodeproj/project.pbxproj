@@ -42,6 +42,8 @@
 		869A986020E731FB00BF924F /* CouponListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985F20E731FB00BF924F /* CouponListCollectionModel.swift */; };
 		C16F52F4E26C3847DB93EECD /* Pods_aboon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D2E58EE895C7FD73F73E24 /* Pods_aboon.framework */; };
 		D084FE50CD8DB5999660C5CA /* Pods_aboonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABED289BBF482EDDFCBF9B9 /* Pods_aboonTests.framework */; };
+		FE1F69DD20FB64F800CBF60A /* MyCouponListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */; };
+		FE1F69DF20FB657C00CBF60A /* TestCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		C98318E252737C6A37E482FE /* Pods-aboon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.release.xcconfig"; sourceTree = "<group>"; };
 		C9F010AEA949126B9A4B3709 /* Pods-aboon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.debug.xcconfig"; sourceTree = "<group>"; };
 		FABED289BBF482EDDFCBF9B9 /* Pods_aboonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aboonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponListCollectionModel.swift; sourceTree = "<group>"; };
+		FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoupon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +233,7 @@
 			children = (
 				2C0EDC4920DE1E4C00F0F8E8 /* Controller */,
 				2C0EDC4820DE1E4600F0F8E8 /* View */,
+				754707C520FCAE02000635E8 /* Model */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 			children = (
 				2C0EDC4C20DE1E5E00F0F8E8 /* Controller */,
 				2C0EDC4B20DE1E5A00F0F8E8 /* View */,
+				754707C620FCAE1C000635E8 /* Model */,
 			);
 			path = MyCoupon;
 			sourceTree = "<group>";
@@ -316,6 +322,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		754707C420FCADEF000635E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				869A985F20E731FB00BF924F /* CouponListCollectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		754707C520FCAE02000635E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		754707C620FCAE1C000635E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		75FC808920F228F4007ED73B /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,8 +374,7 @@
 		75FC808E20F22B10007ED73B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */,
-				869A985F20E731FB00BF924F /* CouponListCollectionModel.swift */,
+				FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -355,6 +384,7 @@
 			children = (
 				75FC809020F22B80007ED73B /* Controller */,
 				75FC809120F22B89007ED73B /* View */,
+				754707C420FCADEF000635E8 /* Model */,
 			);
 			path = Coupon;
 			sourceTree = "<group>";
@@ -802,8 +832,10 @@
 				2C3B1D8220E38F79009115C0 /* CouponListView.swift in Sources */,
 				2C04E51520E0B5A900AECC8E /* NavigationBar.swift in Sources */,
 				795F612720F3337800595EBD /* SetFrame.swift in Sources */,
+				FE1F69DD20FB64F800CBF60A /* MyCouponListCollectionModel.swift in Sources */,
 				2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */,
 				082E9D6120D13A1A00ED6A22 /* AppDelegate.swift in Sources */,
+				FE1F69DF20FB657C00CBF60A /* TestCoupon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
