@@ -29,9 +29,8 @@ class CategoryView: UIView {
         activityIndicator.stopAnimating()
     }
     
-    public func initializeCollectionView(numberOfCells: Int) -> CategoryCollectionView {
+    public func initializeCollectionView() -> CategoryCollectionView {
         categoryCollectionView = CategoryCollectionView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), collectionViewLayout: UICollectionViewFlowLayout())
-        categoryCollectionView.setCollectionViewLayout(numberOfCells: numberOfCells)
         return categoryCollectionView
     }
     
