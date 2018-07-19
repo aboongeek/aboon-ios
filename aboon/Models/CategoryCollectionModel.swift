@@ -46,10 +46,14 @@ class CategoryCollectionCellModel {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
-        cell.textLabel?.text = categories[indexPath.row]["categoryName"] as? String
-        cell.backGroundImageView?.image = categoryImages[categories[indexPath.row]["imagePath"] as! String]
-        return cell
+    func fetchImage (_ imagePath: String) {
+        self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+            let image = UIImage(data: data!)!
+            var temp = self.imageRelay.value
+            temp[imagePath] = image
+            self.imageRelay.accept(temp)
+            dLog(image)
+        }
     }
+
 }
