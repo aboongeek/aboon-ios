@@ -9,79 +9,51 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class CategoryViewController: UIViewController {
     
-    var model: CategoryCollectionModel!
-    var categoryCollectionView: CategoryCollectionView?
+    let disposeBag = DisposeBag()
+    
+    lazy var model = CategoryCollectionCellModel()
+    lazy var dataSource = CategoryCollectionViewDataSource()
+    
+    var categoryCollectionView: CategoryCollectionView!
     
     override func loadView() {
         self.view = CategoryView()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-
-        model = CategoryCollectionModel()
-        
-        _ = model.fetchCategories()
-            .observeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: { (data) in
-                    self.model.categories.append(data)
-                    
-                    _ = self.model.fetchCategoryImage(imagePath: data["imagePath"] as! String)
-                        .observeOn(MainScheduler.instance)
-                        .subscribe(
-                            onNext: {(image, path) in
-                                self.model.categoryImages.updateValue(image, forKey: path)
-                                self.model.imageCount.accept(self.model.imageCount.value + 1)
-                        }, onError: { (error) in
-                            dLog("Error Loading Image: \(error)")
-                        })
-            },
-                onError: { (error) in
-                    dLog("Error Loading: \(error)")
-            },
-                onCompleted: {
-                    self.categoriesDidLoad()
-                    _ = self.model.imageCount
-                        .subscribe(onNext: { (count) in
-                            if count == self.model.categories.count {
-                                self.imagesDidLoad()
-                                dLog(self.model.categoryImages)
-                            }
-                        })
-            })
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
+        let categoryView = (self.view as! CategoryView)
         
-        (self.view as! CategoryView).setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
-        (self.view as! CategoryView).appendActivityIndicator()
+        self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
+        categoryView.setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
+        
+        categoryCollectionView = categoryView.initializeCollectionView()
+        categoryView.appendCollectionView()
+
+        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
+        
+        Observable
+            .combineLatest(model.categories, model.imageRelay) {CategoryCollectionViewDataSource.Element(items: $0, images: $1)}
+            .bind(to: categoryCollectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        dataSource
+            .categoryObservable
+            .subscribe(onNext: { (categoryName) in                
+                let couponListViewController = CouponListViewController(withTitle: categoryName)
+                couponListViewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(couponListViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        categoryCollectionView.delegate = dataSource
+        
     }
-    
-    func categoriesDidLoad() {
-        categoryCollectionView = (self.view as! CategoryView).initializeCollectionView(numberOfCells: model.categories.count)
-        categoryCollectionView?.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
-        categoryCollectionView?.delegate = self
-    }
-    
-    func imagesDidLoad() {
-        categoryCollectionView?.dataSource = model
-        (self.view as! CategoryView).appendCollectionView()
-        (self.view as! CategoryView).stopActivityIndicator()
-        (self.view as! CategoryView).setNeedsLayout()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
