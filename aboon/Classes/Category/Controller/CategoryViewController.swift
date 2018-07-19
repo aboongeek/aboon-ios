@@ -88,13 +88,44 @@ class CategoryViewController: UIViewController {
     }
 }
 
-extension CategoryViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        
-        let couponListViewController = CouponListViewController(withTitle: model.categories[indexPath.row]["categoryName"] as! String)
-        couponListViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(couponListViewController, animated: true)
+class CategoryCollectionViewDataSource: NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType, UICollectionViewDelegate {
+    
+    //RxCollectionViewDataSourceType
+    struct Element {
+        let items: [Category]
+        let images: [String : UIImage]
     }
+    
+    var items = [Category]()
+    var images = [String : UIImage]()
+    
+    func collectionView(_ collectionView: UICollectionView, observedEvent: Event<CategoryCollectionViewDataSource.Element>) {
+        if case .next(let element) = observedEvent {
+            items = element.items
+            images = element.images
+            collectionView.reloadData()
+            (collectionView as! CategoryCollectionView).setCollectionViewLayout(numberOfCells: items.count)
+        }
+    }
+    
+    //UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
+        cell.textLabel?.text = items[indexPath.row].categoryName
+        cell.backGroundImageView?.image = images[items[indexPath.row].imagePath]
+        return cell
+    }
+    
+    //UICollectionViewDelegate
+    private let selectedCategory = PublishSubject<String>()
+    var categoryObservable: Observable<String> {return selectedCategory}
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCategory.onNext(items[indexPath.row].categoryName)
+    }
+    
 }
-
