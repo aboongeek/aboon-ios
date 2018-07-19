@@ -23,47 +23,27 @@ class CategoryCollectionCellModel {
     let collectionRef = Firestore.firestore().collection("categories")
     let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
     
-    var categories = [[String : Any]]()
-    var categoryImages = [String : UIImage]()
+    var numberOfCells: Int = 0
     
-    var imageCount = BehaviorRelay<Int>(value: 0)
-  
-    func fetchCategories () -> Observable<[String: Any]> {
-        return Observable.create({ (observer) -> Disposable in
-            self.db.collection("categories").getDocuments(completion:
-                { querySnapshot, error in
-                if let error = error {
-                    observer.onError(error)
-                } else {
-                    for document in querySnapshot!.documents {
-                        observer.onNext(document.data())
-                    }
-                    observer.onCompleted()
-                }
-            })
-            return Disposables.create()
-        })
-        
-    }
-    
-    func fetchCategoryImage (imagePath: String) -> Observable<(UIImage, String)> {
-        return Observable.create({ (observer) -> Disposable in
-            self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-                if let error = error {
-                    observer.onError(error)
-                } else {
-                    observer.onNext((UIImage(data: data!)!, imagePath))
-                }
+    let categories = BehaviorRelay<[Category]>(value: [Category]())
+    let imageRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+
+    init(){
+        self.collectionRef.getDocuments { snapshot, error in
+            let categories = snapshot?.documents.map { document -> Category in
+                let data = document.data()
+                let categoryId = data["categoryID"] as! Int
+                let categoryName = data["categoryName"] as! String
+                let imagePath = data["imagePath"] as! String
+                
+                return Category(categoryId: categoryId, categoryName: categoryName, imagePath: imagePath)
             }
-            return Disposables.create()
-        })
-    }
-
-}
-
-extension CategoryCollectionModel: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.categories.count
+            self.numberOfCells = (categories?.count)!
+            self.categories.accept(categories!)
+            self.categories.value.forEach({ (category) in
+                self.fetchImage(category.imagePath)
+            })
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
