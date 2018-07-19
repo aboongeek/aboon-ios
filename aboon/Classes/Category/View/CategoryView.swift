@@ -11,24 +11,12 @@ import UIKit
 class CategoryView: UIView {
     
     var categoryCollectionView: CategoryCollectionView!
-    var activityIndicator: UIActivityIndicatorView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
     }
-    
-    public func appendActivityIndicator () {
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        activityIndicator.center = center
-        addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-    }
-    
-    public func stopActivityIndicator () {
-        activityIndicator.stopAnimating()
-    }
-    
+
     public func initializeCollectionView() -> CategoryCollectionView {
         categoryCollectionView = CategoryCollectionView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), collectionViewLayout: UICollectionViewFlowLayout())
         return categoryCollectionView

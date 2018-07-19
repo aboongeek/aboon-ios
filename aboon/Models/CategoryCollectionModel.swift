@@ -18,7 +18,7 @@ struct Category {
     let imagePath: String
 }
 
-class CategoryCollectionCellModel {
+class CategoryCollectionModel {
     
     let collectionRef = Firestore.firestore().collection("categories")
     let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
@@ -30,7 +30,7 @@ class CategoryCollectionCellModel {
 
     init(){
         self.collectionRef.getDocuments { snapshot, error in
-            let categories = snapshot?.documents.map { document -> Category in
+            let temp = snapshot?.documents.map { document -> Category in
                 let data = document.data()
                 let categoryId = data["categoryID"] as! Int
                 let categoryName = data["categoryName"] as! String
@@ -38,8 +38,8 @@ class CategoryCollectionCellModel {
                 
                 return Category(categoryId: categoryId, categoryName: categoryName, imagePath: imagePath)
             }
-            self.numberOfCells = (categories?.count)!
-            self.categories.accept(categories!)
+            self.numberOfCells = (temp?.count)!
+            self.categories.accept(temp!)
             self.categories.value.forEach({ (category) in
                 self.fetchImage(category.imagePath)
             })
@@ -52,7 +52,6 @@ class CategoryCollectionCellModel {
             var temp = self.imageRelay.value
             temp[imagePath] = image
             self.imageRelay.accept(temp)
-            dLog(image)
         }
     }
 

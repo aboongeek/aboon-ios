@@ -15,7 +15,7 @@ class CategoryViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    lazy var model = CategoryCollectionCellModel()
+    lazy var model = CategoryCollectionModel()
     lazy var dataSource = CategoryCollectionViewDataSource()
     
     var categoryCollectionView: CategoryCollectionView!
@@ -31,7 +31,7 @@ class CategoryViewController: UIViewController {
         
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
         categoryView.setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
-        
+                
         categoryCollectionView = categoryView.initializeCollectionView()
         categoryView.appendCollectionView()
 
