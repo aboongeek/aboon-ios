@@ -12,8 +12,15 @@ import FirebaseStorage
 import RxSwift
 import RxCocoa
 
-class CategoryCollectionModel: NSObject {
-    let db = Firestore.firestore()
+struct Category {
+    let categoryId: Int
+    let categoryName: String
+    let imagePath: String
+}
+
+class CategoryCollectionCellModel {
+    
+    let collectionRef = Firestore.firestore().collection("categories")
     let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
     
     var categories = [[String : Any]]()
