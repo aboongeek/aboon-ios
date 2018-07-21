@@ -23,7 +23,7 @@ class MyMenuViewController: UIViewController {
         
         let menuTableview = (self.view as! MyMenuView).createTableView()
         menuTableview.register(MyMenuTableViewCell.self, forCellReuseIdentifier: "MyMenuTableViewCell")
-        
+        menuTableview.isScrollEnabled = false
         menuTableview.delegate = self
         menuTableview.dataSource = model as! UITableViewDataSource
         

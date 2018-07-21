@@ -29,4 +29,9 @@ class MyMenuView: UIView {
         myMenuTableView = MyMenuTableView(frame: self.bounds, style: UITableViewStyle.plain)
         return myMenuTableView
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        myMenuTableView.setLayout()
+    }
 }
