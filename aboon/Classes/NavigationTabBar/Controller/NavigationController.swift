@@ -14,7 +14,7 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sideMenuController = UISideMenuNavigationController(rootViewController: MyMenuController())
+        let sideMenuController = UISideMenuNavigationController(rootViewController: MyMenuViewController())
         SideMenuManager.default.menuRightNavigationController = sideMenuController
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.view, forMenu: .right )
