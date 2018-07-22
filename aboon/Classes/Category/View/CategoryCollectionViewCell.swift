@@ -31,6 +31,11 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         roundEdge()
     }
     
+    func configure(text: String, image: UIImage) {
+        self.textLabel.text = text
+        self.backGroundImageView.image = image
+    }
+    
     func roundEdge () {
         self.layer.cornerRadius = self.frame.size.width * 0.1
         self.clipsToBounds = true
