@@ -120,9 +120,9 @@
 		FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoupon.swift; sourceTree = "<group>"; };
 		FEA3DA352102F9D1007F69B6 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 		FEA3DA37210302DD007F69B6 /* MyMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuModel.swift; sourceTree = "<group>"; };
-		FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableView.swift; path = aboon/Classes/MyPage/Model/MyMenuTableView.swift; sourceTree = SOURCE_ROOT; };
-		FEA3DA3B21030832007F69B6 /* MyMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuView.swift; path = aboon/Classes/MyPage/Model/MyMenuView.swift; sourceTree = SOURCE_ROOT; };
-		FEA3DA3D21030DB2007F69B6 /* MyMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableViewCell.swift; path = aboon/Classes/MyPage/Model/MyMenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableView.swift; path = aboon/Classes/MyPage/View/MyMenuTableView.swift; sourceTree = SOURCE_ROOT; };
+		FEA3DA3B21030832007F69B6 /* MyMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuView.swift; path = aboon/Classes/MyPage/View/MyMenuView.swift; sourceTree = SOURCE_ROOT; };
+		FEA3DA3D21030DB2007F69B6 /* MyMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableViewCell.swift; path = aboon/Classes/MyPage/View/MyMenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
