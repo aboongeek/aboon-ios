@@ -49,6 +49,7 @@
 		FEA3DA3A210305D3007F69B6 /* MyMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */; };
 		FEA3DA3C21030832007F69B6 /* MyMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA3B21030832007F69B6 /* MyMenuView.swift */; };
 		FEA3DA3E21030DB2007F69B6 /* MyMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA3D21030DB2007F69B6 /* MyMenuTableViewCell.swift */; };
+		FEA3DABF21045B9E007F69B6 /* SideMenuNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DABE21045B9E007F69B6 /* SideMenuNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableView.swift; path = aboon/Classes/MyPage/View/MyMenuTableView.swift; sourceTree = SOURCE_ROOT; };
 		FEA3DA3B21030832007F69B6 /* MyMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuView.swift; path = aboon/Classes/MyPage/View/MyMenuView.swift; sourceTree = SOURCE_ROOT; };
 		FEA3DA3D21030DB2007F69B6 /* MyMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableViewCell.swift; path = aboon/Classes/MyPage/View/MyMenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		FEA3DABE21045B9E007F69B6 /* SideMenuNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				795F612620F3337800595EBD /* SetFrame.swift */,
 				2C04E51420E0B5A900AECC8E /* NavigationBar.swift */,
 				2C1541BE20E208C8001941ED /* NavigationItem.swift */,
+				FEA3DABE21045B9E007F69B6 /* SideMenuNavigationBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
 				2CD6215020DF529C00C81DF7 /* CouponListViewController.swift in Sources */,
 				2CA3DA6720E3C23D00D3A9CA /* CouponListCollectionView.swift in Sources */,
+				FEA3DABF21045B9E007F69B6 /* SideMenuNavigationBar.swift in Sources */,
 				2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */,
 				869A986020E731FB00BF924F /* CouponListCollectionModel.swift in Sources */,
 				FEA3DA362102F9D1007F69B6 /* TestUser.swift in Sources */,

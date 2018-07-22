@@ -28,6 +28,8 @@ class MyMenuViewController: UIViewController {
         menuTableview.dataSource = model as! UITableViewDataSource
         
         (self.view as! MyMenuView).appendTableView(menuTableview)
+        
+        self.navigationItem.configureBarItems(title: "こんにちは、\(model.user.name)さん", navigationController: navigationController)
     }
 
     override func didReceiveMemoryWarning() {
