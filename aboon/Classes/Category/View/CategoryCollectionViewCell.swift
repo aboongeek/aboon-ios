@@ -10,8 +10,8 @@ import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
     
-    var textLabel: UILabel?
-    var backGroundImageView : UIImageView?
+    let textLabel: UILabel
+    let backGroundImageView : UIImageView
     
     override init(frame: CGRect) {
         super.init(frame: frame)
