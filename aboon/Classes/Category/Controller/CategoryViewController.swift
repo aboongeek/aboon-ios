@@ -30,8 +30,7 @@ class CategoryViewController: UIViewController {
         let categoryView = (self.view as! CategoryView)
         
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
-        categoryView.setFrame(tabBar: (tabBarController?.tabBar)!, navBar: navigationController?.navigationBar as! NavigationBar)
-                
+        
         categoryCollectionView = categoryView.initializeCollectionView()
         categoryView.appendCollectionView()
 
