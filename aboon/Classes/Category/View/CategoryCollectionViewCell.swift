@@ -47,7 +47,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     func roundEdge () {
-        self.layer.cornerRadius = self.frame.size.width * 0.1
+        self.layer.cornerRadius = frame.width * 0.3
         self.clipsToBounds = true
     }
     
