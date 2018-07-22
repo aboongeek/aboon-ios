@@ -31,8 +31,12 @@ class CategoryCollectionModel {
     let images: Observable<[String : UIImage]>
 
     init(){
-        self.collectionRef.getDocuments { snapshot, error in
-            let temp = snapshot?.documents.map { document -> Category in
+        self.categories = _categories.asObservable()
+        self.images = _images.asObservable()
+        
+        self.collectionRef.getDocuments { [weak self] (snapshot, error) in
+            guard let snapshot = snapshot, let `self` = self else { return }
+            let categories = snapshot.documents.map { document -> Category in
                 let data = document.data()
                 let categoryId = data["categoryID"] as! Int
                 let categoryName = data["categoryName"] as! String
@@ -40,20 +44,21 @@ class CategoryCollectionModel {
                 
                 return Category(categoryId: categoryId, categoryName: categoryName, imagePath: imagePath)
             }
-            self.numberOfCells = (temp?.count)!
-            self.categories.accept(temp!)
-            self.categories.value.forEach({ (category) in
+            self.numberOfCells = categories.count
+            self._categories.onNext(categories)
+            categories.forEach({ [weak self] (category) in
+                guard let `self` = self else { return }
                 self.fetchImage(category.imagePath)
             })
         }
     }
     
     func fetchImage (_ imagePath: String) {
-        self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-            let image = UIImage(data: data!)!
-            var temp = self.imageRelay.value
+        self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
+            guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
+            var temp = self._images.value
             temp[imagePath] = image
-            self.imageRelay.accept(temp)
+            self._images.accept(temp)
         }
     }
 
