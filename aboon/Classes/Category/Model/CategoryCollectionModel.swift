@@ -24,8 +24,11 @@ class CategoryCollectionModel {
     
     var numberOfCells: Int = 0
     
-    let categories = BehaviorRelay<[Category]>(value: [Category]())
-    let imageRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    private let _categories = PublishSubject<[Category]>()
+    let categories: Observable<[Category]>
+    
+    let _images = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    let images: Observable<[String : UIImage]>
 
     init(){
         self.collectionRef.getDocuments { snapshot, error in

@@ -37,13 +37,15 @@ class CategoryViewController: UIViewController {
         categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCell")
         
         Observable
-            .combineLatest(model.categories, model.imageRelay) {CategoryCollectionViewDataSource.Element(items: $0, images: $1)}
-            .bind(to: categoryCollectionView.rx.items(dataSource: dataSource))
+            .combineLatest(model.categories, model.images) {CategoryCollectionViewDataSource.Element(items: $0, images: $1)}
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(categoryCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         dataSource
-            .categoryObservable
-            .subscribe(onNext: { (categoryName) in                
+            .selectedCategory
+            .drive(onNext: { [weak self] (categoryName) in
+                guard let `self` = self else { return }
                 let couponListViewController = CouponListViewController(withTitle: categoryName)
                 couponListViewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(couponListViewController, animated: true)
@@ -92,11 +94,11 @@ class CategoryCollectionViewDataSource: NSObject, UICollectionViewDataSource, Rx
     }
     
     //UICollectionViewDelegate
-    private let selectedCategory = PublishSubject<String>()
-    var categoryObservable: Observable<String> {return selectedCategory}
+    private let selectedCategorySubject = PublishSubject<String>()
+    var selectedCategory: Driver<String> { return selectedCategorySubject.asDriver(onErrorDriveWith: Driver.empty()) }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedCategory.onNext(items[indexPath.row].categoryName)
+        selectedCategorySubject.onNext(items[indexPath.row].categoryName)
     }
     
 }
