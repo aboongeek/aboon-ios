@@ -23,7 +23,7 @@ class TabBarController: UITabBarController {
         let myCouponNavigationController = NavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
         
         categoryNavigationController.viewControllers = [CategoryViewController()]
-        myCouponNavigationController.viewControllers = [MyCouponViewController()]
+        myCouponNavigationController.viewControllers = [MyCouponViewController(withTitle: "マイクーポン")]
         
         categoryNavigationController.tabBarItem.image = R.image.home7()
         myCouponNavigationController.tabBarItem.image = R.image.wallet7()
