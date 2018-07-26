@@ -10,29 +10,44 @@ import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
     
-    var textLabel: UILabel?
-    var backGroundImageView : UIImageView?
+    let textLabel: UILabel
+    let backGroundImageView : UIImageView
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.backgroundColor = .black
-        
         backGroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
-        backGroundImageView?.alpha = 0.7
-        addSubview(backGroundImageView!)
+        backGroundImageView.alpha = 0.7
+        backGroundImageView.translatesAutoresizingMaskIntoConstraints = false
 
         textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
-        textLabel?.textAlignment = .center
-        textLabel?.textColor = .white
-        textLabel?.font = UIFont.boldSystemFont(ofSize: (textLabel?.font.pointSize)!)
-        textLabel?.text = "nil"
-        addSubview(textLabel!)
+        textLabel.textAlignment = .center
+        textLabel.textColor = .white
+        textLabel.font = UIFont.boldSystemFont(ofSize: textLabel.font.pointSize)
+        textLabel.text = ""
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        super.init(frame: frame)
+        
+        addSubview(backGroundImageView)
+        backGroundImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        backGroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        backGroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        backGroundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        
+        addSubview(textLabel)
+        textLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        textLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        
+        self.backgroundColor = .black
         roundEdge()
     }
     
+    func configure(text: String, image: UIImage) {
+        self.textLabel.text = text
+        self.backGroundImageView.image = image
+    }
+    
     func roundEdge () {
-        self.layer.cornerRadius = self.frame.size.width * 0.1
+        self.layer.cornerRadius = frame.width * 0.3
         self.clipsToBounds = true
     }
     

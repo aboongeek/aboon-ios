@@ -11,32 +11,33 @@ import UIKit
 class CategoryView: UIView {
     
     var categoryCollectionView: CategoryCollectionView!
-    var activityIndicator: UIActivityIndicatorView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
     }
-    
-    public func appendActivityIndicator () {
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        activityIndicator.center = center
-        addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-    }
-    
-    public func stopActivityIndicator () {
-        activityIndicator.stopAnimating()
-    }
-    
-    public func initializeCollectionView(numberOfCells: Int) -> CategoryCollectionView {
+
+    public func initializeCollectionView() -> CategoryCollectionView {
         categoryCollectionView = CategoryCollectionView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), collectionViewLayout: UICollectionViewFlowLayout())
-        categoryCollectionView.setCollectionViewLayout(numberOfCells: numberOfCells)
         return categoryCollectionView
     }
     
     public func appendCollectionView() {
         self.addSubview(categoryCollectionView)
+        
+        categoryCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 11.0, *) {
+            categoryCollectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+            categoryCollectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            categoryCollectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            categoryCollectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        } else {
+            categoryCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            categoryCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            categoryCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            categoryCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -6,62 +6,60 @@
 //  Copyright © 2018 aboon. All rights reserved.
 //
 
+import UIKit
 import Firebase
-import FirebaseStorage
 import RxSwift
-//import RxCocoa
+import RxCocoa
 
-class CategoryCollectionModel: NSObject {
-    let db = Firestore.firestore()
-    let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
-    
-    var categories = [[String : Any]]()
-    var categoryImages = [String : UIImage]()
-    
-    var imageCount = BehaviorRelay<Int>(value: 0)
-  
-    func fetchCategories () -> Observable<[String: Any]> {
-        return Observable.create({ (observer) -> Disposable in
-            self.db.collection("categories").getDocuments(completion:
-                { querySnapshot, error in
-                if let error = error {
-                    observer.onError(error)
-                } else {
-                    for document in querySnapshot!.documents {
-                        observer.onNext(document.data())
-                    }
-                    observer.onCompleted()
-                }
-            })
-            return Disposables.create()
-        })
-        
-    }
-    
-    func fetchCategoryImage (imagePath: String) -> Observable<(UIImage, String)> {
-        return Observable.create({ (observer) -> Disposable in
-            self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-                if let error = error {
-                    observer.onError(error)
-                } else {
-                    observer.onNext((UIImage(data: data!)!, imagePath))
-                }
-            }
-            return Disposables.create()
-        })
-    }
-
+struct Category {
+    let categoryId: Int
+    let categoryName: String
+    let imagePath: String
 }
 
-extension CategoryCollectionModel: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.categories.count
+class CategoryCollectionModel {
+    
+    let collectionRef = Firestore.firestore().collection("categories")
+    let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
+    
+    var numberOfCells: Int = 0
+    
+    private let _categories = PublishSubject<[Category]>()
+    let categories: Observable<[Category]>
+    
+    let _images = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    let images: Observable<[String : UIImage]>
+
+    init(){
+        self.categories = _categories.asObservable()
+        self.images = _images.asObservable()
+        
+        self.collectionRef.getDocuments { [weak self] (snapshot, error) in
+            guard let snapshot = snapshot, let `self` = self else { return }
+            let categories = snapshot.documents.map { document -> Category in
+                let data = document.data()
+                let categoryId = data["categoryID"] as! Int
+                let categoryName = data["categoryName"] as! String
+                let imagePath = data["imagePath"] as! String
+                
+                return Category(categoryId: categoryId, categoryName: categoryName, imagePath: imagePath)
+            }
+            self.numberOfCells = categories.count
+            self._categories.onNext(categories)
+            categories.forEach({ [weak self] (category) in
+                guard let `self` = self else { return }
+                self.fetchImage(category.imagePath)
+            })
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
-        cell.textLabel?.text = categories[indexPath.row]["categoryName"] as? String
-        cell.backGroundImageView?.image = categoryImages[categories[indexPath.row]["imagePath"] as! String]
-        return cell
+    func fetchImage (_ imagePath: String) {
+        self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
+            guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
+            var temp = self._images.value
+            temp[imagePath] = image
+            self._images.accept(temp)
+        }
     }
+
 }
