@@ -34,9 +34,9 @@ extension MyCouponListCollectionModel: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponListCollectionCell", for: indexPath) as! CouponListCollectionViewCell
-        cell.couponNameLabel?.text = couponlist[indexPath.row].name
-        cell.couponDetailLabel?.text = couponlist[indexPath.row].detail
-        cell.couponImageView?.image = couponlist[indexPath.row].image
+        cell.couponNameLabel.text = couponlist[indexPath.row].name
+//        cell.couponDetailLabel.text = couponlist[indexPath.row].detail
+        cell.couponImageView.image = couponlist[indexPath.row].image
         return cell
     }
 }
