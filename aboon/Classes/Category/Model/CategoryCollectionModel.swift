@@ -24,15 +24,15 @@ class CategoryCollectionModel {
     
     var numberOfCells: Int = 0
     
-    private let _categories = PublishSubject<[Category]>()
+    private let categoriesSubject = PublishSubject<[Category]>()
     let categories: Observable<[Category]>
     
-    let _images = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    let imagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
     let images: Observable<[String : UIImage]>
 
     init(){
-        self.categories = _categories.asObservable()
-        self.images = _images.asObservable()
+        self.categories = categoriesSubject.asObservable()
+        self.images = imagesRelay.asObservable()
         
         self.collectionRef.getDocuments { [weak self] (snapshot, error) in
             guard let snapshot = snapshot, let `self` = self else { return }
@@ -45,7 +45,7 @@ class CategoryCollectionModel {
                 return Category(categoryId: categoryId, categoryName: categoryName, imagePath: imagePath)
             }
             self.numberOfCells = categories.count
-            self._categories.onNext(categories)
+            self.categoriesSubject.onNext(categories)
             categories.forEach({ [weak self] (category) in
                 guard let `self` = self else { return }
                 self.fetchImage(category.imagePath)
@@ -56,9 +56,9 @@ class CategoryCollectionModel {
     func fetchImage (_ imagePath: String) {
         self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
             guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
-            var temp = self._images.value
+            var temp = self.imagesRelay.value
             temp[imagePath] = image
-            self._images.accept(temp)
+            self.imagesRelay.accept(temp)
         }
     }
 
