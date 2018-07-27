@@ -27,7 +27,7 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let categoryView = (self.view as! CategoryView)
+        let categoryView = self.view as! CategoryView
         
         self.navigationItem.configureBarItems(title: "カテゴリー", navigationController: navigationController as! NavigationController)
         
@@ -44,11 +44,10 @@ class CategoryViewController: UIViewController {
         
         dataSource
             .selectedCategory
-            .drive(onNext: { [weak self] (categoryName) in
-                guard let `self` = self else { return }
-                let couponListViewController = CouponListViewController(withTitle: categoryName)
-                couponListViewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(couponListViewController, animated: true)
+            .drive(onNext: { [weak self] (category) in
+                guard let `self` = self, let navigationController = self.navigationController else { return }
+                let couponListViewController = CouponListViewController(ofCategory: category)
+                navigationController.pushViewController(couponListViewController, animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -97,11 +96,11 @@ class CategoryCollectionViewDataSource: NSObject, UICollectionViewDataSource, Rx
     }
     
     //UICollectionViewDelegate
-    private let selectedCategorySubject = PublishSubject<String>()
-    var selectedCategory: Driver<String> { return selectedCategorySubject.asDriver(onErrorDriveWith: Driver.empty()) }
+    private let selectedCategorySubject = PublishSubject<Category>()
+    var selectedCategory: Driver<Category> { return selectedCategorySubject.asDriver(onErrorDriveWith: Driver.empty()) }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedCategorySubject.onNext(items[indexPath.row].categoryName)
+        selectedCategorySubject.onNext(items[indexPath.row])
     }
     
 }
