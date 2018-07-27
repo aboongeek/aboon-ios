@@ -17,8 +17,8 @@ class CouponListView: UIView {
         self.frame = UIScreen.main.bounds
     }
    
-    public func appendCollectionView (_ collectionView: UICollectionView) {
-        self.addSubview(collectionView)
+    public func appendCollectionView () {
+        self.addSubview(couponListCollectionView)
         dLog("CouponListCollectionView Appended")
     }
     
@@ -26,7 +26,7 @@ class CouponListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func createCollectionView () -> CouponListCollectionView {
+    public func initializeCouponListView () -> CouponListCollectionView {
         couponListCollectionView = CouponListCollectionView(frame: frame, collectionViewLayout: UICollectionViewLayout())
         return couponListCollectionView
     }
