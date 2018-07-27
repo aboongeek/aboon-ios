@@ -33,12 +33,12 @@ class MyCouponViewController: UIViewController {
         self.navigationItem.title = titleName
         self.view.backgroundColor = UIColor(hex: "F5F5F5", alpha: 1.0)
         
-        let couponListCollectionView = (self.view as! CouponListView).createCollectionView()
+        let couponListCollectionView = (self.view as! CouponListView).initializeCouponListView()
         couponListCollectionView.register(CouponListCollectionViewCell.self, forCellWithReuseIdentifier: "CouponListCollectionCell")
         
         couponListCollectionView.delegate = self
         couponListCollectionView.dataSource = model as UICollectionViewDataSource
-        (self.view as! CouponListView).appendCollectionView(couponListCollectionView)
+        (self.view as! CouponListView).appendCollectionView()
     }
     
     override func didReceiveMemoryWarning() {
