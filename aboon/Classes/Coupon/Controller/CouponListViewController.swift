@@ -21,8 +21,8 @@ class CouponListViewController: UIViewController {
     private let titleName: String
     
     init(ofCategory category: Category) {
-        model = CouponListCollectionModel(categoryPath: category.imagePath)
-        self.titleName = category.categoryName
+        model = CouponListCollectionModel(categoryPath: category.path)
+        self.titleName = category.displayName
 
         super.init(nibName: nil, bundle: nil)
         

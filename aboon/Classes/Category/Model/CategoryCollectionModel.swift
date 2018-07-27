@@ -12,14 +12,14 @@ import RxSwift
 import RxCocoa
 
 struct Category {
-    let categoryId: Int
-    let categoryName: String
+    let path: String
+    let displayName: String
     let imagePath: String
 }
 
 class CategoryCollectionModel {
     
-    let collectionRef = Firestore.firestore().collection("categories")
+    static let categoriesRef = Firestore.firestore().collection("categories")
     let imagesRef = Storage.storage().reference(withPath: "CategoryImages")
     
     var numberOfCells: Int = 0
@@ -34,15 +34,15 @@ class CategoryCollectionModel {
         self.categories = categoriesSubject.asObservable()
         self.images = imagesRelay.asObservable()
         
-        self.collectionRef.getDocuments { [weak self] (snapshot, error) in
+        CategoryCollectionModel.categoriesRef.getDocuments { [weak self] (snapshot, error) in
             guard let snapshot = snapshot, let `self` = self else { return }
             let categories = snapshot.documents.map { document -> Category in
                 let data = document.data()
-                let categoryId = data["categoryID"] as! Int
-                let categoryName = data["categoryName"] as! String
+                let path = document.documentID
+                let displayName = data["displayName"] as! String
                 let imagePath = data["imagePath"] as! String
                 
-                return Category(categoryId: categoryId, categoryName: categoryName, imagePath: imagePath)
+                return Category(path: path, displayName: displayName, imagePath: imagePath)
             }
             self.numberOfCells = categories.count
             self.categoriesSubject.onNext(categories)

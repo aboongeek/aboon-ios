@@ -88,9 +88,9 @@ class CategoryCollectionViewDataSource: NSObject, UICollectionViewDataSource, Rx
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCollectionViewCell
         if let image = images[items[indexPath.row].imagePath] {
-            cell.configure(text: items[indexPath.row].categoryName, image: image)
+            cell.configure(text: items[indexPath.row].displayName, image: image)
         } else {
-            cell.configure(text: items[indexPath.row].categoryName, image: UIImage())
+            cell.configure(text: items[indexPath.row].displayName, image: UIImage())
         }
         return cell
     }

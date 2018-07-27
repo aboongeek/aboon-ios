@@ -19,8 +19,6 @@ struct ShopSummary {
 
 class CouponListCollectionModel {
     
-    let categoryPath: String
-    
     let collectionRef: CollectionReference
     let imagesRef: StorageReference
     
@@ -31,10 +29,9 @@ class CouponListCollectionModel {
     let images: Observable<[String : UIImage]>
     
     init(categoryPath: String) {
-        self.categoryPath = categoryPath
         
-        collectionRef = Firestore.firestore().collection(categoryPath)
-        imagesRef = Storage.storage().reference(withPath: "ShopsImages").child(categoryPath)
+        collectionRef = CategoryCollectionModel.categoriesRef.document(categoryPath).collection("shops")
+        imagesRef = Storage.storage().reference(withPath: "ShopImages")
         
         shopSummaries = shopSummariesSubject.asObservable()
         images = imagesRelay.asObservable()
@@ -58,7 +55,7 @@ class CouponListCollectionModel {
     }
     
     func fetchImage (_ imagePath: String) {
-        self.imagesRef.child(imagePath + ".jpeg").getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
+        self.imagesRef.child(imagePath).getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
             guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
             var temp = self.imagesRelay.value
             temp[imagePath] = image
