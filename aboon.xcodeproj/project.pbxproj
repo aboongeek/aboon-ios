@@ -22,7 +22,7 @@
 		2C1541C520E364BF001941ED /* CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C420E364BF001941ED /* CategoryCollectionView.swift */; };
 		2C3B1D8220E38F79009115C0 /* CouponListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B1D8120E38F79009115C0 /* CouponListView.swift */; };
 		2CA3DA6720E3C23D00D3A9CA /* CouponListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA3DA6620E3C23D00D3A9CA /* CouponListCollectionView.swift */; };
-		2CD0154E20E1007E008F16F6 /* MyMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0154D20E1007E008F16F6 /* MyMenuController.swift */; };
+		2CD0154E20E1007E008F16F6 /* MyMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0154D20E1007E008F16F6 /* MyMenuViewController.swift */; };
 		2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */; };
 		2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */; };
 		2CD6214E20DF527600C81DF7 /* FriendsInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */; };
@@ -43,6 +43,12 @@
 		D084FE50CD8DB5999660C5CA /* Pods_aboonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABED289BBF482EDDFCBF9B9 /* Pods_aboonTests.framework */; };
 		FE1F69DD20FB64F800CBF60A /* MyCouponListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */; };
 		FE1F69DF20FB657C00CBF60A /* TestCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */; };
+		FEA3DA362102F9D1007F69B6 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA352102F9D1007F69B6 /* TestUser.swift */; };
+		FEA3DA38210302DD007F69B6 /* MyMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA37210302DD007F69B6 /* MyMenuModel.swift */; };
+		FEA3DA3A210305D3007F69B6 /* MyMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */; };
+		FEA3DA3C21030832007F69B6 /* MyMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA3B21030832007F69B6 /* MyMenuView.swift */; };
+		FEA3DA3E21030DB2007F69B6 /* MyMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA3D21030DB2007F69B6 /* MyMenuTableViewCell.swift */; };
+		FEA3DABF21045B9E007F69B6 /* SideMenuNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DABE21045B9E007F69B6 /* SideMenuNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +92,7 @@
 		2C1541C420E364BF001941ED /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
 		2C3B1D8120E38F79009115C0 /* CouponListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListView.swift; sourceTree = "<group>"; };
 		2CA3DA6620E3C23D00D3A9CA /* CouponListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListCollectionView.swift; sourceTree = "<group>"; };
-		2CD0154D20E1007E008F16F6 /* MyMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuController.swift; sourceTree = "<group>"; };
+		2CD0154D20E1007E008F16F6 /* MyMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuViewController.swift; sourceTree = "<group>"; };
 		2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponViewController.swift; sourceTree = "<group>"; };
 		2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponDetailViewController.swift; sourceTree = "<group>"; };
 		2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInvitationViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,12 @@
 		FABED289BBF482EDDFCBF9B9 /* Pods_aboonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aboonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponListCollectionModel.swift; sourceTree = "<group>"; };
 		FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoupon.swift; sourceTree = "<group>"; };
+		FEA3DA352102F9D1007F69B6 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
+		FEA3DA37210302DD007F69B6 /* MyMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuModel.swift; sourceTree = "<group>"; };
+		FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableView.swift; path = aboon/Classes/MyPage/View/MyMenuTableView.swift; sourceTree = SOURCE_ROOT; };
+		FEA3DA3B21030832007F69B6 /* MyMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuView.swift; path = aboon/Classes/MyPage/View/MyMenuView.swift; sourceTree = SOURCE_ROOT; };
+		FEA3DA3D21030DB2007F69B6 /* MyMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableViewCell.swift; path = aboon/Classes/MyPage/View/MyMenuTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		FEA3DABE21045B9E007F69B6 /* SideMenuNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +224,7 @@
 			children = (
 				2C04E51420E0B5A900AECC8E /* NavigationBar.swift */,
 				2C1541BE20E208C8001941ED /* NavigationItem.swift */,
+				FEA3DABE21045B9E007F69B6 /* SideMenuNavigationBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,6 +298,7 @@
 		2CD6215320DF533B00C81DF7 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				FEA3DA342102F9C0007F69B6 /* Model */,
 				2CD6215620DF536A00C81DF7 /* Controller */,
 				2CD6215520DF536400C81DF7 /* View */,
 			);
@@ -294,6 +308,9 @@
 		2CD6215520DF536400C81DF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */,
+				FEA3DA3D21030DB2007F69B6 /* MyMenuTableViewCell.swift */,
+				FEA3DA3B21030832007F69B6 /* MyMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,7 +318,7 @@
 		2CD6215620DF536A00C81DF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2CD0154D20E1007E008F16F6 /* MyMenuController.swift */,
+				2CD0154D20E1007E008F16F6 /* MyMenuViewController.swift */,
 				2CD6215720DF538600C81DF7 /* SignInViewController.swift */,
 				2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */,
 			);
@@ -563,6 +580,15 @@
 				8B1F13BE461DBB15F9848EB4 /* Pods_aboonUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FEA3DA342102F9C0007F69B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FEA3DA352102F9D1007F69B6 /* TestUser.swift */,
+				FEA3DA37210302DD007F69B6 /* MyMenuModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -836,13 +862,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1541BF20E208C8001941ED /* NavigationItem.swift in Sources */,
-				2CD0154E20E1007E008F16F6 /* MyMenuController.swift in Sources */,
+				FEA3DA3C21030832007F69B6 /* MyMenuView.swift in Sources */,
+				2CD0154E20E1007E008F16F6 /* MyMenuViewController.swift in Sources */,
 				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
 				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
 				2CD6215020DF529C00C81DF7 /* CouponListViewController.swift in Sources */,
 				2CA3DA6720E3C23D00D3A9CA /* CouponListCollectionView.swift in Sources */,
+				FEA3DABF21045B9E007F69B6 /* SideMenuNavigationBar.swift in Sources */,
 				2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */,
 				869A986020E731FB00BF924F /* CouponListCollectionModel.swift in Sources */,
+				FEA3DA362102F9D1007F69B6 /* TestUser.swift in Sources */,
 				2C0EDC4220DE111200F0F8E8 /* CategoryViewController.swift in Sources */,
 				49ADCD8E20E2955400EB1181 /* CategoryView.swift in Sources */,
 				2C1541C520E364BF001941ED /* CategoryCollectionView.swift in Sources */,
@@ -850,7 +879,9 @@
 				2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */,
 				869A985E20E725F300BF924F /* CouponListCollectionViewCell.swift in Sources */,
 				2C1541C120E22AA3001941ED /* CategoryCollectionViewCell.swift in Sources */,
+				FEA3DA38210302DD007F69B6 /* MyMenuModel.swift in Sources */,
 				2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */,
+				FEA3DA3E21030DB2007F69B6 /* MyMenuTableViewCell.swift in Sources */,
 				2C04E51320E0AFB500AECC8E /* NavigationController.swift in Sources */,
 				75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */,
 				7507BE3F20E145A900749F59 /* R.generated.swift in Sources */,
@@ -862,6 +893,7 @@
 				2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */,
 				082E9D6120D13A1A00ED6A22 /* AppDelegate.swift in Sources */,
 				FE1F69DF20FB657C00CBF60A /* TestCoupon.swift in Sources */,
+				FEA3DA3A210305D3007F69B6 /* MyMenuTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
