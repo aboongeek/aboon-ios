@@ -70,23 +70,18 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
         couponDiscountLabel?.snp.makeConstraints({ (make) in
             make.width.equalTo(frame.width/3)
             make.height.equalTo(frame.height/2)
-//            make.top.equalTo(frame.height/2)
             make.top.equalTo((couponImageView?.snp.bottom)!)
             make.left.equalTo(0)
         })
         couponNameLabel?.snp.makeConstraints { (make) in
             make.height.equalTo(frame.height/4)
             make.width.equalTo(frame.width*2/3)
-//            make.top.equalTo(frame.height/2)
-//            make.left.equalTo(frame.width/3)
             make.top.equalTo((couponImageView?.snp.bottom)!)
             make.left.equalTo((couponDiscountLabel?.snp.right)!)
         }
         couponDetailLabel?.snp.makeConstraints({ (make) in
             make.height.equalTo(frame.height/4)
             make.width.equalTo(frame.width*2/3)
-//            make.top.equalTo(frame.height*3/4)
-//            make.left.equalTo(frame.width/3)
             make.top.equalTo((couponNameLabel?.snp.bottom)!)
             make.left.equalTo((couponDiscountLabel?.snp.right)!)
         })
