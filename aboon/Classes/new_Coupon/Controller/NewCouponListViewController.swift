@@ -9,7 +9,6 @@
 import UIKit
 
 class NewCouponListViewController: UIViewController {
-    let view: NewCouponListView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
