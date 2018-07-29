@@ -71,7 +71,8 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(frame.height/2)
             make.top.left.equalToSuperview()
         })
-        couponDiscountLabel?.snp.makeConstraints({ (make) in make.width.height.equalTo(frame.height/2)
+        couponDiscountLabel?.snp.makeConstraints({ (make) in
+            make.width.height.equalTo(frame.height/2)
             make.top.equalTo((couponImageView?.snp.bottom)!).offset(10)
             make.left.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-10)
