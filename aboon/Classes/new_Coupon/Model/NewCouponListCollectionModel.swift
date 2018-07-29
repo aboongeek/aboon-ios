@@ -12,7 +12,7 @@ class NewCouponListCollectionModel: NSObject {
     var titles = ["coupon1", "coupon2", "coupon3", "coupon4", "coupon5", "coupon6"]
     var details = ["detailA", "detailB", "detailC", "detailD", "detailE", "detailF"]
     var couponImages = [R.image.number17(), R.image.number27(), R.image.number37(), R.image.number47(), R.image.number57(), R.image.number67()]
-    var discounts =  ["10%OFF", "20%OFF", "30%OFF", "40%OFF", "50%OFF", "60%OFF"]
+    var discounts =  ["10%\nOFF", "20%\nOFF", "30%\nOFF", "40%\nOFF", "50%\nOFF", "60%\nOFF"]
 }
 
 extension NewCouponListCollectionModel: UICollectionViewDataSource{
