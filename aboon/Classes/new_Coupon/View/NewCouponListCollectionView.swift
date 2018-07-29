@@ -25,7 +25,7 @@ class NewCouponListCollectionView: UICollectionView {
         let margin = CGFloat(frame.width/4)
         flowLayout.itemSize = CGSize(width: frame.width*7/8, height: frame.height/3)
         flowLayout.minimumLineSpacing = margin/8
-//        flowLayout.sectionInset = UIEdgeInsets(top: margin/8, left: margin, bottom: 0, right: margin)
+        flowLayout.sectionInset = UIEdgeInsets(top: margin/8, left: margin, bottom: 0, right: margin)
         self.collectionViewLayout = flowLayout
     }
     
