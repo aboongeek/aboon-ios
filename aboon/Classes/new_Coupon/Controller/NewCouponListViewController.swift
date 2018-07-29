@@ -46,5 +46,7 @@ class NewCouponListViewController: UIViewController {
             collectionView.deselectItem(at: indexPath, animated: true)
             dLog("selected:\(indexPath.row)")
             
+            let couponDetailViewController = CouponDetailViewController(withTitle: model.titles[indexPath.row])
+            self.navigationController?.pushViewController(couponDetailViewController, animated: true)
     }
 }

@@ -47,7 +47,7 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
         addSubview(couponDetailLabel!)
         
         //initialazation of couponDiscountLabel
-        couponDiscountLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width/3, height: frame.height/2))
+        couponDiscountLabel = UILabel(frame: CGRect(x: 0, y: 0, width:  frame.height/2, height: frame.height/2))
         //setting texts
         couponDiscountLabel?.font = UIFont(name:"Calibri", size: (couponDiscountLabel?.font.pointSize)!/2)
         couponDiscountLabel?.textColor = UIColor(hex: "FFFFFF", alpha: 1)
@@ -58,9 +58,9 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
         
         addSubview(couponDiscountLabel!)
         
-        roundEdge()
         //set constraints
         updateConstraintsIfNeeded()
+        roundEdge()
     }
     
     
@@ -71,22 +71,24 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(frame.height/2)
             make.top.left.equalToSuperview()
         })
-        couponDiscountLabel?.snp.makeConstraints({ (make) in make.width.height.equalTo((couponImageView?.snp.height)!)
-            make.top.equalTo((couponImageView?.snp.bottom)!)
-            make.left.equalToSuperview()
-            make.bottom.equalToSuperview()
+        couponDiscountLabel?.snp.makeConstraints({ (make) in make.width.height.equalTo(frame.height/2)
+            make.top.equalTo((couponImageView?.snp.bottom)!).offset(10)
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
         })
         couponNameLabel?.snp.makeConstraints { (make) in
             make.height.equalTo(frame.height/4)
             make.width.equalTo(frame.width*2/3)
-            make.top.equalTo((couponImageView?.snp.bottom)!)
-            make.left.equalTo((couponDiscountLabel?.snp.right)!)
+            make.top.equalTo((couponImageView?.snp.bottom)!).offset(10)
+            make.left.equalTo((couponDiscountLabel?.snp.right)!).offset(10)
+            make.right.equalToSuperview().offset(-10)
         }
         couponDetailLabel?.snp.makeConstraints({ (make) in
             make.height.equalTo(frame.height/4)
             make.width.equalTo(frame.width*2/3)
             make.top.equalTo((couponNameLabel?.snp.bottom)!)
-            make.left.equalTo((couponDiscountLabel?.snp.right)!)
+            make.left.equalTo((couponDiscountLabel?.snp.right)!).offset(10)
+            make.bottom.right.equalToSuperview().offset(-10)
         })
     }
     
