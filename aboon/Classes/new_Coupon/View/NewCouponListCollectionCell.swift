@@ -50,11 +50,15 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
         couponDiscountLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width/3, height: frame.height/2))
         //setting texts
         couponDiscountLabel?.font = UIFont(name:"Calibri", size: (couponDiscountLabel?.font.pointSize)!/2)
-        couponDiscountLabel?.textColor = UIColor(hex: "000000", alpha: 0.5)
+        couponDiscountLabel?.textColor = UIColor(hex: "FFFFFF", alpha: 1)
         couponDiscountLabel?.text = "nil"
+        couponDiscountLabel?.textAlignment = .center
+        
+        couponDiscountLabel?.backgroundColor = UIColor(hex: "FFC6B7", alpha: 1)
         
         addSubview(couponDiscountLabel!)
         
+        roundEdge()
         //set constraints
         updateConstraintsIfNeeded()
     }
@@ -65,13 +69,12 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
         couponImageView?.snp.makeConstraints({ (make) in
             make.width.equalTo(frame.width)
             make.height.equalTo(frame.height/2)
-            make.top.left.equalTo(0)
+            make.top.left.equalToSuperview()
         })
-        couponDiscountLabel?.snp.makeConstraints({ (make) in
-            make.width.equalTo(frame.width/3)
-            make.height.equalTo(frame.height/2)
+        couponDiscountLabel?.snp.makeConstraints({ (make) in make.width.height.equalTo((couponImageView?.snp.height)!)
             make.top.equalTo((couponImageView?.snp.bottom)!)
-            make.left.equalTo(0)
+            make.left.equalToSuperview()
+            make.bottom.equalToSuperview()
         })
         couponNameLabel?.snp.makeConstraints { (make) in
             make.height.equalTo(frame.height/4)
@@ -86,6 +89,12 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
             make.left.equalTo((couponDiscountLabel?.snp.right)!)
         })
     }
+    
+    func  roundEdge() {
+        couponDiscountLabel?.layer.cornerRadius =  (couponDiscountLabel?.frame.height)! * 0.5
+        couponDiscountLabel?.clipsToBounds = true
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
