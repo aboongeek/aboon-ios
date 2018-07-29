@@ -373,6 +373,7 @@
 		75FC808C20F22A92007ED73B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FE9A3AA9210D593E00603F4C /* new_Coupon */,
 				2CD6215320DF533B00C81DF7 /* MyPage */,
 				2C0EDC4620DE1E0700F0F8E8 /* MyCoupon */,
 				2C0EDC4520DE1DFD00F0F8E8 /* Category */,
@@ -552,7 +553,6 @@
 		79F482AD21030929003B28F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C1541C220E22DAD001941ED /* CategoryCollectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -560,7 +560,6 @@
 		79F482AE21030989003B28F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				869A985F20E731FB00BF924F /* CouponListCollectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -580,6 +579,37 @@
 				8B1F13BE461DBB15F9848EB4 /* Pods_aboonUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE9A3AA9210D593E00603F4C /* new_Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				FE9A3AAC210D595A00603F4C /* Controller */,
+				FE9A3AAB210D595500603F4C /* Model */,
+				FE9A3AAA210D594F00603F4C /* View */,
+			);
+			path = new_Coupon;
+			sourceTree = "<group>";
+		};
+		FE9A3AAA210D594F00603F4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE9A3AAB210D595500603F4C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE9A3AAC210D595A00603F4C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		FEA3DA342102F9C0007F69B6 /* Model */ = {
