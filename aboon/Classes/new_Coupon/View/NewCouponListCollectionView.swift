@@ -17,5 +17,9 @@ class NewCouponListCollectionView: UICollectionView {
         //white → 0.96
         self.backgroundColor = UIColor(white: 0.96, alpha: 1)
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

@@ -47,6 +47,7 @@
 		FE9A3AB0210D5A1800603F4C /* NewCouponlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A3AAF210D5A1800603F4C /* NewCouponlistView.swift */; };
 		FE9A3AB2210D5A9300603F4C /* NewCouponListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A3AB1210D5A9300603F4C /* NewCouponListCollectionView.swift */; };
 		FE9A3AB4210D5AE600603F4C /* NewCouponListCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A3AB3210D5AE600603F4C /* NewCouponListCollectionCell.swift */; };
+		FE9A3AB6210D65EA00603F4C /* NewCouponListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A3AB5210D65EA00603F4C /* NewCouponListCollectionModel.swift */; };
 		FEA3DA362102F9D1007F69B6 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA352102F9D1007F69B6 /* TestUser.swift */; };
 		FEA3DA38210302DD007F69B6 /* MyMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA37210302DD007F69B6 /* MyMenuModel.swift */; };
 		FEA3DA3A210305D3007F69B6 /* MyMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */; };
@@ -125,6 +126,7 @@
 		FE9A3AAF210D5A1800603F4C /* NewCouponlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCouponlistView.swift; sourceTree = "<group>"; };
 		FE9A3AB1210D5A9300603F4C /* NewCouponListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCouponListCollectionView.swift; sourceTree = "<group>"; };
 		FE9A3AB3210D5AE600603F4C /* NewCouponListCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCouponListCollectionCell.swift; sourceTree = "<group>"; };
+		FE9A3AB5210D65EA00603F4C /* NewCouponListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCouponListCollectionModel.swift; sourceTree = "<group>"; };
 		FEA3DA352102F9D1007F69B6 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 		FEA3DA37210302DD007F69B6 /* MyMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuModel.swift; sourceTree = "<group>"; };
 		FEA3DA39210305D3007F69B6 /* MyMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMenuTableView.swift; path = aboon/Classes/MyPage/View/MyMenuTableView.swift; sourceTree = SOURCE_ROOT; };
@@ -612,6 +614,7 @@
 		FE9A3AAB210D595500603F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FE9A3AB5210D65EA00603F4C /* NewCouponListCollectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
 				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
 				2CD6215020DF529C00C81DF7 /* CouponListViewController.swift in Sources */,
+				FE9A3AB6210D65EA00603F4C /* NewCouponListCollectionModel.swift in Sources */,
 				2CA3DA6720E3C23D00D3A9CA /* CouponListCollectionView.swift in Sources */,
 				FEA3DABF21045B9E007F69B6 /* SideMenuNavigationBar.swift in Sources */,
 				2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */,
