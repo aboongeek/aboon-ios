@@ -27,32 +27,36 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
         couponImageView?.contentMode = .scaleAspectFill
         couponImageView?.clipsToBounds = true
         addSubview(couponImageView!)
+
         //initialization of couponNameLabel
         couponNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width*2/3, height: frame.height/2))
         //settings for texts
-        couponNameLabel?.font = UIFont(name: "Courier", size: (couponNameLabel?.font.pointSize)!)
+        couponNameLabel?.font = UIFont(name: "Roboto", size: 16)
         couponNameLabel?.textColor = .black
         //couponNameLabel?.font = UIFont.boldSystemFont(ofSize: (couponNameLabel?.font.pointSize)!)
         couponNameLabel?.text = "nil"
+        couponNameLabel?.adjustsFontSizeToFitWidth = true
         
         addSubview(couponNameLabel!)
         
         //initialazation of couponDetailLabel
         couponDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width*2/3, height: frame.height/2))
         //setting texts
-        couponDetailLabel?.font = UIFont(name:"Calibri", size: (couponNameLabel?.font.pointSize)!/2)
+        couponDetailLabel?.font = UIFont(name:"Roboto", size: 12)
         couponDetailLabel?.textColor = UIColor(hex: "000000", alpha: 0.5)
         couponDetailLabel?.text = "nil"
+        couponDetailLabel?.adjustsFontSizeToFitWidth = true
         
         addSubview(couponDetailLabel!)
         
         //initialazation of couponDiscountLabel
         couponDiscountLabel = UILabel(frame: CGRect(x: 0, y: 0, width:  frame.height/2, height: frame.height/2))
-        //setting texts
-        couponDiscountLabel?.font = UIFont(name:"Calibri", size: (couponDiscountLabel?.font.pointSize)!/2)
+        couponDiscountLabel?.font = UIFont(name:"Arial", size: 24)
         couponDiscountLabel?.textColor = UIColor(hex: "FFFFFF", alpha: 1)
         couponDiscountLabel?.text = "nil"
         couponDiscountLabel?.textAlignment = .center
+        couponDiscountLabel?.numberOfLines = 2
+        couponDiscountLabel?.adjustsFontSizeToFitWidth = true
         
         couponDiscountLabel?.backgroundColor = UIColor(hex: "FFC6B7", alpha: 1)
         
@@ -62,7 +66,6 @@ class NewCouponListCollectionViewCell: UICollectionViewCell {
         updateConstraintsIfNeeded()
         roundEdge()
     }
-    
     
     override func updateConstraints() {
         super.updateConstraints()
