@@ -22,8 +22,6 @@
 		2C1541C520E364BF001941ED /* CategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1541C420E364BF001941ED /* CategoryCollectionView.swift */; };
 		2C3B1D8220E38F79009115C0 /* ShopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B1D8120E38F79009115C0 /* ShopListView.swift */; };
 		2CA3DA6720E3C23D00D3A9CA /* ShopListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA3DA6620E3C23D00D3A9CA /* ShopListCollectionView.swift */; };
-		2CD0154E20E1007E008F16F6 /* MyMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0154D20E1007E008F16F6 /* MyMenuController.swift */; };
-
 		2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */; };
 		2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */; };
 		2CD6214E20DF527600C81DF7 /* FriendsInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */; };
@@ -38,6 +36,7 @@
 		75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75193E4A20DBB8FA00EF417E /* Debug.swift */; };
 		75FC808820F228E9007ED73B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75FC808720F228E9007ED73B /* GoogleService-Info.plist */; };
 		75FC808B20F228F4007ED73B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75FC808A20F228F4007ED73B /* GoogleService-Info.plist */; };
+		799204E22113042D002BAC48 /* MyMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799204E12113042C002BAC48 /* MyMenuViewController.swift */; };
 		79F482B12105B535003B28F5 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F482B02105B535003B28F5 /* Shop.swift */; };
 		869A985E20E725F300BF924F /* ShopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */; };
 		869A986020E731FB00BF924F /* ShopListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985F20E731FB00BF924F /* ShopListCollectionModel.swift */; };
@@ -99,7 +98,6 @@
 		2C1541C420E364BF001941ED /* CategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionView.swift; sourceTree = "<group>"; };
 		2C3B1D8120E38F79009115C0 /* ShopListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListView.swift; sourceTree = "<group>"; };
 		2CA3DA6620E3C23D00D3A9CA /* ShopListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionView.swift; sourceTree = "<group>"; };
-		2CD0154D20E1007E008F16F6 /* MyMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuController.swift; sourceTree = "<group>"; };
 		2CD6214720DF50D300C81DF7 /* MyCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponViewController.swift; sourceTree = "<group>"; };
 		2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponDetailViewController.swift; sourceTree = "<group>"; };
 		2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInvitationViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +112,7 @@
 		75193E4A20DBB8FA00EF417E /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		75FC808720F228E9007ED73B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75FC808A20F228F4007ED73B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		799204E12113042C002BAC48 /* MyMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuViewController.swift; sourceTree = "<group>"; };
 		79F482B02105B535003B28F5 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionViewCell.swift; sourceTree = "<group>"; };
 		869A985F20E731FB00BF924F /* ShopListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionModel.swift; sourceTree = "<group>"; };
@@ -329,7 +328,7 @@
 		2CD6215620DF536A00C81DF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2CD0154D20E1007E008F16F6 /* MyMenuViewController.swift */,
+				799204E12113042C002BAC48 /* MyMenuViewController.swift */,
 				2CD6215720DF538600C81DF7 /* SignInViewController.swift */,
 				2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */,
 			);
@@ -873,7 +872,6 @@
 				FE9A3AB4210D5AE600603F4C /* NewCouponListCollectionCell.swift in Sources */,
 				2C1541BF20E208C8001941ED /* NavigationItem.swift in Sources */,
 				FEA3DA3C21030832007F69B6 /* MyMenuView.swift in Sources */,
-				2CD0154E20E1007E008F16F6 /* MyMenuViewController.swift in Sources */,
 				FE9A3AB2210D5A9300603F4C /* NewCouponListCollectionView.swift in Sources */,
 				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
 				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
@@ -909,6 +907,7 @@
 				082E9D6120D13A1A00ED6A22 /* AppDelegate.swift in Sources */,
 				FE1F69DF20FB657C00CBF60A /* TestCoupon.swift in Sources */,
 				FEA3DA3A210305D3007F69B6 /* MyMenuTableView.swift in Sources */,
+				799204E22113042D002BAC48 /* MyMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
