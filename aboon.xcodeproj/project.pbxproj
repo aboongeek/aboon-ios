@@ -26,7 +26,7 @@
 		2CD6214C20DF51DF00C81DF7 /* MyCouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */; };
 		2CD6214E20DF527600C81DF7 /* FriendsInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */; };
 		2CD6215020DF529C00C81DF7 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214F20DF529C00C81DF7 /* ShopListViewController.swift */; };
-		2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215120DF52A900C81DF7 /* CouponDetailViewController.swift */; };
+		2CD6215220DF52A900C81DF7 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215120DF52A900C81DF7 /* ShopDetailViewController.swift */; };
 		2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215720DF538600C81DF7 /* SignInViewController.swift */; };
 		2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */; };
 		2CD6216920DF7EE700C81DF7 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */; };
@@ -102,7 +102,7 @@
 		2CD6214B20DF51DF00C81DF7 /* MyCouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponDetailViewController.swift; sourceTree = "<group>"; };
 		2CD6214D20DF527600C81DF7 /* FriendsInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInvitationViewController.swift; sourceTree = "<group>"; };
 		2CD6214F20DF529C00C81DF7 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
-		2CD6215120DF52A900C81DF7 /* CouponDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponDetailViewController.swift; sourceTree = "<group>"; };
+		2CD6215120DF52A900C81DF7 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		2CD6215720DF538600C81DF7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
@@ -417,7 +417,6 @@
 		75FC809020F22B80007ED73B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2CD6215120DF52A900C81DF7 /* CouponDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -539,6 +538,7 @@
 		799204E0210F1E86002BAC48 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2CD6215120DF52A900C81DF7 /* ShopDetailViewController.swift */,
 				2CD6214F20DF529C00C81DF7 /* ShopListViewController.swift */,
 			);
 			path = Controller;
@@ -874,7 +874,7 @@
 				FEA3DA3C21030832007F69B6 /* MyMenuView.swift in Sources */,
 				FE9A3AB2210D5A9300603F4C /* NewCouponListCollectionView.swift in Sources */,
 				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
-				2CD6215220DF52A900C81DF7 /* CouponDetailViewController.swift in Sources */,
+				2CD6215220DF52A900C81DF7 /* ShopDetailViewController.swift in Sources */,
 				2CD6215020DF529C00C81DF7 /* ShopListViewController.swift in Sources */,
 				2CA3DA6720E3C23D00D3A9CA /* ShopListCollectionView.swift in Sources */,
 				2CD6214820DF50D300C81DF7 /* MyCouponViewController.swift in Sources */,

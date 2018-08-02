@@ -1,5 +1,5 @@
 //
-//  CouponDetailViewController.swift
+//  ShopDetailViewController.swift
 //  aboon
 //
 //  Created by 原口和音 on 2018/06/24.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CouponDetailViewController: UIViewController {
+class ShopDetailViewController: UIViewController {
 
     private let titleName: String
     
@@ -27,7 +27,7 @@ class CouponDetailViewController: UIViewController {
         self.navigationItem.title = titleName
         
         let testLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 100))
-        testLabel.text = "Coupon Details"
+        testLabel.text = "Shop Details"
         self.view.addSubview(testLabel)
         
         self.view.backgroundColor = .white
