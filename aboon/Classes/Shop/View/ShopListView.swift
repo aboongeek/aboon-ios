@@ -1,5 +1,5 @@
 //
-//  CouponListView.swift
+//  ShopListView.swift
 //  aboon
 //
 //  Created by 原口和音 on 2018/06/27.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CouponListView: UIView {
+class ShopListView: UIView {
     
-    var couponListCollectionView: CouponListCollectionView!
+    var shopListCollectionView: ShopListCollectionView!
     
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -18,22 +18,22 @@ class CouponListView: UIView {
     }
    
     public func appendCollectionView () {
-        self.addSubview(couponListCollectionView)
-        dLog("CouponListCollectionView Appended")
+        self.addSubview(shopListCollectionView)
+        dLog("ShopListCollectionView Appended")
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func initializeCouponListView () -> CouponListCollectionView {
-        couponListCollectionView = CouponListCollectionView(frame: frame, collectionViewLayout: UICollectionViewLayout())
-        return couponListCollectionView
+    public func initializeShopListView () -> ShopListCollectionView {
+        shopListCollectionView = ShopListCollectionView(frame: frame, collectionViewLayout: UICollectionViewLayout())
+        return shopListCollectionView
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        couponListCollectionView.setLayout()
+        shopListCollectionView.setLayout()
     }
 
 }

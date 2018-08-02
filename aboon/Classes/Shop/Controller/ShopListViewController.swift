@@ -1,5 +1,5 @@
 //
-//  CouponListViewController.swift
+//  ShopListViewController.swift
 //  aboon
 //
 //  Created by 原口和音 on 2018/06/24.
@@ -11,17 +11,17 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class CouponListViewController: UIViewController {
+class ShopListViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    let model: CouponListCollectionModel
-    lazy var dataSource = CouponListViewDataSource()
+    let model: ShopListCollectionModel
+    lazy var dataSource = ShopListViewDataSource()
     
     private let titleName: String
     
     init(ofCategory category: Category) {
-        model = CouponListCollectionModel(categoryPath: category.path)
+        model = ShopListCollectionModel(categoryPath: category.path)
         self.titleName = category.displayName
 
         super.init(nibName: nil, bundle: nil)
@@ -30,28 +30,28 @@ class CouponListViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = CouponListView()
+        self.view = ShopListView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let couponListView = self.view as! CouponListView
+        let shopListView = self.view as! ShopListView
         
         self.navigationItem.title = titleName
         
-        let couponListCollectionView = couponListView.initializeCouponListView()
-        couponListView.appendCollectionView()
+        let shopListCollectionView = shopListView.initializeShopListView()
+        shopListView.appendCollectionView()
         
-        couponListCollectionView.register(CouponListCollectionViewCell.self, forCellWithReuseIdentifier: "CouponListCollectionCell")
+        shopListCollectionView.register(ShopListCollectionViewCell.self, forCellWithReuseIdentifier: "ShopListCollectionCell")
         
         Observable
-            .combineLatest(model.shopSummaries, model.images) {CouponListViewDataSource.Element(items: $0, images: $1)}
+            .combineLatest(model.shopSummaries, model.images) {ShopListViewDataSource.Element(items: $0, images: $1)}
             .asDriver(onErrorDriveWith: Driver.empty())
-            .drive(couponListCollectionView.rx.items(dataSource: dataSource))
+            .drive(shopListCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
-        couponListCollectionView.delegate = dataSource
+        shopListCollectionView.delegate = dataSource
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +65,7 @@ class CouponListViewController: UIViewController {
     
 }
 
-class CouponListViewDataSource: NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType, UICollectionViewDelegate {
+class ShopListViewDataSource: NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType, UICollectionViewDelegate {
    
     //RxCollectionViewDataSourceType
     struct Element {
@@ -76,7 +76,7 @@ class CouponListViewDataSource: NSObject, UICollectionViewDataSource, RxCollecti
     var items = [ShopSummary]()
     var images = [String : UIImage]()
     
-    func collectionView(_ collectionView: UICollectionView, observedEvent: Event<CouponListViewDataSource.Element>) {
+    func collectionView(_ collectionView: UICollectionView, observedEvent: Event<ShopListViewDataSource.Element>) {
         if case .next(let element) = observedEvent {
             items = element.items
             images = element.images
@@ -90,7 +90,7 @@ class CouponListViewDataSource: NSObject, UICollectionViewDataSource, RxCollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponListCollectionCell", for: indexPath) as! CouponListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopListCollectionCell", for: indexPath) as! ShopListCollectionViewCell
         if let image = images[items[indexPath.row].imagePath] {
             cell.configure(text: items[indexPath.row].name, image: image)
         } else {
@@ -103,8 +103,8 @@ class CouponListViewDataSource: NSObject, UICollectionViewDataSource, RxCollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-//        let couponDetailViewController = CouponDetailViewController(withTitle: model.coupons[indexPath.row])
-//        self.navigationController?.pushViewController(couponDetailViewController, animated: true)
+//        let shopDetailViewController = ShopDetailViewController(withTitle: model.shops[indexPath.row])
+//        self.navigationController?.pushViewController(shopDetailViewController, animated: true)
     }
 }
 

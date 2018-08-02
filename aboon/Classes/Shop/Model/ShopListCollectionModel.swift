@@ -1,5 +1,5 @@
 //
-//  CouponListCollectionModel.swift
+//  ShopListCollectionModel.swift
 //  aboon
 //
 //  Created by John Titer on H30/06/30.
@@ -17,7 +17,7 @@ struct ShopSummary {
     var name: String
 }
 
-class CouponListCollectionModel {
+class ShopListCollectionModel {
     
     let collectionRef: CollectionReference
     let imagesRef: StorageReference
@@ -80,8 +80,8 @@ class CouponListCollectionModel {
 //
     
 //    //test data
-//    var coupons = ["coupon1", "coupon2", "coupon3", "coupon4", "coupon5", "coupon6"]
+//    var shops = ["shop1", "shop2", "shop3", "shop4", "shop5", "shop6"]
 //    var details = ["detailA", "detailB", "detailC", "detailD", "detailE", "detailF"]
-//    var couponImages = [R.image.airplaneSymbol7(), R.image.basketball7(), R.image.animalElement7(), R.image.albumSimple7(), R.image.bin7(), R.image.bookCoverTick7()]
+//    var shopImages = [R.image.airplaneSymbol7(), R.image.basketball7(), R.image.animalElement7(), R.image.albumSimple7(), R.image.bin7(), R.image.bookCoverTick7()]
    
 }
