@@ -541,8 +541,8 @@
 				2CA3DA6620E3C23D00D3A9CA /* ShopListCollectionView.swift */,
 				869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */,
 				799204E321130C43002BAC48 /* ShopDetailView.swift */,
-				799204E721131722002BAC48 /* ShopDetailDescriptionView.swift */,
 				799204E521131644002BAC48 /* ShopDetailScrollView.swift */,
+				799204E721131722002BAC48 /* ShopDetailDescriptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

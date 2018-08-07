@@ -22,6 +22,8 @@ class ShopDetailScrollView: UIScrollView {
 
         super.init(frame: frame)
 
+        backgroundColor = .gray
+        
         for _ in 0..<numberOfPages {
 //            let image = images[i]!
 //            let origin = CGPoint(x: frame.width * CGFloat(i), y: frame.origin.y)
@@ -42,6 +44,12 @@ class ShopDetailScrollView: UIScrollView {
         self.bounces = true
         self.isPagingEnabled = true
         self.showsHorizontalScrollIndicator = false
+    }
+    
+    func addImages(_ images: [UIImage]) {
+        subviews.enumerated().forEach { (index, view) in
+            (view as! UIImageView).image = images[index]
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

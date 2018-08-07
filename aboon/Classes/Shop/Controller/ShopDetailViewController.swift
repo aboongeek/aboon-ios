@@ -40,11 +40,12 @@ class ShopDetailViewController: UIViewController {
         
         view.appendSubViews()
         
-        model
-            .shop
-            .drive(onNext: { [weak self] (shop) in
+        Observable
+            .combineLatest(model.shop, model.images)
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] (shop, images) in
                 guard let `self` = self else { return }
-                view.configure(shop: shop)
+                view.configure(shop: shop, shopImages: [UIImage](images.values))
                 view.couponButton.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
             })
             .disposed(by: disposeBag)

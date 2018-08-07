@@ -14,13 +14,17 @@ class ShopDetailView: UIView {
     var scrollView: ShopDetailScrollView!
     var pageControl: UIPageControl!
     var descriptionView: ShopDetailDescriptionView!
+    var descriptionExpansionButton: UIButton!
     var couponButton: UIButton!
+    
+    var isExpanded = false
     
     func appendSubViews() {
         appendScrollView()
         appendPageControl()
         appendCouponButton()
         appendDescriptionView()
+        appendDescriptionExpansionButton()
     }
     
     private func appendScrollView() {
@@ -41,13 +45,21 @@ class ShopDetailView: UIView {
         addSubview(descriptionView)
     }
     
+    private func appendDescriptionExpansionButton() {
+        descriptionExpansionButton = UIButton(type: .custom)
+        descriptionExpansionButton.addTarget(self, action: #selector(expansionEnabled), for: .touchUpInside)
+        addSubview(descriptionExpansionButton)
+    }
+    
     private func appendCouponButton() {
         couponButton = UIButton(type: .custom)
         addSubview(couponButton)
     }
     
-    func configure(shop: Shop) {
+    func configure(shop: Shop, shopImages: [UIImage]) {
         scrollView.numberOfPages = shop.imagePaths.count
+        scrollView.addImages(shopImages)
+        
         pageControl.numberOfPages = shop.imagePaths.count
         
         descriptionView.addressLabel.text = shop.address
@@ -58,11 +70,19 @@ class ShopDetailView: UIView {
         descriptionView.phoneLabel.text = shop.phone
     }
     
+    @objc func expansionEnabled() {
+        isExpanded = !isExpanded
+        setNeedsLayout()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
-        
+        if !isExpanded {
+            
+        } else {
+            
+        }
     }
     
     override init(frame: CGRect) {

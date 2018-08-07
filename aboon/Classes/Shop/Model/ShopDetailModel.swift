@@ -17,9 +17,9 @@ class ShopDetailModel {
     let imagesRef: StorageReference
     
     private let shopSubject = PublishSubject<Shop>()
-    let shop: Driver<Shop>
+    let shop: Observable<Shop>
     
-    let imagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    private let imagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
     let images: Observable<[String : UIImage]>
     
     init(shopRef: DocumentReference, storageRef: StorageReference) {
@@ -27,7 +27,7 @@ class ShopDetailModel {
         documentRef = shopRef
         imagesRef = storageRef
         
-        shop = shopSubject.asDriver(onErrorDriveWith: Driver.empty())
+        shop = shopSubject.asObservable()
         images = imagesRelay.asObservable()
         
         self.documentRef.getDocument { [weak self] (document, error) in
