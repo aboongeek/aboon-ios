@@ -13,7 +13,7 @@ import RxCocoa
 
 struct ShopSummary {
     var imagePath: String
-    var id: Int
+    var id: String
     var name: String
     var documentRef: DocumentReference
     var storageRef: StorageReference
@@ -43,7 +43,7 @@ class ShopListCollectionModel {
             let shopSummaries = snapshot.documents.map { document -> ShopSummary in
                 let data = document.data()
                 let imagePath = (data["imagePaths"] as! [String])[0]
-                let id = data["id"] as! Int
+                let id = data["id"] as! String
                 let name = data["name"] as! String
                 
                 return ShopSummary(imagePath: imagePath, id: id, name: name, documentRef: document.reference, storageRef: self.imagesRef)

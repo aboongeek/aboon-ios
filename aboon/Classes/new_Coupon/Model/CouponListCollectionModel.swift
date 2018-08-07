@@ -5,27 +5,60 @@
 //  Created by EXIST on 2018/07/29.
 //  Copyright © 2018年 aboon. All rights reserved.
 //
-import UIKit
 
-class CouponListCollectionModel: NSObject {
-    //test data
-    var titles = ["coupon1", "coupon2", "coupon3", "coupon4", "coupon5", "coupon6"]
-    var details = ["detailA", "detailB", "detailC", "detailD", "detailE", "detailF"]
-    var couponImages = [R.image.number17(), R.image.number27(), R.image.number37(), R.image.number47(), R.image.number57(), R.image.number67()]
-    var discounts =  ["10%\nOFF", "20%\nOFF", "30%\nOFF", "40%\nOFF", "50%\nOFF", "60%\nOFF"]
+import UIKit
+import Firebase
+import RxSwift
+import RxCocoa
+
+struct Coupon {
+    var imagePath: String
+    var name: String
+    var description: String
 }
 
-extension CouponListCollectionModel: UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titles.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponListCollectionViewCell", for: indexPath) as! CouponListCollectionViewCell
-        cell.couponNameLabel?.text = titles[indexPath.row]
-        cell.couponDetailLabel?.text = details[indexPath.row]
-        cell.couponImageView?.image = couponImages[indexPath.row]
-        cell.couponDiscountLabel?.text = discounts[indexPath.row]
-        return cell
+class CouponListCollectionModel {
+    let collectionRef: CollectionReference
+    let imagesRef: StorageReference
+    
+    private let couponsSubject = PublishSubject<[Coupon]>()
+    let coupons: Observable<[Coupon]>
+    
+    private let imagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    let images: Observable<[String : UIImage]>
+    
+    init(shopId: String) {
+        
+        collectionRef = Firestore.firestore().collection("coupons")
+        imagesRef = Storage.storage().reference(withPath: "CouponImage")
+        
+        coupons = couponsSubject.asObservable()
+        images = imagesRelay.asObservable()
+        
+        self.collectionRef.whereField("shopId", isEqualTo: shopId).whereField("isPublic", isEqualTo: true).getDocuments { [weak self] (snapshot, error) in
+            guard let snapshot = snapshot, let `self` = self else { return }
+            let coupons = snapshot.documents.map { document -> Coupon in
+                let data = document.data()
+                let imagePath = data["imagePath"] as! String
+                let name = data["name"] as! String
+                let description = data["description"] as! String
+                
+                return Coupon(imagePath: imagePath, name: name, description: description)
+            }
+            self.couponsSubject.onNext(coupons)
+            coupons.forEach({ [weak self] (coupon) in
+                guard let `self` = self else { return }
+                self.fetchImage(coupon.imagePath)
+            })
+        }
     }
     
+    func fetchImage (_ imagePath: String) {
+        self.imagesRef.child(imagePath).getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
+            guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
+            var temp = self.imagesRelay.value
+            temp[imagePath] = image
+            self.imagesRelay.accept(temp)
+        }
+    }
 }

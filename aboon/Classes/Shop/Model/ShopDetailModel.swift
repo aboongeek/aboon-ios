@@ -34,7 +34,7 @@ class ShopDetailModel {
             guard let document = document, let data = document.data(), let `self` = self else { return }
             
             let imagePaths = data["imagePaths"] as! [String]
-            let id = data["id"] as! Int
+            let id = data["id"] as! String
             let name = data["name"] as! String
             let address = data["address"] as! String
             let businessHours = data["businessHours"] as! String

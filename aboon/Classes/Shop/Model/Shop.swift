@@ -9,7 +9,7 @@ import Foundation
 
 struct Shop {
     var imagePaths: [String]
-    var id: Int
+    var id: String
     var name: String
     var address: String
     var businessHours: String

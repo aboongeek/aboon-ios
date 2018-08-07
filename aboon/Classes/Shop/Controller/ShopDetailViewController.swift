@@ -60,7 +60,7 @@ class ShopDetailViewController: UIViewController {
             .asDriver(onErrorDriveWith: Driver.empty())
             .drive(onNext: { [weak self] shop in
             guard let `self` = self, let navigationController = self.navigationController else { return }
-            let couponListViewController = CouponListViewController(ofShop: shop)
+            let couponListViewController = CouponListViewController(shopId: shop.id)
             navigationController.pushViewController(couponListViewController, animated: true)
         })
         .disposed(by: disposeBag)
