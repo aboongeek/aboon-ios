@@ -1,5 +1,5 @@
 //
-//  NewCouponListCollectionViewCell.swift
+//  CouponListCollectionViewCell.swift
 //  aboon
 //
 //  Created by EXIST on 2018/07/29.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class NewCouponListCollectionViewCell: UICollectionViewCell {
+class CouponListCollectionViewCell: UICollectionViewCell {
     
     var couponImageView: UIImageView?
     var couponNameLabel: UILabel?

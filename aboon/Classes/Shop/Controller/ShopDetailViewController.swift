@@ -55,13 +55,15 @@ class ShopDetailViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
-        //遷移処理 to be uncommented at couponlist branch
-//        model.shop.drive(onNext: { [weak self] shop in
-//            guard let `self` = self, let navigationController = self.navigationController else { return }
-//            let couponListViewController = NewCouponListViewController(ofShop: shop)
-//            navigationController.pushViewController(couponListViewController, animated: true)
-//        })
-//        .disposed(by: disposeBag)
+        model
+            .shop
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] shop in
+            guard let `self` = self, let navigationController = self.navigationController else { return }
+            let couponListViewController = CouponListViewController(ofShop: shop)
+            navigationController.pushViewController(couponListViewController, animated: true)
+        })
+        .disposed(by: disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -1,5 +1,5 @@
 //
-//  NewCouponListViewController.swift
+//  CouponListViewController.swift
 //  aboon
 //
 //  Created by EXIST on 2018/07/29.
@@ -8,15 +8,16 @@
 
 import UIKit
 
-class NewCouponListViewController: UIViewController {
+class CouponListViewController: UIViewController {
     
-    let model = NewCouponListCollectionModel()
+    let model: CouponListCollectionModel
     
     //navname
     private var titleName = String()
     
-    init(withTitle: String) {
-        self.titleName = withTitle
+    init(ofShop: Shop) {
+        titleName = "クーポン"
+        model = CouponListCollectionModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,7 +25,7 @@ class NewCouponListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     override func loadView() {
-        self.view = NewCouponListView()
+        self.view = CouponListView()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +33,16 @@ class NewCouponListViewController: UIViewController {
         self.navigationItem.title = titleName
         self.view.backgroundColor = UIColor(hex: "F5F5F5", alpha: 1.0)
         
-        let newCouponlistCollectionView = (self.view as! NewCouponListView).createCollectionView()
+        let newCouponlistCollectionView = (self.view as! CouponListView).createCollectionView()
         
-        newCouponlistCollectionView.register(NewCouponListCollectionViewCell.self, forCellWithReuseIdentifier: "NewCouponListCollectionViewCell")
+        newCouponlistCollectionView.register(CouponListCollectionViewCell.self, forCellWithReuseIdentifier: "CouponListCollectionViewCell")
         
         newCouponlistCollectionView.delegate = self
         newCouponlistCollectionView.dataSource = model as! UICollectionViewDataSource
-        (self.view as! NewCouponListView).appendCollectionView(newCouponlistCollectionView)
+        (self.view as! CouponListView).appendCollectionView(newCouponlistCollectionView)
     }
 }
-    extension NewCouponListViewController: UICollectionViewDelegate{
+    extension CouponListViewController: UICollectionViewDelegate{
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             collectionView.deselectItem(at: indexPath, animated: true)
             dLog("selected:\(indexPath.row)")

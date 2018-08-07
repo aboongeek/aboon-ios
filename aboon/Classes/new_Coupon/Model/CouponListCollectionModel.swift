@@ -1,5 +1,5 @@
 //
-//  NewCouponListCollectionModel.swift
+//  CouponListCollectionModel.swift
 //  aboon
 //
 //  Created by EXIST on 2018/07/29.
@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class NewCouponListCollectionModel: NSObject {
+class CouponListCollectionModel: NSObject {
     //test data
     var titles = ["coupon1", "coupon2", "coupon3", "coupon4", "coupon5", "coupon6"]
     var details = ["detailA", "detailB", "detailC", "detailD", "detailE", "detailF"]
@@ -15,12 +15,12 @@ class NewCouponListCollectionModel: NSObject {
     var discounts =  ["10%\nOFF", "20%\nOFF", "30%\nOFF", "40%\nOFF", "50%\nOFF", "60%\nOFF"]
 }
 
-extension NewCouponListCollectionModel: UICollectionViewDataSource{
+extension CouponListCollectionModel: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return titles.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewCouponListCollectionViewCell", for: indexPath) as! NewCouponListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponListCollectionViewCell", for: indexPath) as! CouponListCollectionViewCell
         cell.couponNameLabel?.text = titles[indexPath.row]
         cell.couponDetailLabel?.text = details[indexPath.row]
         cell.couponImageView?.image = couponImages[indexPath.row]

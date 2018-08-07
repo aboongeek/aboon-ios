@@ -1,5 +1,5 @@
 //
-//  NewCouponListCollectionView.swift
+//  CouponListCollectionView.swift
 //  aboon
 //
 //  Created by EXIST on 2018/07/29.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewCouponListCollectionView: UICollectionView {
+class CouponListCollectionView: UICollectionView {
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
