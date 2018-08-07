@@ -7,46 +7,69 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ShopDetailViewController: UIViewController {
 
+    let disposeBag = DisposeBag()
+    
+    let model: ShopDetailModel
+    
     private let titleName: String
     
-    init(withTitle: String) {
-        self.titleName = withTitle
+    init(ofShop shop: ShopSummary) {
+        self.model = ShopDetailModel(shopRef: shop.documentRef, storageRef: shop.storageRef)
+        self.titleName = "ショップ"
+        
         super.init(nibName: nil, bundle: nil)
+        
+        self.hidesBottomBarWhenPushed = true
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func loadView() {
+        self.view = ShopDetailView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let view = self.view as! ShopDetailView
+        
         self.navigationItem.title = titleName
         
-        let testLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 100))
-        testLabel.text = "Shop Details"
-        self.view.addSubview(testLabel)
+        view.appendSubViews()
+        
+        model
+            .shop
+            .drive(onNext: { [weak self] (shop) in
+                guard let `self` = self else { return }
+                view.configure(shop: shop)
+                view.couponButton.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+            })
+            .disposed(by: disposeBag)
+        
         
         self.view.backgroundColor = .white
+    }
+    
+    @objc func buttonTapped() {
+        //遷移処理 to be uncommented at couponlist branch
+//        model.shop.drive(onNext: { [weak self] shop in
+//            guard let `self` = self, let navigationController = self.navigationController else { return }
+//            let couponListViewController = NewCouponListViewController(ofShop: shop)
+//            navigationController.pushViewController(couponListViewController, animated: true)
+//        })
+//        .disposed(by: disposeBag)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

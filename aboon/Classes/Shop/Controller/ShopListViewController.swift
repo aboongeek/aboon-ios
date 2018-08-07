@@ -21,7 +21,7 @@ class ShopListViewController: UIViewController {
     private let titleName: String
     
     init(ofCategory category: Category) {
-        model = ShopListCollectionModel(categoryPath: category.path)
+        self.model = ShopListCollectionModel(categoryPath: category.path)
         self.titleName = category.displayName
 
         super.init(nibName: nil, bundle: nil)
@@ -49,6 +49,15 @@ class ShopListViewController: UIViewController {
             .combineLatest(model.shopSummaries, model.images) {ShopListViewDataSource.Element(items: $0, images: $1)}
             .asDriver(onErrorDriveWith: Driver.empty())
             .drive(shopListCollectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        dataSource
+            .selectedShop
+            .drive(onNext: { [weak self] (shop) in
+                guard let `self` = self, let navigationController = self.navigationController else { return }
+                let shopDetailViewController = ShopDetailViewController(ofShop: shop)
+                navigationController.pushViewController(shopDetailViewController, animated: true)
+            })
             .disposed(by: disposeBag)
 
         shopListCollectionView.delegate = dataSource
@@ -100,9 +109,13 @@ class ShopListViewDataSource: NSObject, UICollectionViewDataSource, RxCollection
     }
     
     //UICollectionViewDelegate
+    private let selectedShopSubject = PublishSubject<ShopSummary>()
+    var selectedShop: Driver<ShopSummary> { return selectedShopSubject.asDriver(onErrorDriveWith: Driver.empty()) }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
+        selectedShopSubject.onNext(items[indexPath.row])
 //        let shopDetailViewController = ShopDetailViewController(withTitle: model.shops[indexPath.row])
 //        self.navigationController?.pushViewController(shopDetailViewController, animated: true)
     }

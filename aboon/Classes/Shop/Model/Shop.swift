@@ -12,7 +12,10 @@ struct Shop {
     var id: Int
     var name: String
     var address: String
+    var businessHours: String
     var webURL: URL
+    var FBURL: URL
+    var instaURL: URL
     var phone: String
     var email: String
     var description: String

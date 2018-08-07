@@ -15,6 +15,8 @@ struct ShopSummary {
     var imagePath: String
     var id: Int
     var name: String
+    var documentRef: DocumentReference
+    var storageRef: StorageReference
 }
 
 class ShopListCollectionModel {
@@ -31,7 +33,7 @@ class ShopListCollectionModel {
     init(categoryPath: String) {
         
         collectionRef = CategoryCollectionModel.categoriesRef.document(categoryPath).collection("shops")
-        imagesRef = Storage.storage().reference(withPath: "ShopImages")
+        imagesRef = Storage.storage().reference(withPath: "ShopImages").child(categoryPath)
         
         shopSummaries = shopSummariesSubject.asObservable()
         images = imagesRelay.asObservable()
@@ -40,11 +42,11 @@ class ShopListCollectionModel {
             guard let snapshot = snapshot, let `self` = self else { return }
             let shopSummaries = snapshot.documents.map { document -> ShopSummary in
                 let data = document.data()
-                let imagePath = data["imagePath"] as! String
+                let imagePath = (data["imagePaths"] as! [String])[0]
                 let id = data["id"] as! Int
                 let name = data["name"] as! String
                 
-                return ShopSummary(imagePath: imagePath, id: id, name: name)
+                return ShopSummary(imagePath: imagePath, id: id, name: name, documentRef: document.reference, storageRef: self.imagesRef)
             }
             self.shopSummariesSubject.onNext(shopSummaries)
             shopSummaries.forEach({ [weak self] (shopSummary) in
