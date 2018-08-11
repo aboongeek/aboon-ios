@@ -6,22 +6,32 @@
 //  Copyright © 2018年 aboon. All rights reserved.
 //
 
+import UIKit
+import Firebase
+import FirebaseAuth
 
-
-class MyMenuModel: NSObject {
-    var user = TestUser()
+class MyMenuModel {
+    
+    let user = Auth.auth().currentUser
+    var userName = String()
     let menulist = ["アカウント編集", "カスタマーサービス"]
-}
+    
+    init() {
+        if let user = user {
+            Firestore.firestore().collection("user").document("\(user.uid)").getDocument(completion: { [weak self] (snapshot, error) in
+                guard let `self` = self, let snapshot = snapshot, let data = snapshot.data() else { return }
+                self.userName = data["userName"] as! String
+            })
+        } else {
+            userName = "ゲスト"
+        }
 
-
-extension MyMenuModel: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menulist.count
+//        Firestore.firestore().collection("user").whereField("userId", isEqualTo: user.uid).getDocuments { [weak self] (snapshot, error) in
+//            guard let `self` = self, let snapshot = snapshot else { return }
+//            self.userName = snapshot.documents[0].data()["userName"] as! String
+//        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyMenuTableViewCell", for: indexPath) as! MyMenuTableViewCell
-        cell.menuLabel.text = menulist[indexPath.row]
-        return cell
-    }
 }
+
+

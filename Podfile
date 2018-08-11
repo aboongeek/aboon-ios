@@ -12,7 +12,7 @@ target 'aboon' do
   #pod 'Firebase/DynamicLinks' , '~>5.3.0'
   #pod 'Firebase/Crash'        , '~>5.3.0'
   #pod 'Firebase/RemoteConfig' , '~>5.3.0'
-  #pod 'Firebase/Auth'         , '~>5.3.0'
+  pod 'Firebase/Auth'         , '~>5.3.0'
   pod 'Firebase/Storage'      , '~>5.3.0'
   #pod 'Firebase/Performance'  , '~>5.3.0'
   pod 'Firebase/Firestore'    , '~>5.3.0'

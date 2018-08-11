@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class MyMenuViewController: UIViewController {
     let model = MyMenuModel()
@@ -25,11 +27,11 @@ class MyMenuViewController: UIViewController {
         menuTableview.register(MyMenuTableViewCell.self, forCellReuseIdentifier: "MyMenuTableViewCell")
         menuTableview.isScrollEnabled = false
         menuTableview.delegate = self
-        menuTableview.dataSource = model as! UITableViewDataSource
+        menuTableview.dataSource = self
         
         (self.view as! MyMenuView).appendTableView(menuTableview)
         
-        self.navigationItem.configureBarItems(title: "こんにちは、\(model.user.name)さん", navigationController: navigationController)
+        self.navigationItem.configureBarItems(title: "こんにちは、\(model.userName)さん", navigationController: navigationController)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,14 +40,36 @@ class MyMenuViewController: UIViewController {
     }
 }
 
-extension MyMenuViewController: UITableViewDelegate {
+extension MyMenuViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.menulist.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyMenuTableViewCell", for: indexPath) as! MyMenuTableViewCell
+        cell.menuLabel.text = model.menulist[indexPath.row]
+        return cell
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let navigationController = navigationController else { return }
+        
         if indexPath.row == 0 {
-            let signInViewController = SignInViewController()
-            self.navigationController?.pushViewController(signInViewController, animated: true)
+            if model.user != nil {
+                let editProfileViewcontroller = EditProfileViewController()
+                navigationController.pushViewController(editProfileViewcontroller, animated: true)
+            } else {
+                let signUpViewController = SignUpViewController()
+                present(signUpViewController, animated: true) {
+                    let editProfileViewcontroller = EditProfileViewController()
+                    navigationController.pushViewController(editProfileViewcontroller, animated: true)
+                }
+            }
         } else if indexPath.row == 1 {
-            let editProfileViewcontroller = EditProfileViewController()
-            self.navigationController?.pushViewController(editProfileViewcontroller, animated: true)
+//            let editProfileViewcontroller = EditProfileViewController()
+//            navigationController.pushViewController(editProfileViewcontroller, animated: true)
         }
     }
+    
 }

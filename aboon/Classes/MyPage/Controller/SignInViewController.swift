@@ -7,19 +7,50 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
+    var signInView: SignInView
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        signInView = SignInView()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    override func loadView() {
+        self.view = signInView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
-        let label = UILabel(frame: CGRect(x: 0,
-                                          y: 0,
-                                          width: 100,
-                                          height: 50)
-        )
-        label.text = "SignInViewController"
-        self.view.addSubview(label)
+        
+        signInView.appendSubviews()
+        signInView.signUpButton.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
+        signInView.signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
+        
+    }
+    
+    @objc func signUpTapped() {
+        let signUpViewController = SignUpViewController()
+        present(signUpViewController, animated: true, completion: nil)
+    }
+    
+    @objc func signInTapped() {
+        guard let emailText = signInView.emailTextField.text, let passwordText = signInView.passwordTextField.text else { return }
+        Auth.auth().signIn(withEmail: emailText, password: passwordText) { (_, error) in
+            if let error = error {
+                //エラー処理
+                dLog(error)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func didReceiveMemoryWarning() {
