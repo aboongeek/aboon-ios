@@ -60,11 +60,8 @@ extension MyMenuViewController: UITableViewDataSource, UITableViewDelegate {
                 let editProfileViewcontroller = EditProfileViewController()
                 navigationController.pushViewController(editProfileViewcontroller, animated: true)
             } else {
-                let signUpViewController = SignUpViewController()
-                present(signUpViewController, animated: true) {
-                    let editProfileViewcontroller = EditProfileViewController()
-                    navigationController.pushViewController(editProfileViewcontroller, animated: true)
-                }
+                let signInViewController = SignInViewController()
+                present(signInViewController, animated: true)
             }
         } else if indexPath.row == 1 {
 //            let editProfileViewcontroller = EditProfileViewController()

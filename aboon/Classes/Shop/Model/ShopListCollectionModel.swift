@@ -11,14 +11,6 @@ import Firebase
 import RxSwift
 import RxCocoa
 
-struct ShopSummary {
-    var imagePath: String
-    var id: String
-    var name: String
-    var documentRef: DocumentReference
-    var storageRef: StorageReference
-}
-
 class ShopListCollectionModel {
     
     let collectionRef: CollectionReference

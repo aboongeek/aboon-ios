@@ -32,6 +32,10 @@ class SignInViewController: UIViewController {
         
     }
     
+    @objc func dismissTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func signUpTapped() {
         let signUpViewController = SignUpViewController()
         present(signUpViewController, animated: true, completion: nil)

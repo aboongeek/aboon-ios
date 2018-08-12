@@ -14,7 +14,7 @@ import RxCocoa
 
 class SignUpViewController: UIViewController {
     
-    var signUpView: SignUpView!
+    var signUpView: SignUpView
     lazy var model = SignUpModel()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -30,11 +30,16 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signUpView.appendViews()
+        self.setToolbarItems([UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissTapped))], animated: true)
         
+        signUpView.appendViews()
         
         signUpView.applyButton.addTarget(self, action: #selector(applyTapped), for: .touchUpInside)
         
+    }
+    
+    @objc func dismissTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func applyTapped() {
@@ -65,13 +70,20 @@ class SignUpViewController: UIViewController {
                     
                     self.model.addUser(user: user)
                     
-                    Auth.auth().signIn(withEmail: emailText, password: passwordText, completion: { (_, error) in
-                        if let error = error {
-                            dLog(error)
-                        } else {
-                            self.dismiss(animated: true, completion: nil)
-                        }
+                    let changeRequest = FirUser.user.createProfileChangeRequest()
+                    changeRequest.displayName = user.userName
+                    changeRequest.commitChanges(completion: { (error) in
+                        Auth.auth().signIn(withEmail: emailText, password: passwordText, completion: { (_, error) in
+                            if let error = error {
+                                dLog(error)
+                            } else {
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        })
                     })
+                    
+                    
+                    
                 })
             
         })

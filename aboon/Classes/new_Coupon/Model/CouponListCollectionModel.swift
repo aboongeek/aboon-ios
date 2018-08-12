@@ -11,12 +11,6 @@ import Firebase
 import RxSwift
 import RxCocoa
 
-struct Coupon {
-    var imagePath: String
-    var name: String
-    var description: String
-}
-
 class CouponListCollectionModel {
     let collectionRef: CollectionReference
     let imagesRef: StorageReference
@@ -42,8 +36,9 @@ class CouponListCollectionModel {
                 let imagePath = data["imagePath"] as! String
                 let name = data["name"] as! String
                 let description = data["description"] as! String
+                let minimum = data["minimum"] as! Int
                 
-                return Coupon(imagePath: imagePath, name: name, description: description)
+                return Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum)
             }
             self.couponsSubject.onNext(coupons)
             coupons.forEach({ [weak self] (coupon) in

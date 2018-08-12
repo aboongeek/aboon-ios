@@ -9,7 +9,7 @@ target 'aboon' do
   #pod 'Firebase/Messaging'    , '~>5.3.0'
   #pod 'Firebase/Database'     , '~>5.3.0'
   #pod 'Firebase/Invites'      , '~>5.3.0'
-  #pod 'Firebase/DynamicLinks' , '~>5.3.0'
+  pod 'Firebase/DynamicLinks' , '~>5.3.0'
   #pod 'Firebase/Crash'        , '~>5.3.0'
   #pod 'Firebase/RemoteConfig' , '~>5.3.0'
   pod 'Firebase/Auth'         , '~>5.3.0'

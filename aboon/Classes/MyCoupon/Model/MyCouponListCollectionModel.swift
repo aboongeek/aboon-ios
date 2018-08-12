@@ -5,38 +5,66 @@
 //  Created by EXIST on 2018/07/15.
 //  Copyright © 2018年 aboon. All rights reserved.
 //
-//TODO:ルーム情報の追加
-import UIKit
 
-class MyCouponListCollectionModel: NSObject {
-    //test data
-    //データベースと仮定
-    var coupons = ["coupon1", "coupon2", "coupon3", "coupon4", "coupon5", "coupon6"]
-    var details = ["detailA", "detailB", "detailC", "detailD", "detailE", "detailF"]
-    var couponImages = [R.image.airplaneSymbol7(), R.image.basketball7(), R.image.animalElement7(), R.image.albumSimple7(), R.image.bin7(), R.image.bookCoverTick7()]
+import UIKit
+import Firebase
+import FirebaseAuth
+import RxSwift
+import RxCocoa
+
+class MyCouponListCollectionModel {
     
-    //data manage
-    var couponlist: [TestCoupon] = []
+    let firUser = Auth.auth().currentUser
     
-    override init() {
-        //TODO: for文を使わない方法で実装(遅いので)
-        for index in 0..<coupons.count{
-            let coupon = TestCoupon(name: coupons[index], detail: details[index], image: couponImages[index])
-            couponlist.append(coupon)
+    lazy var collectionRef = Firestore.firestore().collection("users")
+    let imagesRef = Storage.storage().reference(withPath: "CouponImage")
+    
+    private let couponsSubject = PublishSubject<[MyCoupon]>()
+    var coupons: Observable<[MyCoupon]> { return couponsSubject.asObservable() }
+    
+    private let imagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    var images: Observable<[String : UIImage]> { return imagesRelay.asObservable() }
+    
+    private let isUserNotSignedInSubject = PublishSubject<Bool>()
+    var isUserNotSignedIn: Observable<Bool> { return isUserNotSignedInSubject.asObservable() }
+    
+    init() {
+        
+        guard let firUser = firUser else {
+            isUserNotSignedInSubject.onNext(true)
+            return
+        }
+        
+        collectionRef = collectionRef.document(firUser.uid).collection("myCoupons")
+        
+        self.collectionRef.whereField("isPublic", isEqualTo: true).whereField("isUsed", isEqualTo: false).getDocuments { [weak self] (snapshot, error) in
+            guard let snapshot = snapshot, let `self` = self else { return }
+            let coupons = snapshot.documents.map { document -> MyCoupon in
+                let data = document.data()
+                let imagePath = data["imagePath"] as! String
+                let name = data["name"] as! String
+                let description = data["description"] as! String
+                let minimum = data["minimum"] as! Int
+                let isAvailable = data["isAvailable"] as! Bool
+                let roomId = data["roomId"] as! String
+                
+                return MyCoupon(imagePath: imagePath, name: name, description: description, minimum: minimum, isAvailable: isAvailable, roomId: roomId)
+            }
+            self.couponsSubject.onNext(coupons)
+            coupons.forEach({ [weak self] (coupon) in
+                guard let `self` = self else { return }
+                self.fetchImage(coupon.imagePath)
+            })
+        }
+    }
+    
+    func fetchImage (_ imagePath: String) {
+        self.imagesRef.child(imagePath).getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
+            guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
+            var temp = self.imagesRelay.value
+            temp[imagePath] = image
+            self.imagesRelay.accept(temp)
         }
     }
 }
-extension MyCouponListCollectionModel: UICollectionViewDataSource{
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coupons.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponListCollectionCell", for: indexPath) as! CouponListCollectionViewCell
-        cell.couponNameLabel.text = couponlist[indexPath.row].name
-//        cell.couponDetailLabel.text = couponlist[indexPath.row].detail
-        cell.couponImageView.image = couponlist[indexPath.row].image
-        return cell
-    }
-}
+

@@ -45,6 +45,8 @@ class EditProfileView: UIView {
         
         super.init(frame: frame)
         
+        backgroundColor = .white
+        
         setUpDOBPicker()
         
     }

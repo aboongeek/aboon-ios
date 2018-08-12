@@ -23,13 +23,12 @@ class TabBarController: UITabBarController {
         let myCouponNavigationController = NavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
         
         categoryNavigationController.viewControllers = [CategoryViewController()]
-        myCouponNavigationController.viewControllers = [MyCouponViewController(withTitle: "マイクーポン")]
+        myCouponNavigationController.viewControllers = [MyCouponListViewController()]
         
         categoryNavigationController.tabBarItem.image = R.image.home7()
         myCouponNavigationController.tabBarItem.image = R.image.wallet7()
         
         setViewControllers([categoryNavigationController, myCouponNavigationController], animated: false)
-        
     }
 
     override func didReceiveMemoryWarning() {

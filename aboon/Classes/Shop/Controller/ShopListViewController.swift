@@ -26,7 +26,6 @@ class ShopListViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
         
-        self.hidesBottomBarWhenPushed = true
     }
     
     override func loadView() {

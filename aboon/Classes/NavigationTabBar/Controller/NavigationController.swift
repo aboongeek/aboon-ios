@@ -20,7 +20,7 @@ class NavigationController: UINavigationController {
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.view, forMenu: .right )
         SideMenuManager.default.menuPresentMode = .menuSlideIn
-        SideMenuManager.menuFadeStatusBar = false
+        SideMenuManager.default.menuFadeStatusBar = false
     }
     
     

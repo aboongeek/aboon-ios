@@ -54,10 +54,13 @@ class CouponListViewController: UIViewController {
         
         dataSource
             .selectedCoupon
-            .drive(onNext: { [weak self] coupon in
+            .drive(onNext: { [weak self] (coupon, image) in
                 guard let `self` = self, let navigationController = self.navigationController else { return }
                 //遷移処理
+                let couponRoomViewController = CouponRoomViewController(ofCoupon: (coupon, image))
+                navigationController.pushViewController(couponRoomViewController, animated: true)
             })
+            .disposed(by: disposeBag)
         
         couponlistCollectionView.delegate = dataSource
     }
@@ -105,12 +108,14 @@ class CouponListViewDataSource: NSObject, UICollectionViewDataSource, RxCollecti
     }
     
     //UICollectionViewDelegate
-    private let selectedCouponSubject = PublishSubject<Coupon>()
-    var selectedCoupon: Driver<Coupon> { return selectedCouponSubject.asDriver(onErrorDriveWith: Driver.empty()) }
+    private let selectedCouponSubject = PublishSubject<(Coupon, UIImage)>()
+    var selectedCoupon: Driver<(Coupon, UIImage)> { return selectedCouponSubject.asDriver(onErrorDriveWith: Driver.empty()) }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let image = images[items[indexPath.row].imagePath] else { return }
+        
         collectionView.deselectItem(at: indexPath, animated: true)
-        selectedCouponSubject.onNext(items[indexPath.row])
+        selectedCouponSubject.onNext((items[indexPath.row], image))
     }
 
     

@@ -13,7 +13,7 @@ class NavigationBar: UINavigationBar {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.tintColor = .white
-        self.barTintColor = UIColor(hex: "FF7856")
+        self.barTintColor = UIColor(hex: "FF5C5C")
         self.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.isTranslucent = false
     }

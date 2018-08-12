@@ -18,6 +18,9 @@ PODS:
     - FirebaseAnalytics (= 5.0.1)
   - Firebase/CoreOnly (5.3.0):
     - FirebaseCore (= 5.0.4)
+  - Firebase/DynamicLinks (5.3.0):
+    - Firebase/Core
+    - FirebaseDynamicLinks (= 3.0.1)
   - Firebase/Firestore (5.3.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (= 0.12.4)
@@ -34,6 +37,8 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (5.0.4):
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseDynamicLinks (3.0.1):
+    - FirebaseAnalytics (~> 5.0)
   - FirebaseFirestore (0.12.4):
     - FirebaseCore (~> 5.0)
     - FirebaseFirestore/abseil-cpp (= 0.12.4)
@@ -102,6 +107,7 @@ DEPENDENCIES:
   - Alamofire-SwiftyJSON (~> 3.0.0)
   - Firebase/Auth (~> 5.3.0)
   - Firebase/Core (~> 5.3.0)
+  - Firebase/DynamicLinks (~> 5.3.0)
   - Firebase/Firestore (~> 5.3.0)
   - Firebase/Storage (~> 5.3.0)
   - Kingfisher (~> 4.8.0)
@@ -123,6 +129,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseAuth
     - FirebaseCore
+    - FirebaseDynamicLinks
     - FirebaseFirestore
     - FirebaseInstanceID
     - FirebaseStorage
@@ -155,6 +162,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
   FirebaseAuth: 463b8ce33bd5d05f706dcd4615499e3212b4132b
   FirebaseCore: 62f1b792a49bb9e8b4073f24606d2c93ffc352f0
+  FirebaseDynamicLinks: d624a7adc81a8fd70d52be5a6a47a2bc0644b923
   FirebaseFirestore: 53f6fe858494c39dbfd5237655e0641152a88c89
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
@@ -178,6 +186,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
 
-PODFILE CHECKSUM: b5553a9a8c1da12ef5e2fa74528d3e3c7fcdf5c5
+PODFILE CHECKSUM: b1e3cc97c00606c2503d5b4ef96d2edbd7ef1158
 
 COCOAPODS: 1.5.3

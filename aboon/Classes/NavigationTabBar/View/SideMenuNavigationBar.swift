@@ -11,7 +11,7 @@ import SideMenu
 
 extension UINavigationBar {
     func setColor() {
-        self.barTintColor = UIColor(hex: "FF7856")
+        self.barTintColor = UIColor(hex: "FF5C5C")
         self.isTranslucent = false
         self.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
     }

@@ -11,12 +11,6 @@ import Firebase
 import RxSwift
 import RxCocoa
 
-struct Category {
-    let path: String
-    let displayName: String
-    let imagePath: String
-}
-
 class CategoryCollectionModel {
     
     static let categoriesRef = Firestore.firestore().collection("categories")
