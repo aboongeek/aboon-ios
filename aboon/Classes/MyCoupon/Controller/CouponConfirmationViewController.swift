@@ -14,17 +14,22 @@ class CouponConfirmationViewController: UIViewController {
 
     let disposeBag = DisposeBag()
     
-    let myCoupon: MyCoupon
+    let coupon: Coupon
+    let roomId: String
     let image: UIImage
     
     lazy var couponConfirmationView = CouponConfirmationView()
     lazy var model = CouponConfirmationModel()
     
-    init(myCoupon: MyCoupon, image: UIImage) {
-        self.myCoupon = myCoupon
+    init(coupon: Coupon, roomId: String, image: UIImage) {
+        self.coupon = coupon
+        self.roomId = roomId
         self.image = image
         
         super.init(nibName: nil, bundle: nil)
+        
+        self.modalPresentationStyle = .overCurrentContext
+        
     }
     
     override func loadView() {
@@ -34,18 +39,25 @@ class CouponConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        couponConfirmationView.configure(coupon: myCoupon, image: image)
+        couponConfirmationView.configure(coupon: coupon, image: image)
         
         couponConfirmationView
-            .useCouponPressed
+            .couponConfirmed
             .subscribe(onNext: { [weak self] (isPressed) in
                 guard let `self` = self else { return }
                 if isPressed {
-                    self.model.useCoupon(roomId: self.myCoupon.roomId)
-                    self.dismiss(animated: true, completion: { [weak self] in
-                        guard let `self` = self, let navigationController = self.navigationController else { return }
-                        navigationController.popToRootViewController(animated: true)
-                    })
+                    self.model.useCoupon(roomId: self.roomId)
+                    guard let presentingViewController = self.presentingViewController else {
+                        return
+                    }
+                    
+                    let confirmedAlert = UIAlertController(title: "完了", message: "クーポンが承認されました！aboonのまたのご利用をお待ちしております！", preferredStyle: .alert)
+                    confirmedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                        self.dismiss(animated: true, completion: {
+                            (presentingViewController as! NavigationController).popToRootViewController(animated: true)
+                        })
+                    }))
+                    self.present(confirmedAlert, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)

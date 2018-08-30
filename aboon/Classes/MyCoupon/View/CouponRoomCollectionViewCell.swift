@@ -10,20 +10,29 @@ import UIKit
 
 class CouponRoomCollectionViewCell: UICollectionViewCell {
     
-    let nameLabel = UILabel()
-    let colorView = UIView()
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var colorView: UIView!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        colorView.backgroundColor = UIColor(hex: "93D3A6")
-        
-        addSubview(nameLabel)
-        addSubview(colorView)
-        
+    func configure(userName: String) {
+        nameLabel.text = userName
+        roundEdge()
+        addShadow()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func roundEdge() {
+        self.layer.cornerRadius = 16
+        self.clipsToBounds = true
+        
+        colorView.layer.cornerRadius = colorView.frame.width / 2
+        colorView.clipsToBounds = true
     }
+    
+    func addShadow() {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.16
+        self.layer.shadowOffset = CGSize(width: 0, height: 3)
+        self.layer.shadowRadius = 5
+    }
+
 }

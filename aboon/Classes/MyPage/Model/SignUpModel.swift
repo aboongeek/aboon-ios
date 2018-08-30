@@ -20,7 +20,7 @@ class SignUpModel {
             "userName"      : user.userName,
             "dateOfBirth"   : user.dateOfBirth,
             "gender"        : user.gender.rawValue,
-            "addedAt"       : NSDate()
+            "addedAt"       : Date()
         ]) { (error) in
             if let error = error {
                 dLog("An error has been detected adding a user: \(error)")

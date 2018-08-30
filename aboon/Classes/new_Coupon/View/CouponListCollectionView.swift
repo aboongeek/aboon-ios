@@ -12,21 +12,23 @@ class CouponListCollectionView: UICollectionView {
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        //white → 0.96
-        self.backgroundColor = UIColor(white: 0.96, alpha: 1)
+        self.collectionViewLayout = generateLayout()
+        self.backgroundColor = .clear
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        self.collectionViewLayout = generateLayout()
     }
     
-    func setLayout(){
+    func generateLayout() -> UICollectionViewFlowLayout{
         let flowLayout = UICollectionViewFlowLayout()
-        let margin = CGFloat(frame.width/4)
-        flowLayout.itemSize = CGSize(width: frame.width*7/8, height: frame.height/3)
-        flowLayout.minimumLineSpacing = margin/8
-        flowLayout.sectionInset = UIEdgeInsets(top: margin/8, left: margin, bottom: 0, right: margin)
-        self.collectionViewLayout = flowLayout
+        let widthMargin = CGFloat(20)
+        let heightMargin = CGFloat(16)
+        flowLayout.itemSize = CGSize(width: frame.width - 2 * widthMargin, height: frame.height/3)
+        flowLayout.minimumLineSpacing = heightMargin
+        flowLayout.sectionInset = UIEdgeInsets(top: heightMargin, left: widthMargin, bottom: heightMargin, right: widthMargin)
+        return flowLayout
     }
     
 }

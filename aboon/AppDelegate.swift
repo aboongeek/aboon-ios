@@ -18,14 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dLog("****** DEBUG ******")
         
 //      Firebaseの初期化
-        #if DEBUG
-            let firebasePlist = "GoogleService-Info"
-            dLog("DEBUG SCHEME")
-        #elseif RELEASE
-            let firebasePlist = "GoogleService-Info-Release"
-            dLog("RELEASE SCHEME")
-        #endif
-        
+//        #if DEBUG
+//            let firebasePlist = "GoogleService-Info"
+//            dLog("DEBUG SCHEME")
+//        #else
+//            let firebasePlist = "GoogleService-Info-Release"
+//            dLog("RELEASE SCHEME")
+//        #endif
+        let firebasePlist = "GoogleService-Info"
+
         let firebaseOptions = FirebaseOptions(contentsOfFile: Bundle.main.path(forResource: firebasePlist, ofType: "plist")!)
         FirebaseApp.configure(options: firebaseOptions!)
         
@@ -37,11 +38,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //      Storyboardの代わりにViewControllerのViewをセットする
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = TabBarController()
+        window?.rootViewController = TabBarController(isInvited: false, roomId: nil)
         window?.makeKeyAndVisible()
         
         // Override point for customization after application launch.
         return true
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (dynamicLink, error) in
+            if (dynamicLink != nil) && !(error != nil) {
+                self.handleDynamicLink(dynamicLink)
+            }
+        }
+        
+        return handled
+    }
+    
+//    func application(_ app: UIApplication, open url: URL, options:
+//        [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//        let isDynamicLink = DynamicLinks.dynamicLinks().shouldHandleDynamicLink(fromCustomSchemeURL: url)
+//        if isDynamicLink {
+//            let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)
+//            return handleDynamicLink(dynamicLink)
+//        }
+//        return false
+//    }
+    
+    func handleDynamicLink(_ dynamicLink: DynamicLink?) {
+        guard let dynamicLink = dynamicLink else { return }
+        guard let deepLink = dynamicLink.url else { return }
+        let queryItems = URLComponents(url: deepLink, resolvingAgainstBaseURL: true)?.queryItems
+        let roomId = queryItems?.filter{(item) in item.name == "roomid"}.first?.value
+        if let roomId = roomId {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            let tabbarCnotroller = TabBarController(isInvited: true, roomId: roomId)
+            window?.rootViewController = tabbarCnotroller
+            window?.makeKeyAndVisible()
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

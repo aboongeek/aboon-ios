@@ -8,11 +8,12 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
 import RxSwift
 import RxCocoa
 
 class SignUpViewController: UIViewController {
+    
+    let disposeBag = DisposeBag()
     
     var signUpView: SignUpView
     lazy var model = SignUpModel()
@@ -30,70 +31,123 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setToolbarItems([UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissTapped))], animated: true)
-        
-        signUpView.appendViews()
-        
-        signUpView.applyButton.addTarget(self, action: #selector(applyTapped), for: .touchUpInside)
-        
-    }
-    
-    @objc func dismissTapped() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func applyTapped() {
-        let confirmationAlert = UIAlertController(title: "登録", message: "この内容で登録しますか？", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "登録する", style: .default, handler: {[weak self] (action: UIAlertAction!) in
-            
-            guard let `self` = self,
-                let emailText = self.signUpView.emailTextField.text,
-                let passwordText = self.signUpView.passwordTextField.text
-                else { return }
-            
-            Auth.auth().createUser(withEmail: emailText, password: passwordText, completion:
-                { [weak self] (FirUser, error) in
-                    
-                    guard let `self` = self,
-                        let FirUser = FirUser,
-                        let userNameText = self.signUpView.userNameTextField.text,
-                        let gender = Gender(rawValue: self.signUpView.genderButton.selectedSegmentIndex)
-                        else { return }
-                    let dob = self.signUpView.dobPicker.date
-                    
-                    let user = User(userName: userNameText,
-                                    email: emailText,
-                                    dateOfBirth: dob,
-                                    gender: gender,
-                                    userId: FirUser.user.uid)
-                    
-                    self.model.addUser(user: user)
-                    
-                    let changeRequest = FirUser.user.createProfileChangeRequest()
-                    changeRequest.displayName = user.userName
-                    changeRequest.commitChanges(completion: { (error) in
-                        Auth.auth().signIn(withEmail: emailText, password: passwordText, completion: { (_, error) in
-                            if let error = error {
-                                dLog(error)
-                            } else {
-                                self.dismiss(animated: true, completion: nil)
-                            }
+        signUpView
+            .notifySignUp
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] isTapped in
+                guard let `self` = self else { return }
+                if isTapped {
+                    self.signUpView
+                        .notifySignUpInfo
+                        .asDriver(onErrorDriveWith: Driver.empty())
+                        .drive(onNext: { signUpInfo in
+                            let confirmationAlert = UIAlertController(title: "登録", message: "この内容で登録しますか？「規約に同意し登録する」を押した時点で利用規約、プライバシーポリシーに同意したものとみなされます。", preferredStyle: .alert)
+                            
+                            let okAction = UIAlertAction(title: "規約に同意し登録する", style: .default, handler: {[weak self] (action: UIAlertAction!) in
+                                
+                                guard let `self` = self,
+                                    let emailText = signUpInfo.email,
+                                    let passwordText = signUpInfo.password
+                                    else { return }
+                                
+                                let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                                activityIndicator.frame = self.signUpView.frame
+                                self.signUpView.view?.addSubview(activityIndicator)
+                                activityIndicator.startAnimating()
+                                
+                                Auth.auth().createUser(withEmail: emailText, password: passwordText, completion:
+                                    { [weak self] (FirUser, error) in
+                                        
+                                        guard let `self` = self,
+                                            let FirUser = FirUser,
+                                            let userNameText = signUpInfo.userName,
+                                            let gender = signUpInfo.gender,
+                                            let dob = signUpInfo.dob
+                                            else { return }
+                                        
+                                        if let error = error {
+                                            self.present(AuthErrorHandling.showErrorAlert(from: error as NSError), animated: true, completion: nil)
+                                            activityIndicator.stopAnimating()
+                                            
+                                        } else {
+                                            
+                                            let user = User(userName: userNameText,
+                                                            email: emailText,
+                                                            dateOfBirth: dob,
+                                                            gender: gender,
+                                                            userId: FirUser.user.uid)
+                                            
+                                            self.model.addUser(user: user)
+                                            
+                                            let changeRequest = FirUser.user.createProfileChangeRequest()
+                                            changeRequest.displayName = user.userName
+                                            changeRequest.commitChanges(completion: { (error) in
+                                                Auth.auth().signIn(withEmail: emailText, password: passwordText, completion: { (_, error) in
+                                                    if let error = error {
+                                                        self.present(AuthErrorHandling.showErrorAlert(from: error as NSError), animated: true, completion: nil)
+                                                        activityIndicator.stopAnimating()
+                                                    } else {
+                                                        if let presentingVC = self.presentingViewController {
+                                                            self.dismiss(animated: true, completion: nil)
+                                                            presentingVC.dismiss(animated: true, completion: nil)
+                                                        } else {
+                                                            self.dismiss(animated: true, completion: nil)
+                                                        }
+                                                    }
+                                                })
+                                            })
+                                        }
+                                        
+                                })
+                                
+                            })
+                            
+                            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+                            
+                            confirmationAlert.addAction(okAction)
+                            confirmationAlert.addAction(cancelAction)
+                            
+                            self.present(confirmationAlert, animated: true, completion: nil)
                         })
-                    })
-                    
-                    
-                    
-                })
-            
-        })
+                        .disposed(by: self.disposeBag)
+                }
+            })
+            .disposed(by: disposeBag)
         
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        signUpView
+            .notifyDismiss
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] isTapped in
+                guard let `self` = self else { return }
+                if isTapped {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
         
-        confirmationAlert.addAction(okAction)
-        confirmationAlert.addAction(cancelAction)
+        signUpView
+            .notifyTOS
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] isTapped in
+                guard let `self` = self else { return }
+                if isTapped {
+                    guard let url = URL(string: "https://www.aboon.jp/terms-of-service") else { return }
+                    self.present(WebViewController(url: url), animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
         
-        present(confirmationAlert, animated: true, completion: nil)
+        signUpView
+            .notifyPP
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] isTapped in
+                guard let `self` = self else { return }
+                if isTapped {
+                    guard let url = URL(string: "https://www.aboon.jp/privacy") else { return }
+                    self.present(WebViewController(url: url), animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
 
     }
     

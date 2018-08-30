@@ -15,14 +15,14 @@ class CouponListViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
+    lazy var couponListView = CouponListView()
     let model: CouponListCollectionModel
     lazy var dataSource = CouponListViewDataSource()
     
     //navname
-    private var titleName = String()
+    private let titleName = "クーポン"
     
-    init(shopId: String) {
-        titleName = "クーポン"
+    init(shopId: Int) {
         model = CouponListCollectionModel(shopId: shopId)
         
         super.init(nibName: nil, bundle: nil)
@@ -31,20 +31,18 @@ class CouponListViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = CouponListView()
+        self.view = couponListView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let couponListView = self.view as! CouponListView
         
         self.navigationItem.title = titleName
         
         let couponlistCollectionView = couponListView.initializeCollectionView()
         couponListView.appendCollectionView()
         
-        couponlistCollectionView.register(CouponListCollectionViewCell.self, forCellWithReuseIdentifier: "CouponListCollectionViewCell")
+        couponlistCollectionView.register(UINib(nibName: "CouponListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CouponListCollectionViewCell")
         
         Observable
             .combineLatest(model.coupons, model.images) {CouponListViewDataSource.Element(items: $0, images: $1)}
@@ -55,8 +53,9 @@ class CouponListViewController: UIViewController {
         dataSource
             .selectedCoupon
             .drive(onNext: { [weak self] (coupon, image) in
-                guard let `self` = self, let navigationController = self.navigationController else { return }
-                //遷移処理
+                guard let `self` = self,
+                    let navigationController = self.navigationController else { return }
+                
                 let couponRoomViewController = CouponRoomViewController(ofCoupon: (coupon, image))
                 navigationController.pushViewController(couponRoomViewController, animated: true)
             })
@@ -117,6 +116,4 @@ class CouponListViewDataSource: NSObject, UICollectionViewDataSource, RxCollecti
         collectionView.deselectItem(at: indexPath, animated: true)
         selectedCouponSubject.onNext((items[indexPath.row], image))
     }
-
-    
 }

@@ -10,35 +10,46 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import Firebase
 
 class CouponRoomViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    lazy var couponRoomView = CouponRoomView()
+    lazy var couponRoomView = CouponRoomView(frame: CGRect.zero)
     
     let model: CouponRoomModel
     lazy var dataSource = CouponRoomViewDataSource()
     
-    let coupon: (coupon: Coupon, image: UIImage)
+    var coupon: (coupon: Coupon, image: UIImage)?
+    
+    var isUserInvited: Bool
+    
+    var needsUserStateUpdate = false
     
     //navname
     private var titleName = "クーポン"
     
     init(ofCoupon coupon: (coupon: Coupon, image: UIImage)) {
-        
         self.coupon = coupon
-        
-        model = CouponRoomModel(coupon: coupon.coupon)
+        self.model = CouponRoomModel(coupon: coupon.coupon)
+        self.isUserInvited = false
         
         super.init(nibName: nil, bundle: nil)
     }
     
     init(withRoomId roomId: String, ofCoupon coupon: (coupon: Coupon, image: UIImage)) {
-        
         self.coupon = coupon
+        self.model = CouponRoomModel(withRoomId: roomId, coupon: coupon.coupon)
+        self.isUserInvited = false
         
-        model = CouponRoomModel(withRoomId: roomId, coupon: coupon.coupon)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(withJustRoomId roomId: String) {
+        self.coupon = nil
+        self.model = CouponRoomModel(withJustRoomId: roomId)
+        self.isUserInvited = true
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,19 +62,89 @@ class CouponRoomViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = titleName
-        
-        couponRoomView.appendCouponCollectionView()
-        couponRoomView.appendRoomCollectionView()
-        
-        couponRoomView.couponListCollectionView.register(CouponListCollectionViewCell.self, forCellWithReuseIdentifier: "CouponListCollectionViewCell")
-        couponRoomView.couponListCollectionView.dataSource = self
-        
-        couponRoomView.couponRoomCollectionView.register(CouponRoomCollectionViewCell.self, forCellWithReuseIdentifier: "CouponRoomCollectionViewCell")
+    
+        if let coupon = coupon {
+            setup(coupon: coupon)
+        } else {
+            Observable
+                .combineLatest(model.couponObservable, model.couponImageObservable)
+                .asDriver(onErrorDriveWith: Driver.empty())
+                .drive (
+                    onNext: {[weak self] (coupon, image) in
+                        guard let `self` = self else { return }
+                        self.coupon = (coupon, image)
+                        self.setup(coupon: self.coupon!)
+                    })
+                .disposed(by: disposeBag)
+        }
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.model.setUserListner()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.model.removeUserListner()
+    }
+    
+    func setup(coupon: (coupon : Coupon, image : UIImage)) {
+        couponRoomView.couponRoomCollectionView.register(UINib(nibName: "CouponRoomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CouponRoomCollectionViewCell")
         couponRoomView.couponRoomCollectionView.delegate = dataSource
+        
+        if isUserInvited {
+            couponRoomView
+                .declinePressed
+                .asDriver(onErrorDriveWith: Driver.empty())
+                .drive(onNext: { [weak self] isPressed in
+                    guard let `self` = self, let navigationController = self.navigationController else { return }
+                    if isPressed {
+                        navigationController.popViewController(animated: true)
+                    }
+                })
+                .disposed(by: disposeBag)
+            
+            couponRoomView
+                .aceptPressed
+                .asDriver(onErrorDriveWith: Driver.empty())
+                .drive(onNext: { [weak self] isPressed in
+                    guard let `self` = self else { return }
+                    if isPressed {
+                        if let user = self.model.user {
+                            self.isUserInvited = false
+                            self.model.addMember(member: Member(userName: user.displayName!, userId: user.uid), isOwner: false)
+                        } else {
+                            let signInViewController = SignInViewController()
+                            self.present(signInViewController, animated: true, completion: nil)
+                        }
+                    }
+                })
+                .disposed(by: disposeBag)
+        }
+        
+        model
+            .minimumCheck
+            .subscribe(onNext:  { [weak self] (isOver, numberOfItems) in
+                guard let `self` = self else { return }
+                self.couponRoomView.configure(coupon: coupon.coupon,
+                                              image: coupon.image,
+                                              numberOfItems: numberOfItems,
+                                              isRoomCreated: (self.model.roomId != nil),
+                                              isOver: isOver,
+                                              isInvited: self.isUserInvited)
+            })
+            .disposed(by: disposeBag)
+        
+        model
+            .members
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(couponRoomView.couponRoomCollectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
         
         couponRoomView
             .createCouponPressed
-            .subscribe(onNext: { [weak self] (isPressed) in
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] (isPressed) in
                 guard let `self` = self else { return }
                 
                 if isPressed {
@@ -80,43 +161,40 @@ class CouponRoomViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        model
-            .members
-            .asDriver(onErrorDriveWith: Driver.empty())
-            .drive(couponRoomView.couponRoomCollectionView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
-        model
-            .minimumCheck
-            .subscribe(onNext:  { [weak self] (isOver) in
-                guard let `self` = self else { return }
-                self.couponRoomView.configure(isCreated: (self.model.roomId != nil), isOver: isOver)
-            })
-            .disposed(by: disposeBag)
-        
-        dataSource
+        couponRoomView
             .invitePressed
-            .subscribe(onNext: { [weak self] (isPressed) in
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] (isPressed) in
                 guard let `self` = self else { return }
                 if isPressed {
-                    let invitationURL = ""
-                    let activityController = UIActivityViewController(activityItems: [invitationURL], applicationActivities: nil)
-                    self.present(activityController, animated: true, completion: nil)
+                    self.model.generateShareItems()
                 }
             })
             .disposed(by: disposeBag)
-
+        
+        model
+            .itemsToBeShared
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] items in
+                guard let  `self` = self else { return }
+                let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                self.present(activityController, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        
         couponRoomView
             .useCouponPressed
-            .subscribe(onNext: { [weak self] (isPressed) in
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] (isPressed) in
                 guard let `self` = self else { return }
                 if isPressed {
-                    let couponConfirmationViewController = CouponConfirmationViewController(coupon: self.coupon.coupon, image: self.coupon.image)
+                    guard let roomId = self.model.roomId else { return }
+                    let couponConfirmationViewController = CouponConfirmationViewController(coupon: coupon.coupon, roomId: roomId, image: coupon.image)
                     self.present(couponConfirmationViewController, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)
-     }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -129,20 +207,7 @@ class CouponRoomViewController: UIViewController {
     
 }
 
-extension CouponRoomViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = CouponListCollectionViewCell()
-        cell.configure(name: coupon.coupon.name, description: coupon.coupon.description, image: coupon.image)
-        return cell
-    }
-}
-
-
-class CouponRoomViewDataSource: NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType, UICollectionViewDelegate {
+class CouponRoomViewDataSource: NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType, UICollectionViewDelegateFlowLayout {
     
     //RxCollectionViewDataSourceType
     typealias Element = [Member]
@@ -157,30 +222,19 @@ class CouponRoomViewDataSource: NSObject, UICollectionViewDataSource, RxCollecti
     
     //UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count + 1
+        return items.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (indexPath.row != items.count) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponRoomCollectionViewCell", for: indexPath) as! CouponRoomCollectionViewCell
-            let userName = items[indexPath.row].userName
-            cell.nameLabel.text = userName
-            return cell
-        } else {
-            let cell = CouponRoomInviteViewCell()
-            return cell
-        }
         
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponRoomCollectionViewCell", for: indexPath) as! CouponRoomCollectionViewCell
+        let userName = items[indexPath.row].userName
+        cell.configure(userName: userName)
+        return cell
     }
     
-    //UICollectionViewDelegate
-    private let invitePressedSubject = PublishSubject<Bool>()
-    var invitePressed: Observable<Bool> { return invitePressedSubject.asObservable() }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if (indexPath.row == items.count - 1) {
-            invitePressedSubject.onNext(true)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = collectionView.frame.width - 40
+        let itemSize = CGSize(width: itemWidth, height: 56)
+        return itemSize
     }
-    
 }

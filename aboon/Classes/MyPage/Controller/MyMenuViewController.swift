@@ -8,30 +8,41 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
+import RxSwift
+import RxCocoa
 
 class MyMenuViewController: UIViewController {
-    let model = MyMenuModel()
     
+    let disposeBag = DisposeBag()
+    
+    let model = MyMenuModel()
+    lazy var myMenuView = MyMenuView()
     
     override func loadView() {
-        self.view = MyMenuView()
+        self.view = myMenuView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        myMenuView.appendTableView()
+
+        myMenuView.myMenuTableView.register(MyMenuTableViewCell.self, forCellReuseIdentifier: "MyMenuTableViewCell")
+        myMenuView.myMenuTableView.delegate = self
+        myMenuView.myMenuTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        model.refreshUser()
         
-        self.view.backgroundColor = .white
-        
-        let menuTableview = (self.view as! MyMenuView).createTableView()
-        menuTableview.register(MyMenuTableViewCell.self, forCellReuseIdentifier: "MyMenuTableViewCell")
-        menuTableview.isScrollEnabled = false
-        menuTableview.delegate = self
-        menuTableview.dataSource = self
-        
-        (self.view as! MyMenuView).appendTableView(menuTableview)
-        
-        self.navigationItem.configureBarItems(title: "こんにちは、\(model.userName)さん", navigationController: navigationController)
+        model
+            .userName
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { [weak self] userName in
+                guard let `self` = self else { return }
+                self.navigationItem.title = "こんにちは、\(userName)さん"
+            })
+            .disposed(by: disposeBag)        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,19 +64,31 @@ extension MyMenuViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let navigationController = navigationController else { return }
         
-        if indexPath.row == 0 {
-            if model.user != nil {
-                let editProfileViewcontroller = EditProfileViewController()
-                navigationController.pushViewController(editProfileViewcontroller, animated: true)
-            } else {
+        if indexPath.row == 0 { //Sign In
+            if model.user == nil {
                 let signInViewController = SignInViewController()
                 present(signInViewController, animated: true)
+            } else {
+                let alreadySignedInAlert = UIAlertController(title: "すでにログインしています", message: "あなたはすでにアカウントにログインされています。", preferredStyle: .alert)
+                alreadySignedInAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(alreadySignedInAlert, animated: true)
             }
-        } else if indexPath.row == 1 {
-//            let editProfileViewcontroller = EditProfileViewController()
-//            navigationController.pushViewController(editProfileViewcontroller, animated: true)
+        } else if indexPath.row == 1 { //Sign Out
+            do {
+                try Auth.auth().signOut()
+                model.refreshUser()
+
+                let signedOutAlert = UIAlertController(title: "ログアウト", message: "ログアウトしました。", preferredStyle: .alert)
+                signedOutAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(signedOutAlert, animated: true)
+                
+            } catch let signOutError as NSError {
+                dLog(signOutError.userInfo)
+            }
+        } else if indexPath.row == 2 { //Contact
+            let webViewController = WebViewController(url: URL(string: "https://www.aboon.jp/contact")!)
+            present(webViewController, animated: true, completion: nil)
         }
     }
     

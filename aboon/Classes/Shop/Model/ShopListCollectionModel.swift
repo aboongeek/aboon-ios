@@ -13,69 +13,97 @@ import RxCocoa
 
 class ShopListCollectionModel {
     
-    let collectionRef: CollectionReference
-    let imagesRef: StorageReference
+    let firestore = Firestore.firestore()
+    let storage = Storage.storage()
+    
+    lazy var shopCollectionRef = firestore.collection("shops")
+    lazy var shopImagesRef = storage.reference(withPath: "ShopImages")
+    
+    lazy var featuredCollectionRef = firestore.collection("featured")
+    lazy var featuredImagesRef = storage.reference(withPath: "FeaturedImages")
     
     private let shopSummariesSubject = PublishSubject<[ShopSummary]>()
-    let shopSummaries: Observable<[ShopSummary]>
+    var shopSummaries: Observable<[ShopSummary]> { return shopSummariesSubject.asObservable() }
     
-    let imagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
-    let images: Observable<[String : UIImage]>
+    private let shopImagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    var shopImages: Observable<[String : UIImage]> { return shopImagesRelay.asObservable() }
     
-    init(categoryPath: String) {
+    private let featuredsSubject = PublishSubject<[Featured]>()
+    var featureds: Observable<[Featured]> { return featuredsSubject.asObservable() }
+    
+    private let featuredImagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
+    var featuredImages: Observable<[String : UIImage]> { return featuredImagesRelay.asObservable()}
+
+    
+    init() {
+        fetchShops(of: nil)
+        fetchFeatureds()
+    }
+    
+    init(of featuredId: Int) {
+        fetchShops(of: featuredId)
+    }
+    
+    private let shopSummary = PublishSubject<ShopSummary>()
+    
+    private func fetchShops(of featuredId: Int?) {
         
-        collectionRef = CategoryCollectionModel.categoriesRef.document(categoryPath).collection("shops")
-        imagesRef = Storage.storage().reference(withPath: "ShopImages").child(categoryPath)
+        var query = shopCollectionRef.whereField("isPublic", isEqualTo: true)
+        if let featuredId = featuredId {
+            query = query.whereField("featuredId", isEqualTo: featuredId)
+        }
         
-        shopSummaries = shopSummariesSubject.asObservable()
-        images = imagesRelay.asObservable()
-        
-        self.collectionRef.getDocuments { [weak self] (snapshot, error) in
+        query.addSnapshotListener { [weak self] (snapshot, error) in
             guard let snapshot = snapshot, let `self` = self else { return }
-            let shopSummaries = snapshot.documents.map { document -> ShopSummary in
-                let data = document.data()
-                let imagePath = (data["imagePaths"] as! [String])[0]
-                let id = data["id"] as! String
-                let name = data["name"] as! String
-                
-                return ShopSummary(imagePath: imagePath, id: id, name: name, documentRef: document.reference, storageRef: self.imagesRef)
+            if let error = error {
+                dLog(error)
+            } else {
+                let shopSummaries = snapshot.documents.map { document -> ShopSummary in
+                    let data = document.data()
+                    let imagePath = (data["imagePaths"] as! [String])[0]
+                    let id = data["id"] as! Int
+                    let name = data["name"] as! String
+                    let categoryName = data["categoryName"] as! String
+                    
+                    return ShopSummary(imagePath: imagePath, id: id, name: name, categoryName: categoryName, documentRef: document.reference, storageRef: self.shopImagesRef.child(id.description))
+                }
+                self.shopSummariesSubject.onNext(shopSummaries)
+                shopSummaries.forEach({ [weak self] (shopSummary) in
+                    guard let `self` = self else { return }
+                    self.fetchImage(from: shopSummary.storageRef, withPath: shopSummary.imagePath, imagesRelay: self.shopImagesRelay)
+                })
             }
-            self.shopSummariesSubject.onNext(shopSummaries)
-            shopSummaries.forEach({ [weak self] (shopSummary) in
+            
+        }
+    }
+    
+    private func fetchFeatureds() {
+        featuredCollectionRef.whereField("isPublic", isEqualTo: true).getDocuments { [weak self] (snapshot, error) in
+            guard let snapshot = snapshot, let `self` = self else { return }
+            let featureds = snapshot.documents.map { document -> Featured in
+                let data = document.data()
+                let name = data["name"] as! String
+                let imagePath = data["imagePath"] as! String
+                let id = data["id"] as! Int
+                
+                return Featured(name: name, imagePath: imagePath, id: id)
+            }
+            self.featuredsSubject.onNext(featureds)
+            featureds.forEach({ [weak self] (featured) in
                 guard let `self` = self else { return }
-                self.fetchImage(shopSummary.imagePath)
+                self.fetchImage(from: self.featuredImagesRef.child(featured.id.description), withPath: featured.imagePath, imagesRelay: self.featuredImagesRelay)
             })
         }
     }
     
-    func fetchImage (_ imagePath: String) {
-        self.imagesRef.child(imagePath).getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
-            guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
-            var temp = self.imagesRelay.value
+    private func fetchImage (from ref: StorageReference, withPath imagePath: String, imagesRelay: BehaviorRelay<[String : UIImage]>) {
+        ref.child(imagePath).getData(maxSize: 1 * 2048 * 2048) { (data, error) in
+            guard let data = data, let image = UIImage(data: data) else {
+                return
+            }
+            var temp = imagesRelay.value
             temp[imagePath] = image
-            self.imagesRelay.accept(temp)
+            imagesRelay.accept(temp)
         }
     }
-    
-//
-//    let data = document.data()
-//    let imagePaths = data["imagePaths"] as! [String]
-//    let id = data["id"] as! Int
-//    let name = data["name"] as! String
-//    let address = data["address"] as! String
-//    let webURL = data["webURL"] as! URL
-//    let phone = data["phone"] as! String
-//    let email = data["email"] as! String
-//    let description = data["description"] as! String
-//
-//    return Shop(imagePaths: imagePaths, id: id, name: name, address: address, webURL: webURL, phone: phone, email: email, description: description)
-//
-//
-//
-    
-//    //test data
-//    var shops = ["shop1", "shop2", "shop3", "shop4", "shop5", "shop6"]
-//    var details = ["detailA", "detailB", "detailC", "detailD", "detailE", "detailF"]
-//    var shopImages = [R.image.airplaneSymbol7(), R.image.basketball7(), R.image.animalElement7(), R.image.albumSimple7(), R.image.bin7(), R.image.bookCoverTick7()]
-   
 }

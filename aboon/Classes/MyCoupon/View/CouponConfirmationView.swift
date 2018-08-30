@@ -12,50 +12,60 @@ import RxCocoa
 
 class CouponConfirmationView: UIView {
 
-    let couponView = UIView()
-    let couponImageView = UIImageView()
-    let couponNameLabel = UILabel()
-    let couponDescriptionLabel = UILabel()
-    let couponExpirationLabel = UILabel()
-    let aboonLabel = UILabel()
-    let useCouponButton = UIButton()
-    let dismissButton = UIButton()
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var couponButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
     
     override init(frame: CGRect) {
-        
         super.init(frame: frame)
+        loadNib()
+        self.backgroundColor = .clear
+        self.isOpaque = false
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        loadNib()
+    }
+    
+    private func loadNib() {
+        guard let view = UINib(nibName: "CouponConfirmationView", bundle: nil).instantiate(withOwner: self, options: nil).first as? UIView else {
+            return
+        }
+        addSubview(view)
+        
+        // カスタムViewのサイズを自分自身と同じサイズにする
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+    }
+
     
     func configure(coupon: Coupon, image: UIImage) {
-        couponImageView.image = image
-        couponNameLabel.text = coupon.name
-        couponDescriptionLabel.text = coupon.description
-        aboonLabel.text = "aboon"
-        
-        useCouponButton.setTitle("クーポンを使用する", for: .normal)
-        useCouponButton.addTarget(self, action: #selector(notifyUseCouponPressed), for: .touchUpInside)
-        
-        dismissButton.setImage(R.image.circleX7(), for: .normal)
-        dismissButton.addTarget(self, action: #selector(notifyDismissPressed), for: .touchDown)
-        
+        imageView.image = image
+        nameLabel.text = coupon.name
+        descriptionLabel.text = coupon.description
     }
     
-    private let useCouponPressedRelay = BehaviorRelay<Bool>(value: false)
-    var useCouponPressed: Observable<Bool> { return useCouponPressedRelay.asObservable() }
+    private let couponConfirmedRelay = BehaviorRelay<Bool>(value: false)
+    var couponConfirmed: Observable<Bool> { return couponConfirmedRelay.asObservable() }
     
-    @objc func notifyUseCouponPressed() {
-        useCouponPressedRelay.accept(true)
+    @IBAction func notifyCouponConfirmed() {
+        couponConfirmedRelay.accept(true)
     }
     
     private let dismissPressedRelay = BehaviorRelay<Bool>(value: false)
     var dismissPressed: Observable<Bool> { return dismissPressedRelay.asObservable()}
     
-    @objc func notifyDismissPressed() {
+    @IBAction func notifyDismissPressed() {
         dismissPressedRelay.accept(true)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
     
 }

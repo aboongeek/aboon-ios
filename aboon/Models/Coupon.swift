@@ -9,16 +9,18 @@
 import Foundation
 
 class Coupon {
-    var imagePath = String()
-    var name = String()
-    var description = String()
-    var minimum = Int()
+    var imagePath: String
+    var name: String
+    var description: String
+    var minimum: Int
+    var shopId: Int
     
-    init(imagePath: String, name: String, description: String, minimum: Int) {
+    init(imagePath: String, name: String, description: String, minimum: Int, shopId: Int) {
         self.imagePath = imagePath
         self.name = name
         self.description = description
         self.minimum = minimum
+        self.shopId = shopId
     }
 }
 

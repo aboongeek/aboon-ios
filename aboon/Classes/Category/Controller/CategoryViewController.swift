@@ -46,7 +46,7 @@ class CategoryViewController: UIViewController {
             .selectedCategory
             .drive(onNext: { [weak self] (category) in
                 guard let `self` = self, let navigationController = self.navigationController else { return }
-                let shopListViewController = ShopListViewController(ofCategory: category)
+                let shopListViewController = ShopListViewController()
                 navigationController.pushViewController(shopListViewController, animated: true)
             })
             .disposed(by: disposeBag)

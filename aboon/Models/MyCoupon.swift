@@ -12,10 +12,10 @@ class MyCoupon: Coupon {
     var isAvailable = false
     var roomId = String()
     
-    init(imagePath: String, name: String, description: String, minimum: Int, isAvailable: Bool, roomId: String) {
+    init(imagePath: String, name: String, description: String, minimum: Int, shopId: Int, isAvailable: Bool, roomId: String) {
         self.isAvailable = isAvailable
         self.roomId = roomId
-        super.init(imagePath: imagePath, name: name, description: description, minimum: minimum)
+        super.init(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId)
     }
 }
 

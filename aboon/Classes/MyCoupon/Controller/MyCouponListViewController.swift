@@ -15,11 +15,12 @@ class MyCouponListViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
+    lazy var couponListView = CouponListView()
     let model: MyCouponListCollectionModel
     lazy var dataSource = MyCouponListViewDataSource()
     
     //navname
-    private var titleName = "マイクーポン"
+    private let titleName = "マイクーポン"
     
     init() {
         model = MyCouponListCollectionModel()
@@ -28,34 +29,32 @@ class MyCouponListViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = CouponListView()
+        self.view = couponListView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let myCouponListView = self.view as! CouponListView
+        self.navigationItem.configureBarItems(title: titleName, navigationController: navigationController as! NavigationController)
         
-        self.navigationItem.title = titleName
+        let myCouponlistCollectionView = couponListView.initializeCollectionView()
+        couponListView.appendCollectionView()
         
-        let myCouponlistCollectionView = myCouponListView.initializeCollectionView()
-        myCouponListView.appendCollectionView()
-        
-        myCouponlistCollectionView.register(MyCouponListCollectionViewCell.self, forCellWithReuseIdentifier: "MyCouponListCollectionViewCell")
+        myCouponlistCollectionView.register(UINib(nibName: "MyCouponListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MyCouponListCollectionViewCell")
         
         Observable
             .combineLatest(model.coupons, model.images) {MyCouponListViewDataSource.Element(items: $0, images: $1)}
             .asDriver(onErrorDriveWith: Driver.empty())
             .drive(myCouponlistCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
+
         dataSource
             .selectedCoupon
             .drive(onNext: { [weak self] (myCoupon, image) in
                 guard let `self` = self,
                     let navigationController = self.navigationController
                     else { return }
-                //遷移処理
+
                 let couponRoomViewController = CouponRoomViewController(withRoomId: myCoupon.roomId, ofCoupon: (myCoupon, image))
                 navigationController.pushViewController(couponRoomViewController, animated: true)
             })
@@ -65,15 +64,11 @@ class MyCouponListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        model
-            .isUserNotSignedIn
-            .subscribe(onNext: { [weak self] (isUserNotSignedIn) in
-                guard let `self` = self else { return }
-                if isUserNotSignedIn {
-                    self.present(SignInViewController(), animated: true, completion: nil)
-                }
-            })
-            .disposed(by: disposeBag)
+        model.setUserListner()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        model.removeUserListner()
     }
     
     required init?(coder aDecoder: NSCoder) {

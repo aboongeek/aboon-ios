@@ -15,39 +15,48 @@ class ShopListViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
+    lazy var shopListView = ShopListView()
     let model: ShopListCollectionModel
     lazy var dataSource = ShopListViewDataSource()
     
+    let isBanner: Bool
+    
     private let titleName: String
     
-    init(ofCategory category: Category) {
-        self.model = ShopListCollectionModel(categoryPath: category.path)
-        self.titleName = category.displayName
+    init() {
+        self.model = ShopListCollectionModel()
+        self.titleName = "aboon"
+        self.isBanner = true
 
         super.init(nibName: nil, bundle: nil)
         
     }
     
+    init(of featured: Featured) {
+        self.model = ShopListCollectionModel(of: featured.id)
+        self.titleName = featured.name
+        self.isBanner = false
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     override func loadView() {
-        self.view = ShopListView()
+        self.view = shopListView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let shopListView = self.view as! ShopListView
+        self.navigationItem.configureBarItems(title: titleName, navigationController: navigationController as! NavigationController)
         
-        self.navigationItem.title = titleName
+        shopListView.appendViews()
         
-        let shopListCollectionView = shopListView.initializeShopListView()
-        shopListView.appendCollectionView()
-        
-        shopListCollectionView.register(ShopListCollectionViewCell.self, forCellWithReuseIdentifier: "ShopListCollectionCell")
+        shopListView.shopListCollectionView.register(UINib(nibName: "ShopListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ShopListCollectionViewCell")
         
         Observable
-            .combineLatest(model.shopSummaries, model.images) {ShopListViewDataSource.Element(items: $0, images: $1)}
+            .combineLatest(model.shopSummaries, model.shopImages) {ShopListViewDataSource.Element(items: $0, images: $1)}
             .asDriver(onErrorDriveWith: Driver.empty())
-            .drive(shopListCollectionView.rx.items(dataSource: dataSource))
+            .drive(shopListView.shopListCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         dataSource
@@ -58,8 +67,43 @@ class ShopListViewController: UIViewController {
                 navigationController.pushViewController(shopDetailViewController, animated: true)
             })
             .disposed(by: disposeBag)
+        
+        shopListView.shopListCollectionView.delegate = dataSource
+        
+        if isBanner {
+            shopListView.bannerShown()
+            
+            guard let banner = shopListView.banner else { return }
+            
+            banner.scrollView.delegate = self
+            
+            model
+                .featureds
+                .asDriver(onErrorDriveWith: Driver.empty())
+                .drive(onNext: { (featureds) in
+                    banner.configure(featured: featureds)
+                })
+                .disposed(by: disposeBag)
+            
+            model
+                .featuredImages
+                .asDriver(onErrorDriveWith: Driver.empty())
+                .drive(onNext: { (images) in
+                    banner.addImages(images)
+                })
+                .disposed(by: disposeBag)
+            
+            banner
+                .selectedItem
+                .asDriver(onErrorDriveWith: Driver.empty())
+                .drive(onNext: { [weak self] featured in
+                    guard let `self` = self, let navigationController = self.navigationController else { return }
+                    let shopListViewController = ShopListViewController(of: featured)
+                    navigationController.pushViewController(shopListViewController, animated: true)
+                })
+                .disposed(by: disposeBag)
+        }
 
-        shopListCollectionView.delegate = dataSource
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +115,16 @@ class ShopListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension ShopListViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let banner = shopListView.banner else { return }
+            
+        let currentPage = lround(Double(scrollView.contentOffset.x / scrollView.frame.width))
+        
+        banner.pageControl.currentPage = currentPage
+    }
 }
 
 class ShopListViewDataSource: NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType, UICollectionViewDelegate {
@@ -98,11 +152,11 @@ class ShopListViewDataSource: NSObject, UICollectionViewDataSource, RxCollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopListCollectionCell", for: indexPath) as! ShopListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopListCollectionViewCell", for: indexPath) as! ShopListCollectionViewCell
         if let image = images[items[indexPath.row].imagePath] {
-            cell.configure(text: items[indexPath.row].name, image: image)
+            cell.configure(shopName: items[indexPath.row].name, categoryName: items[indexPath.row].categoryName, image: image)
         } else {
-            cell.configure(text: items[indexPath.row].name, image: UIImage())
+            cell.configure(shopName: items[indexPath.row].name, categoryName: items[indexPath.row].categoryName, image: UIImage())
         }
         return cell
     }
@@ -115,8 +169,7 @@ class ShopListViewDataSource: NSObject, UICollectionViewDataSource, RxCollection
         collectionView.deselectItem(at: indexPath, animated: true)
         
         selectedShopSubject.onNext(items[indexPath.row])
-//        let shopDetailViewController = ShopDetailViewController(withTitle: model.shops[indexPath.row])
-//        self.navigationController?.pushViewController(shopDetailViewController, animated: true)
     }
 }
+
 

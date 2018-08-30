@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 
 class CouponListCollectionModel {
+    
     let collectionRef: CollectionReference
     let imagesRef: StorageReference
     
@@ -21,10 +22,10 @@ class CouponListCollectionModel {
     private let imagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
     let images: Observable<[String : UIImage]>
     
-    init(shopId: String) {
+    init(shopId: Int) {
         
         collectionRef = Firestore.firestore().collection("coupons")
-        imagesRef = Storage.storage().reference(withPath: "CouponImage")
+        imagesRef = Storage.storage().reference(withPath: "CouponImages").child(shopId.description)
         
         coupons = couponsSubject.asObservable()
         images = imagesRelay.asObservable()
@@ -37,8 +38,9 @@ class CouponListCollectionModel {
                 let name = data["name"] as! String
                 let description = data["description"] as! String
                 let minimum = data["minimum"] as! Int
+                let shopId = data["shopId"] as! Int
                 
-                return Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum)
+                return Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId)
             }
             self.couponsSubject.onNext(coupons)
             coupons.forEach({ [weak self] (coupon) in
@@ -49,7 +51,7 @@ class CouponListCollectionModel {
     }
     
     func fetchImage (_ imagePath: String) {
-        self.imagesRef.child(imagePath).getData(maxSize: 1 * 1024 * 1024) { [weak self] (data, error) in
+        self.imagesRef.child(imagePath).getData(maxSize: 1 * 2048 * 2048) { [weak self] (data, error) in
             guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
             var temp = self.imagesRelay.value
             temp[imagePath] = image

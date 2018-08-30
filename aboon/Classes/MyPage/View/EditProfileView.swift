@@ -51,6 +51,26 @@ class EditProfileView: UIView {
         
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+//        super.init(coder: aDecoder)
+    }
+    
+    private func loadNib() {
+        guard let view = UINib(nibName: "EditProfileView", bundle: nil).instantiate(withOwner: self, options: nil).first as? UIView else {
+            return
+        }
+        addSubview(view)
+        
+        // カスタムViewのサイズを自分自身と同じサイズにする
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        
+    }
+    
     func appendViews() {
         addSubview(stackView)
     }
@@ -97,8 +117,6 @@ class EditProfileView: UIView {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
 
 }

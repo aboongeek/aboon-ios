@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShopListCollectionViewCell" id="QUp-D2-E45" customClass="ShopListCollectionViewCell" customModule="aboon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BkZ-ei-BEl">
+                        <rect key="frame" x="0.0" y="0.0" width="195" height="195"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzG-C5-u9T">
+                        <rect key="frame" x="195" y="88" width="219" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvX-x2-zHc">
+                        <rect key="frame" x="369" y="166.5" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="BkZ-ei-BEl" secondAttribute="bottom" id="0ae-LM-V4i"/>
+                <constraint firstAttribute="trailing" secondItem="pvX-x2-zHc" secondAttribute="trailing" constant="14" id="LZt-qG-X49"/>
+                <constraint firstAttribute="bottom" secondItem="pvX-x2-zHc" secondAttribute="bottom" constant="14" id="TSY-EZ-ITc"/>
+                <constraint firstAttribute="trailing" secondItem="XzG-C5-u9T" secondAttribute="trailing" id="VQT-9A-mhb"/>
+                <constraint firstItem="BkZ-ei-BEl" firstAttribute="width" secondItem="l5i-8l-6JX" secondAttribute="height" id="YFF-SK-fNJ"/>
+                <constraint firstItem="XzG-C5-u9T" firstAttribute="leading" secondItem="BkZ-ei-BEl" secondAttribute="trailing" id="aH5-u9-mTB"/>
+                <constraint firstItem="BkZ-ei-BEl" firstAttribute="leading" secondItem="QUp-D2-E45" secondAttribute="leading" id="buu-49-WEH"/>
+                <constraint firstItem="BkZ-ei-BEl" firstAttribute="top" secondItem="QUp-D2-E45" secondAttribute="top" id="kWh-RI-MOe"/>
+                <constraint firstItem="XzG-C5-u9T" firstAttribute="centerY" secondItem="QUp-D2-E45" secondAttribute="centerY" id="plD-Yt-5xD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="l5i-8l-6JX"/>
+            <size key="customSize" width="414" height="353"/>
+            <connections>
+                <outlet property="categoryLabel" destination="pvX-x2-zHc" id="gLF-gH-gRw"/>
+                <outlet property="shopImageView" destination="BkZ-ei-BEl" id="NUP-VT-aiV"/>
+                <outlet property="shopNameLabel" destination="XzG-C5-u9T" id="LZn-BC-fgR"/>
+            </connections>
+            <point key="canvasLocation" x="146" y="205.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

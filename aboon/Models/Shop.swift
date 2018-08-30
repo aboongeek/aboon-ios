@@ -9,14 +9,14 @@ import Foundation
 
 struct Shop {
     var imagePaths: [String]
-    var id: String
+    var id: Int
     var name: String
     var address: String
     var businessHours: String
-    var webURL: URL
-    var FBURL: URL
-    var instaURL: URL
-    var phone: String
-    var email: String
+    var webURL: String?
+    var fbURL: String?
+    var instaURL: String?
+    var phone: String?
+    var email: String?
     var description: String
 }

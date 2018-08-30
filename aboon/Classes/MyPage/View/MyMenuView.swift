@@ -9,29 +9,22 @@
 import UIKit
 
 class MyMenuView: UIView {
-    var myMenuTableView: MyMenuTableView!
+    var myMenuTableView: UITableView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = UIScreen.main.bounds
+        self.backgroundColor = .white
     }
     
-    public func appendTableView(_ tableView: UITableView) {
-        self.addSubview(tableView)
-        dLog("MyMenuTableView Appended")
+    public func appendTableView() {
+        myMenuTableView = UITableView(frame: self.bounds, style: .plain)
+        myMenuTableView.isScrollEnabled = false
+        myMenuTableView.separatorStyle = .none
+        self.addSubview(myMenuTableView)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    public func createTableView() -> MyMenuTableView {
-        myMenuTableView = MyMenuTableView(frame: self.bounds, style: UITableViewStyle.plain)
-        return myMenuTableView
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        myMenuTableView.setLayout()
     }
 }

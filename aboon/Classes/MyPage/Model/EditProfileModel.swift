@@ -30,9 +30,8 @@ class EditProfileModel {
         }
         
         collectionRef.document(FirUser.uid).getDocument { [weak self] (snapshot, error) in
-            guard let `self` = self, let snapshot = snapshot, let data = snapshot.data() else { return }
+            guard let `self` = self, let snapshot = snapshot, let data = snapshot.data(), let email = FirUser.email else { return }
             let userName = data["userName"] as! String
-            let email = data["email"] as! String
             let dateOfBirth = data["dateOfBirth"] as! Date
             let gender = data["gender"] as! Gender
             let user = User(userName: userName, email: email, dateOfBirth: dateOfBirth, gender: gender, userId: FirUser.uid)

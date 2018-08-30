@@ -14,13 +14,17 @@ class ShopDetailViewController: UIViewController {
 
     let disposeBag = DisposeBag()
     
+    lazy var shopDetailView = ShopDetailView(frame: CGRect.zero)
     let model: ShopDetailModel
+    
+    let shopId: Int
     
     private let titleName: String
     
     init(ofShop shop: ShopSummary) {
         self.model = ShopDetailModel(shopRef: shop.documentRef, storageRef: shop.storageRef)
         self.titleName = "ショップ"
+        self.shopId = shop.id
         
         super.init(nibName: nil, bundle: nil)
         
@@ -28,7 +32,7 @@ class ShopDetailViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = ShopDetailView()
+        self.view = shopDetailView
     }
     
     override func viewDidLoad() {
@@ -38,32 +42,43 @@ class ShopDetailViewController: UIViewController {
         
         self.navigationItem.title = titleName
         
-        view.appendSubViews()
+        view.scrollView.delegate = self
         
-        Observable
-            .combineLatest(model.shop, model.images)
+        model
+            .shop
             .asDriver(onErrorDriveWith: Driver.empty())
-            .drive(onNext: { [weak self] (shop, images) in
+            .drive(onNext: {[weak self] shop in
                 guard let `self` = self else { return }
-                view.configure(shop: shop, shopImages: [UIImage](images.values))
+                view.configure(shop: shop)
                 view.couponButton.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
             })
             .disposed(by: disposeBag)
         
+        model
+            .images
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(onNext: { imageWithIndex in
+                view.scrollView.addImage(imageWithIndex)
+            })
+            .disposed(by: disposeBag)
         
-        self.view.backgroundColor = .white
+        view
+            .descriptionView
+            .urlObservable
+            .subscribe(onNext: { [weak self] (url) in
+                guard let `self` = self else { return }
+                let webViewController = WebViewController(url: url)
+                self.present(webViewController, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     @objc func buttonTapped() {
-        model
-            .shop
-            .asDriver(onErrorDriveWith: Driver.empty())
-            .drive(onNext: { [weak self] shop in
-            guard let `self` = self, let navigationController = self.navigationController else { return }
-            let couponListViewController = CouponListViewController(shopId: shop.id)
-            navigationController.pushViewController(couponListViewController, animated: true)
-        })
-        .disposed(by: disposeBag)
+       
+        guard let navigationController = self.navigationController else { return }
+        let couponListViewController = CouponListViewController(shopId: shopId)
+        navigationController.pushViewController(couponListViewController, animated: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,4 +90,11 @@ class ShopDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension ShopDetailViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentPage = lround(Double(shopDetailView.scrollView.contentOffset.x / scrollView.frame.width))
+        shopDetailView.pageControl.currentPage = currentPage
+    }
 }

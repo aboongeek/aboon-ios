@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShopDetailDescriptionView" customModule="aboon" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="pWP-KL-AoK" id="4fk-BI-wUJ"/>
+                <outlet property="businessHoursLabel" destination="QVI-3L-RdV" id="3L0-Sc-uhR"/>
+                <outlet property="descriptionView" destination="0ag-c3-25L" id="NUg-bh-szX"/>
+                <outlet property="emailTextView" destination="5QK-6h-9O7" id="pIY-AR-stP"/>
+                <outlet property="fbURLButton" destination="nWx-Bs-5Kl" id="4Xu-q7-1vz"/>
+                <outlet property="instaURLButton" destination="zaC-UJ-tdA" id="Cq5-Bd-JfF"/>
+                <outlet property="nameLabel" destination="e0A-Nb-AhL" id="kQ6-tX-kfK"/>
+                <outlet property="phoneTextView" destination="KKz-UQ-9D3" id="fef-W4-phS"/>
+                <outlet property="shopInfoLabel" destination="HUs-d3-lUo" id="25p-iV-g6M"/>
+                <outlet property="webURLButton" destination="VuR-Hv-qZM" id="iv0-En-jwl"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ZmD-mz-Hec">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0A-Nb-AhL">
+                    <rect key="frame" x="167.5" y="22" width="39.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店舗詳細" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUs-d3-lUo">
+                    <rect key="frame" x="158.5" y="53.5" width="57.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWP-KL-AoK">
+                    <rect key="frame" x="165" y="90.5" width="45.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="business hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVI-3L-RdV">
+                    <rect key="frame" x="145" y="107" width="85.5" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VuR-Hv-qZM">
+                    <rect key="frame" x="126.5" y="133.5" width="24" height="24"/>
+                    <state key="normal" image="website"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWx-Bs-5Kl">
+                    <rect key="frame" x="175.5" y="134" width="24" height="24"/>
+                    <state key="normal" image="facebook"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaC-UJ-tdA">
+                    <rect key="frame" x="224.5" y="134" width="24" height="24"/>
+                    <state key="normal" image="instagram"/>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="aboon@aboon.jp" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5QK-6h-9O7">
+                    <rect key="frame" x="10" y="166" width="355" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ItB-AZ-V13"/>
+                    </constraints>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="09012345678" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KKz-UQ-9D3">
+                    <rect key="frame" x="10" y="196" width="355" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="615-e1-ibu"/>
+                    </constraints>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                </textView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0ag-c3-25L">
+                    <rect key="frame" x="36" y="236.5" width="303" height="330.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="0ag-c3-25L" firstAttribute="centerX" secondItem="ZmD-mz-Hec" secondAttribute="centerX" id="1Mt-PJ-7Ug"/>
+                <constraint firstItem="miR-L4-lKn" firstAttribute="trailing" secondItem="KKz-UQ-9D3" secondAttribute="trailing" constant="10" id="2R1-sc-Sfc"/>
+                <constraint firstItem="miR-L4-lKn" firstAttribute="trailing" secondItem="0ag-c3-25L" secondAttribute="trailing" constant="36" id="6NM-UO-3ZN"/>
+                <constraint firstItem="nWx-Bs-5Kl" firstAttribute="centerY" secondItem="VuR-Hv-qZM" secondAttribute="centerY" id="7oL-qs-dAD"/>
+                <constraint firstItem="miR-L4-lKn" firstAttribute="trailing" secondItem="5QK-6h-9O7" secondAttribute="trailing" constant="10" id="9PM-sV-3rX"/>
+                <constraint firstItem="pWP-KL-AoK" firstAttribute="centerX" secondItem="ZmD-mz-Hec" secondAttribute="centerX" id="9k9-kJ-9ds"/>
+                <constraint firstItem="zaC-UJ-tdA" firstAttribute="leading" secondItem="nWx-Bs-5Kl" secondAttribute="trailing" constant="25" id="9pF-BN-nJz"/>
+                <constraint firstItem="zaC-UJ-tdA" firstAttribute="centerY" secondItem="nWx-Bs-5Kl" secondAttribute="centerY" id="AXg-Qh-qd7"/>
+                <constraint firstItem="5QK-6h-9O7" firstAttribute="leading" secondItem="miR-L4-lKn" secondAttribute="leading" constant="10" id="Ac2-yx-UMZ"/>
+                <constraint firstItem="5QK-6h-9O7" firstAttribute="top" secondItem="nWx-Bs-5Kl" secondAttribute="bottom" constant="8" id="B3j-Bd-mKK"/>
+                <constraint firstItem="e0A-Nb-AhL" firstAttribute="top" secondItem="ZmD-mz-Hec" secondAttribute="top" constant="22" id="C6g-gc-8Ew"/>
+                <constraint firstItem="pWP-KL-AoK" firstAttribute="top" secondItem="HUs-d3-lUo" secondAttribute="bottom" constant="20" id="FnA-Qy-UQ1"/>
+                <constraint firstItem="HUs-d3-lUo" firstAttribute="centerX" secondItem="ZmD-mz-Hec" secondAttribute="centerX" id="LlD-yR-GgF"/>
+                <constraint firstItem="0ag-c3-25L" firstAttribute="leading" secondItem="miR-L4-lKn" secondAttribute="leading" constant="36" id="VCY-hd-hBn"/>
+                <constraint firstItem="HUs-d3-lUo" firstAttribute="top" secondItem="e0A-Nb-AhL" secondAttribute="bottom" constant="12" id="WYE-0B-eGE"/>
+                <constraint firstItem="nWx-Bs-5Kl" firstAttribute="leading" secondItem="VuR-Hv-qZM" secondAttribute="trailing" constant="25" id="Xue-PE-Pee"/>
+                <constraint firstItem="QVI-3L-RdV" firstAttribute="top" secondItem="pWP-KL-AoK" secondAttribute="bottom" constant="2" id="gHd-Dv-fat"/>
+                <constraint firstItem="e0A-Nb-AhL" firstAttribute="centerX" secondItem="ZmD-mz-Hec" secondAttribute="centerX" id="hGI-mq-Ywc"/>
+                <constraint firstItem="KKz-UQ-9D3" firstAttribute="leading" secondItem="miR-L4-lKn" secondAttribute="leading" constant="10" id="l9D-bD-m6m"/>
+                <constraint firstItem="0ag-c3-25L" firstAttribute="top" secondItem="KKz-UQ-9D3" secondAttribute="bottom" constant="20" id="mAx-1y-beC"/>
+                <constraint firstItem="nWx-Bs-5Kl" firstAttribute="top" secondItem="QVI-3L-RdV" secondAttribute="bottom" constant="12" id="mYQ-bb-C2G"/>
+                <constraint firstItem="nWx-Bs-5Kl" firstAttribute="centerX" secondItem="ZmD-mz-Hec" secondAttribute="centerX" id="pE1-bX-3lR"/>
+                <constraint firstItem="QVI-3L-RdV" firstAttribute="centerX" secondItem="ZmD-mz-Hec" secondAttribute="centerX" id="pKK-YQ-b0D"/>
+                <constraint firstItem="KKz-UQ-9D3" firstAttribute="top" secondItem="5QK-6h-9O7" secondAttribute="bottom" id="yDA-9S-Q7N"/>
+                <constraint firstItem="miR-L4-lKn" firstAttribute="bottom" secondItem="0ag-c3-25L" secondAttribute="bottom" constant="100" id="zvc-4q-E4u"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="miR-L4-lKn"/>
+            <point key="canvasLocation" x="70.5" y="-165.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="facebook" width="24" height="24"/>
+        <image name="instagram" width="24" height="24"/>
+        <image name="website" width="24" height="24"/>
+    </resources>
+</document>

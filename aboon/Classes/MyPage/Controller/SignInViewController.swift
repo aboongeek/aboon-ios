@@ -8,9 +8,12 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
+import RxSwift
+import RxCocoa
 
 class SignInViewController: UIViewController {
+    
+    let disposeBag = DisposeBag()
     
     var signInView: SignInView
     
@@ -26,31 +29,52 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signInView.appendSubviews()
-        signInView.signUpButton.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
-        signInView.signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
+        signInView
+            .notifySignIn
+            .subscribe(onNext: { [weak self] (signInInfo) in
+                guard let `self` = self else { return }
+
+                if signInInfo.isTapped {
+                    
+                    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                    activityIndicator.frame = self.signInView.frame
+                    self.signInView.view?.addSubview(activityIndicator)
+                    activityIndicator.startAnimating()
+                    
+                    Auth.auth().signIn(withEmail: signInInfo.email, password: signInInfo.password, completion: { (result, error) in
+                        if error != nil {
+                            self.present(AuthErrorHandling.showErrorAlert(from: error! as NSError), animated: true, completion: nil)
+                            activityIndicator.stopAnimating()
+                        } else {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
+                    
+                }
+            })
+            .disposed(by: disposeBag)
         
-    }
-    
-    @objc func dismissTapped() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func signUpTapped() {
-        let signUpViewController = SignUpViewController()
-        present(signUpViewController, animated: true, completion: nil)
-    }
-    
-    @objc func signInTapped() {
-        guard let emailText = signInView.emailTextField.text, let passwordText = signInView.passwordTextField.text else { return }
-        Auth.auth().signIn(withEmail: emailText, password: passwordText) { (_, error) in
-            if let error = error {
-                //エラー処理
-                dLog(error)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
+        signInView
+            .notifySignUp
+            .subscribe(onNext: { [weak self] (isTapped) in
+                guard let `self` = self else { return }
+                if isTapped {
+                    let signUpViewController = SignUpViewController()
+                    self.present(signUpViewController, animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        signInView
+            .notifyDismiss
+            .subscribe(onNext: { [weak self] (isTapped) in
+                guard let `self` = self else { return }
+                if isTapped {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

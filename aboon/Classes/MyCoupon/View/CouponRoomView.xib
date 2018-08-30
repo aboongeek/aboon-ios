@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CouponRoomView" customModule="aboon">
+            <connections>
+                <outlet property="acceptButton" destination="Uo0-aT-Fo0" id="N0u-O6-rYl"/>
+                <outlet property="collectionLayout" destination="0Ga-Zw-XTh" id="QIN-7V-q6H"/>
+                <outlet property="couponDescriptionLabel" destination="8kp-lb-cqv" id="Ivc-lV-e0D"/>
+                <outlet property="couponImageView" destination="deJ-jh-ZJZ" id="WuS-Qo-6rM"/>
+                <outlet property="couponNameLabel" destination="xnC-8b-s2u" id="xpA-fb-VCU"/>
+                <outlet property="couponRoomCollectionView" destination="gkH-3p-Ozr" id="oA0-e8-Vpb"/>
+                <outlet property="couponToInviteConstraint" destination="oDV-K9-bLn" id="9L1-XF-FGs"/>
+                <outlet property="couponView" destination="r00-YP-HkF" id="v03-vV-aYe"/>
+                <outlet property="declineButton" destination="QcV-6J-Fmn" id="4mo-kc-dvR"/>
+                <outlet property="inviteButton" destination="FdA-oE-jdb" id="RUD-ie-K2r"/>
+                <outlet property="issueButton" destination="xuH-5F-PSW" id="XT0-ZZ-JPo"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="VUk-c8-5cI">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gkH-3p-Ozr">
+                    <rect key="frame" x="0.0" y="251.5" width="375" height="339.5"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="10" id="0Ga-Zw-XTh">
+                        <size key="itemSize" width="50" height="56"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="20" minY="16" maxX="20" maxY="16"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r00-YP-HkF">
+                    <rect key="frame" x="20" y="36" width="335" height="215.5"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deJ-jh-ZJZ">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="111.5"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnC-8b-s2u">
+                            <rect key="frame" x="8" y="125.5" width="319" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kp-lb-cqv">
+                            <rect key="frame" x="8" y="155" width="319" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="xnC-8b-s2u" firstAttribute="leading" secondItem="r00-YP-HkF" secondAttribute="leading" constant="8" id="0v1-t5-oYi"/>
+                        <constraint firstItem="deJ-jh-ZJZ" firstAttribute="leading" secondItem="r00-YP-HkF" secondAttribute="leading" id="FDx-YX-sBV"/>
+                        <constraint firstItem="deJ-jh-ZJZ" firstAttribute="top" secondItem="r00-YP-HkF" secondAttribute="top" id="YlJ-pW-JEm"/>
+                        <constraint firstItem="xnC-8b-s2u" firstAttribute="top" secondItem="deJ-jh-ZJZ" secondAttribute="bottom" constant="14" id="aal-5E-slA"/>
+                        <constraint firstItem="deJ-jh-ZJZ" firstAttribute="height" secondItem="r00-YP-HkF" secondAttribute="width" multiplier="1/3" id="eXI-LB-6SE"/>
+                        <constraint firstAttribute="trailing" secondItem="8kp-lb-cqv" secondAttribute="trailing" constant="8" id="jVC-Ap-g9E"/>
+                        <constraint firstItem="8kp-lb-cqv" firstAttribute="top" secondItem="xnC-8b-s2u" secondAttribute="bottom" constant="8" id="kWB-Ua-45d"/>
+                        <constraint firstItem="8kp-lb-cqv" firstAttribute="leading" secondItem="r00-YP-HkF" secondAttribute="leading" constant="8" id="uOS-Cf-DLf"/>
+                        <constraint firstAttribute="trailing" secondItem="xnC-8b-s2u" secondAttribute="trailing" constant="8" id="v82-Sy-OUH"/>
+                        <constraint firstAttribute="trailing" secondItem="deJ-jh-ZJZ" secondAttribute="trailing" id="yFj-B5-Z4h"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdA-oE-jdb">
+                    <rect key="frame" x="20" y="271.5" width="335" height="56"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="nGC-po-t5j"/>
+                    </constraints>
+                    <state key="normal" title="友達を誘う">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="disabled" title="友達を誘う">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="notifyInvitePressed:" destination="-1" eventType="touchUpInside" id="NQw-qC-jqS"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="cJM-c0-xAI">
+                    <rect key="frame" x="20" y="591" width="335" height="56"/>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QcV-6J-Fmn">
+                            <rect key="frame" x="-20" y="-591" width="143.5" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.77647058823529413" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="行かない">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="notifyDeclinePressed:" destination="-1" eventType="touchUpInside" id="0fx-ju-c81"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uo0-aT-Fo0">
+                            <rect key="frame" x="-20" y="-591" width="143.5" height="30"/>
+                            <color key="backgroundColor" red="0.57647058823529407" green="0.82745098039215681" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="行く">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="notifyAcceptPressed:" destination="-1" eventType="touchUpInside" id="YLP-cC-NIZ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Uo0-aT-Fo0" firstAttribute="width" secondItem="QcV-6J-Fmn" secondAttribute="width" id="Ues-D1-jy0"/>
+                        <constraint firstItem="QcV-6J-Fmn" firstAttribute="width" secondItem="cJM-c0-xAI" secondAttribute="width" multiplier="3/7" id="fFD-DE-4iD"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuH-5F-PSW">
+                    <rect key="frame" x="20" y="591" width="335" height="56"/>
+                    <color key="backgroundColor" red="1" green="0.35972637099166671" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="zZr-fe-mna"/>
+                    </constraints>
+                    <state key="normal" title="クーポンを発行する">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="E9h-vh-heE" firstAttribute="trailing" secondItem="cJM-c0-xAI" secondAttribute="trailing" constant="20" id="1YD-X8-8N1"/>
+                <constraint firstItem="E9h-vh-heE" firstAttribute="trailing" secondItem="xuH-5F-PSW" secondAttribute="trailing" constant="20" id="79J-xO-sMh"/>
+                <constraint firstItem="cJM-c0-xAI" firstAttribute="height" secondItem="xuH-5F-PSW" secondAttribute="height" id="9WY-9U-McP"/>
+                <constraint firstItem="E9h-vh-heE" firstAttribute="bottom" secondItem="cJM-c0-xAI" secondAttribute="bottom" constant="20" id="AiX-cW-q84"/>
+                <constraint firstItem="cJM-c0-xAI" firstAttribute="centerX" secondItem="VUk-c8-5cI" secondAttribute="centerX" id="CA6-MX-yUY"/>
+                <constraint firstItem="r00-YP-HkF" firstAttribute="height" secondItem="E9h-vh-heE" secondAttribute="height" multiplier="1/3" id="CF6-xp-Ysj"/>
+                <constraint firstItem="cJM-c0-xAI" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" constant="20" id="HY0-do-f5R"/>
+                <constraint firstItem="E9h-vh-heE" firstAttribute="trailing" secondItem="FdA-oE-jdb" secondAttribute="trailing" constant="20" id="Mry-Oc-V5q"/>
+                <constraint firstItem="xuH-5F-PSW" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" constant="20" id="PjF-Ry-45d"/>
+                <constraint firstItem="gkH-3p-Ozr" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" id="QQs-i9-YO1"/>
+                <constraint firstItem="gkH-3p-Ozr" firstAttribute="top" secondItem="r00-YP-HkF" secondAttribute="bottom" id="aF7-gI-scT"/>
+                <constraint firstItem="E9h-vh-heE" firstAttribute="bottom" secondItem="xuH-5F-PSW" secondAttribute="bottom" constant="20" id="arE-uo-IbU"/>
+                <constraint firstItem="E9h-vh-heE" firstAttribute="trailing" secondItem="gkH-3p-Ozr" secondAttribute="trailing" id="lK2-4g-Eee"/>
+                <constraint firstItem="xuH-5F-PSW" firstAttribute="top" secondItem="gkH-3p-Ozr" secondAttribute="bottom" id="ldA-ql-u2F"/>
+                <constraint firstItem="r00-YP-HkF" firstAttribute="top" secondItem="E9h-vh-heE" secondAttribute="top" constant="16" id="lkE-cz-uyd"/>
+                <constraint firstItem="FdA-oE-jdb" firstAttribute="top" secondItem="r00-YP-HkF" secondAttribute="bottom" constant="20" id="oDV-K9-bLn"/>
+                <constraint firstItem="E9h-vh-heE" firstAttribute="trailing" secondItem="r00-YP-HkF" secondAttribute="trailing" constant="20" id="piF-tA-jaw"/>
+                <constraint firstItem="FdA-oE-jdb" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" constant="20" id="piI-tI-I6T"/>
+                <constraint firstItem="r00-YP-HkF" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" constant="20" id="vFL-rj-jQb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="E9h-vh-heE"/>
+            <point key="canvasLocation" x="-102" y="67"/>
+        </view>
+    </objects>
+</document>

@@ -1,4 +1,4 @@
-//
+ //
 //  CouponRoomModel.swift
 //  aboon
 //
@@ -14,33 +14,69 @@ import RxCocoa
 
 class CouponRoomModel {
     
-    let collectionRef = Firestore.firestore().collection("rooms")
+    let disposeBag = DisposeBag()
+    
+    let roomsRef = Firestore.firestore().collection("rooms")
+    let usersRef = Firestore.firestore().collection("users")
     
     lazy var user = Auth.auth().currentUser
     
     private let membersRelay = BehaviorRelay<[Member]>(value: [Member]())
     var members: Observable<[Member]> { return membersRelay.asObservable() }
     
-    private let minimumCheckSubject = PublishSubject<Bool>()
-    var minimumCheck: Observable<Bool> { return minimumCheckSubject.asObservable() }
+    private let minimumCheckRelay = BehaviorRelay<(Bool, Int)>(value: (false, 0))
+    var minimumCheck: Observable<(Bool, Int)> { return minimumCheckRelay.asObservable() }
+    
+    private let itemsToBeSharedSubject = PublishSubject<[Any]>()
+    var itemsToBeShared: Observable<[Any]> { return itemsToBeSharedSubject.asObservable() }
+    
+    private let couponSubject = PublishSubject<Coupon>()
+    var couponObservable: Observable<Coupon> { return couponSubject.asObservable() }
+    
+    private let couponImageSubject = BehaviorSubject<UIImage>(value: UIImage())
+    var couponImageObservable: Observable<UIImage> { return couponImageSubject.asObservable() }
     
     var roomId: String? = nil
     
-    let coupon: Coupon
+    var coupon: Coupon? = nil
     
+    var handle: AuthStateDidChangeListenerHandle?
     
     init(coupon: Coupon) {
         self.coupon = coupon
         
+        subscribeMembers()
         membersRelay.accept([Member]())
-        minimumCheckSubject.onNext(false)
-        
     }
     
     init(withRoomId roomId: String, coupon: Coupon) {
         self.roomId = roomId
         self.coupon = coupon
-        collectionRef.document(roomId).collection("members").getDocuments { [weak self] (snapshot, error) in
+        
+        subscribeMembers()
+        
+        fetchMembers(isInvited: false)
+    }
+    
+    init(withJustRoomId roomId: String) {
+        self.roomId = roomId
+        
+        fetchMembers(isInvited: true)
+    }
+    
+    func setUserListner() {
+        self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            self.user = user
+        }
+    }
+    
+    func removeUserListner() {
+        Auth.auth().removeStateDidChangeListener(self.handle!)
+    }
+    
+    private func fetchMembers(isInvited: Bool) {
+        guard let roomId = roomId else { return }
+        roomsRef.document(roomId).collection("members").getDocuments { [weak self] (snapshot, error) in
             guard let `self` = self, let snapshot = snapshot else { return }
             
             let members = snapshot.documents.map { document -> Member in
@@ -52,65 +88,134 @@ class CouponRoomModel {
             
             self.membersRelay.accept(members)
             
-            self.checkIfAvailable(members: members)
+            if isInvited {
+                self.fetchCoupon(userId: members[0].userId, roomId: self.roomId!)
+            }
         }
     }
     
+    private func subscribeMembers() {
+        self
+            .members
+            .subscribe(onNext: { [weak self] members in
+                guard let `self` = self else { return }
+                self.checkIfAvailable(members: members)
+            })
+            .disposed(by: disposeBag)
+    }
     
     func createRoom(by member: Member) {
         
-        collectionRef.addDocument(data: ["isAvailable" : false,
-                                         "isUsed" : false])
+        let roomDoc = roomsRef.document()
         
-        let docId = collectionRef.document().documentID
-        
+        let docId = roomDoc.documentID
         self.roomId = docId
         
-        collectionRef.document(docId).collection("members").addDocument(data: ["userId" : member.userId,
-                                                                               "userName" : member.userName])
+        roomDoc.setData(["isAvailable"  : false,
+                         "isUsed"       : false,
+                         "createdAt"    : Date()]) { error in
+                            if let error = error {
+                                dLog((error as NSError).userInfo)
+                            }
+        }
         
-        addToMyCoupon(userId: member.userId, coupon: coupon, roomId: docId)
-        
-        membersRelay.accept([member])
+        addMember(member: member, isOwner: true)
     }
     
-    func addToMyCoupon(userId: String, coupon: Coupon, roomId: String) {
-        Firestore.firestore().collection("users").document(userId).collection("myCoupons").addDocument(data: [
+    func addMember(member: Member, isOwner: Bool) {
+        guard let roomId = roomId else { return }
+        let membersRef = roomsRef.document(roomId).collection("members")
+        membersRef.addDocument(data: ["userId" : member.userId,
+                                      "userName" : member.userName,
+                                      "isOwner" : isOwner,
+                                      "addedAt" : Date()])
+        
+        updateMyCoupon(userId: member.userId, completion: { [weak self] in
+            guard let `self` = self else { return }
+            var newMembers = self.membersRelay.value
+            newMembers.append(member)
+            self.membersRelay.accept(newMembers)
+        })
+    }
+    
+    func generateShareItems() {
+        guard let user = user, let roomId = roomId else { return }
+        guard let link = URL(string: "https://www.aboon.jp/?roomid=\(roomId)") else { return }
+        
+        let dynamicLinkDomain = "aboonApp.page.link"
+        let linkBuilder = DynamicLinkComponents(link: link, domain: dynamicLinkDomain)
+        linkBuilder.iOSParameters = DynamicLinkIOSParameters(bundleID: "jp.aboon.aboonApp")
+        linkBuilder.iOSParameters?.appStoreID = "1424181262"
+        
+        guard let longDynamicLink = linkBuilder.url else { return }
+        
+        DynamicLinkComponents.shortenURL(longDynamicLink, options: nil) { [weak self] url, warnings, error in
+            guard let `self` = self, let url = url, let coupon = self.coupon else { return }
+            let userName = user.displayName!
+            let invitationText = "\(userName)さんから、aboonのクーポン「\(coupon.name)」への招待が届いています。"
+            
+            let activityItems = [url, invitationText] as [Any]
+            self.itemsToBeSharedSubject.onNext(activityItems)
+        }
+    }
+    
+    private func updateMyCoupon(userId: String, completion: @escaping ()->()) {
+        guard let coupon = self.coupon, let roomId = self.roomId else { return }
+        let myCouponRef = usersRef.document(userId).collection("myCoupons").document(roomId)
+        myCouponRef.setData([
             "name"          : coupon.name,
             "imagePath"     : coupon.imagePath,
             "description"   : coupon.description,
             "minimum"       : coupon.minimum,
-            "roomId"        : roomId,
+            "shopId"        : coupon.shopId,
+            "isAvailable"   : false,
             "isUsed"        : false
-            ])
-    }
-    
-    func addMember(member: Member) {
-        guard let roomId = roomId else { return }
-        collectionRef.document(roomId).collection("members").addDocument(data: ["userId" : member.userId,
-                                                                                "userName" : member.userName])
-        var newMembers = membersRelay.value
-        newMembers.append(member)
-        membersRelay.accept(newMembers)
-        
-        checkIfAvailable(members: newMembers)
-    }
-    
-    
-    func checkIfAvailable(members: [Member]) {
-        if members.count >= coupon.minimum {
-            minimumCheckSubject.onNext(true)
-            members.forEach { (member) in
-                Firestore.firestore().collection("users").document(member.userId).setData(["isAvailable" : true])
-            }
-        } else {
-            minimumCheckSubject.onNext(false)
-            members.forEach { (member) in
-                Firestore.firestore().collection("users").document(member.userId).setData(["isAvailable" : false])
+        ]) { error in
+            if let error = error {
+                dLog((error as NSError).userInfo)
+            } else {
+                completion()
+                dLog("a room has been created successfully!")
             }
         }
-        
     }
     
     
+    private func checkIfAvailable(members: [Member]) {
+        guard let coupon = self.coupon, let roomId = self.roomId else { return }
+        let isAvailable = members.count >= coupon.minimum
+        minimumCheckRelay.accept((isAvailable, members.count))
+        if isAvailable {
+            members.forEach { (member) in
+                let myCouponRef = usersRef.document(member.userId).collection("myCoupons").document(roomId)
+                myCouponRef.setData(["isAvailable" : true])
+            }
+        }
+    }
+    
+    func fetchCoupon(userId: String, roomId: String) {
+        let docRef = Firestore.firestore().collection("users").document(userId).collection("myCoupons").document(roomId)
+        docRef.getDocument { [weak self] (document, error) in
+            guard let `self` = self, let document = document, let data = document.data() else { return }
+            let name = data["name"] as! String
+            let imagePath = data["imagePath"] as! String
+            let description = data["description"] as! String
+            let minimum = data["minimum"] as! Int
+            let shopId = data["shopId"] as! Int
+            
+            let coupon = Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId)
+            self.couponSubject.onNext(coupon)
+            self.couponSubject.onCompleted()
+            self.fetchImage(ofShopId: shopId, withPath: imagePath)
+        }
+    }
+    
+    func fetchImage(ofShopId shopId: Int, withPath imagePath: String) {
+        let imageRef = Storage.storage().reference(withPath: "CouponImages").child(shopId.description).child(imagePath)
+        imageRef.getData(maxSize: 1 * 2048 * 2048) { [weak self] (data, error) in
+            guard let `self` = self, let data = data, let image = UIImage(data: data) else { return }
+            self.couponImageSubject.onNext(image)
+            self.couponImageSubject.onCompleted()
+        }
+    }
 }

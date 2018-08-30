@@ -8,28 +8,31 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
+import RxSwift
+import RxCocoa
 
 class MyMenuModel {
     
-    let user = Auth.auth().currentUser
-    var userName = String()
-    let menulist = ["アカウント編集", "カスタマーサービス"]
+    var user = Auth.auth().currentUser
+    let menulist = ["ログイン", "ログアウト", "お問い合わせ"]
     
-    init() {
+    private let userNameRelay = BehaviorRelay<String>(value: String())
+    var userName: Observable<String> { return userNameRelay.asObservable()}
+    
+    func refreshUser() {
+        self.user = Auth.auth().currentUser
+        setUpUserName()
+    }
+    
+    private func setUpUserName() {
         if let user = user {
-            Firestore.firestore().collection("user").document("\(user.uid)").getDocument(completion: { [weak self] (snapshot, error) in
+            Firestore.firestore().collection("users").document("\(user.uid)").getDocument(completion: { [weak self] (snapshot, error) in
                 guard let `self` = self, let snapshot = snapshot, let data = snapshot.data() else { return }
-                self.userName = data["userName"] as! String
+                self.userNameRelay.accept(data["userName"] as! String)
             })
         } else {
-            userName = "ゲスト"
+            userNameRelay.accept("ゲスト")
         }
-
-//        Firestore.firestore().collection("user").whereField("userId", isEqualTo: user.uid).getDocuments { [weak self] (snapshot, error) in
-//            guard let `self` = self, let snapshot = snapshot else { return }
-//            self.userName = snapshot.documents[0].data()["userName"] as! String
-//        }
     }
     
 }

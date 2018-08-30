@@ -7,45 +7,64 @@
 //
 
 import UIKit
+import Firebase
 
 class TabBarController: UITabBarController {
 
+    let isInvited: Bool
+    let roomId: String?
+    
+    init(isInvited: Bool, roomId: String?) {
+        self.isInvited = isInvited
+        self.roomId = roomId
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate = self
         self.tabBar.isTranslucent = false
         addChildViewControllers()
     }
     
     private func addChildViewControllers () {
         
-        let categoryNavigationController = NavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
+        let homeNavigationController = NavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
         let myCouponNavigationController = NavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
         
-        categoryNavigationController.viewControllers = [CategoryViewController()]
+        homeNavigationController.viewControllers = [ShopListViewController()]
         myCouponNavigationController.viewControllers = [MyCouponListViewController()]
         
-        categoryNavigationController.tabBarItem.image = R.image.home7()
+        homeNavigationController.tabBarItem.image = R.image.home7()
         myCouponNavigationController.tabBarItem.image = R.image.wallet7()
         
-        setViewControllers([categoryNavigationController, myCouponNavigationController], animated: false)
+        setViewControllers([homeNavigationController, myCouponNavigationController], animated: false)
+        
+        if isInvited {
+            self.selectedIndex = 1
+            myCouponNavigationController.pushViewController(CouponRoomViewController(withJustRoomId: self.roomId!), animated: false)
+            myCouponNavigationController.topViewController?.hidesBottomBarWhenPushed = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension TabBarController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 1 {
+            if Auth.auth().currentUser == nil {
+                self.present(SignInViewController(), animated: true)
+            }
+        }
     }
-    */
-
 }

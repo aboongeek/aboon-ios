@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CouponRoomCollectionViewCell" id="Wse-6f-Dlq" customClass="CouponRoomCollectionViewCell" customModule="aboon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="237" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="237" height="93"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rme-F6-TcT">
+                        <rect key="frame" x="8" y="0.0" width="165" height="93"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyn-20-YFz">
+                        <rect key="frame" x="193" y="30.5" width="32" height="32"/>
+                        <color key="backgroundColor" red="0.57647058823529407" green="0.82745098039215681" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="Bw6-9b-QHO"/>
+                            <constraint firstAttribute="width" constant="32" id="kDv-yf-N9M"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Pyn-20-YFz" firstAttribute="centerY" secondItem="Wse-6f-Dlq" secondAttribute="centerY" id="LAq-IS-tN4"/>
+                <constraint firstItem="Rme-F6-TcT" firstAttribute="leading" secondItem="Wse-6f-Dlq" secondAttribute="leading" constant="8" id="Xux-ox-Krj"/>
+                <constraint firstItem="Rme-F6-TcT" firstAttribute="top" secondItem="Wse-6f-Dlq" secondAttribute="top" id="arE-uq-sDW"/>
+                <constraint firstItem="Pyn-20-YFz" firstAttribute="leading" secondItem="Rme-F6-TcT" secondAttribute="trailing" constant="20" id="bPN-MS-lyx"/>
+                <constraint firstAttribute="trailing" secondItem="Pyn-20-YFz" secondAttribute="trailing" constant="12" id="i3r-dV-scx"/>
+                <constraint firstAttribute="bottom" secondItem="Rme-F6-TcT" secondAttribute="bottom" id="xMR-mO-QE4"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="wxO-y0-8OS"/>
+            <size key="customSize" width="237" height="93"/>
+            <connections>
+                <outlet property="colorView" destination="Pyn-20-YFz" id="EUs-DU-Ayc"/>
+                <outlet property="nameLabel" destination="Rme-F6-TcT" id="3jp-dc-saJ"/>
+            </connections>
+            <point key="canvasLocation" x="859.5" y="134.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

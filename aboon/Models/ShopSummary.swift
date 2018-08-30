@@ -11,8 +11,9 @@ import Firebase
 
 struct ShopSummary {
     var imagePath: String
-    var id: String
+    var id: Int
     var name: String
+    var categoryName: String
     var documentRef: DocumentReference
     var storageRef: StorageReference
 }
