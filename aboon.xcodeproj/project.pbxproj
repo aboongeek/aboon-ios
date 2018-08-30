@@ -25,7 +25,6 @@
 		2CD6215020DF529C00C81DF7 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6214F20DF529C00C81DF7 /* ShopListViewController.swift */; };
 		2CD6215220DF52A900C81DF7 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215120DF52A900C81DF7 /* ShopDetailViewController.swift */; };
 		2CD6215820DF538600C81DF7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6215720DF538600C81DF7 /* SignInViewController.swift */; };
-		2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */; };
 		2CD6216920DF7EE700C81DF7 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */; };
 		49ADCD8E20E2955400EB1181 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCD8D20E2955400EB1181 /* CategoryView.swift */; };
 		58A6E4C53D9E28E05B837769 /* Pods_aboonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1F13BE461DBB15F9848EB4 /* Pods_aboonUITests.framework */; };
@@ -33,11 +32,8 @@
 		75193E4B20DBB8FA00EF417E /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75193E4A20DBB8FA00EF417E /* Debug.swift */; };
 		75FC808B20F228F4007ED73B /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75FC808A20F228F4007ED73B /* GoogleService-Info-Debug.plist */; };
 		7918097F2126C95D0025345C /* CouponConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7918097E2126C95D0025345C /* CouponConfirmationView.xib */; };
-		791809812127C52E0025345C /* EditProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791809802127C52E0025345C /* EditProfileView.xib */; };
 		79180983212874C10025345C /* FirebaseAuthErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79180982212874C10025345C /* FirebaseAuthErrorHandling.swift */; };
 		79214BE4211C28E0001932D1 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79214BE3211C28E0001932D1 /* SignInView.swift */; };
-		79214BE6211C2FF2001932D1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79214BE5211C2FF2001932D1 /* EditProfileView.swift */; };
-		79214BE8211CAB19001932D1 /* EditProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79214BE7211CAB19001932D1 /* EditProfileModel.swift */; };
 		79214BEC211F3B88001932D1 /* MyCouponListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79214BEB211F3B88001932D1 /* MyCouponListCollectionViewCell.swift */; };
 		79214BEE211F8C1D001932D1 /* CouponRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79214BED211F8C1D001932D1 /* CouponRoomViewController.swift */; };
 		79214BF0211F8C8C001932D1 /* CouponRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79214BEF211F8C8C001932D1 /* CouponRoomModel.swift */; };
@@ -142,7 +138,6 @@
 		2CD6214F20DF529C00C81DF7 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
 		2CD6215120DF52A900C81DF7 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		2CD6215720DF538600C81DF7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		2CD6216820DF7EE700C81DF7 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
 		49ADCD8D20E2955400EB1181 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		5AE6F603202A8DA8EA190F33 /* Pods-aboonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,11 +145,8 @@
 		75193E4A20DBB8FA00EF417E /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		75FC808A20F228F4007ED73B /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		7918097E2126C95D0025345C /* CouponConfirmationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponConfirmationView.xib; sourceTree = "<group>"; };
-		791809802127C52E0025345C /* EditProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileView.xib; sourceTree = "<group>"; };
 		79180982212874C10025345C /* FirebaseAuthErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseAuthErrorHandling.swift; path = aboon/Classes/MyPage/View/FirebaseAuthErrorHandling.swift; sourceTree = SOURCE_ROOT; };
 		79214BE3211C28E0001932D1 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		79214BE5211C2FF2001932D1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		79214BE7211CAB19001932D1 /* EditProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileModel.swift; sourceTree = "<group>"; };
 		79214BEB211F3B88001932D1 /* MyCouponListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponListCollectionViewCell.swift; sourceTree = "<group>"; };
 		79214BED211F8C1D001932D1 /* CouponRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponRoomViewController.swift; sourceTree = "<group>"; };
 		79214BEF211F8C8C001932D1 /* CouponRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponRoomModel.swift; sourceTree = "<group>"; };
@@ -418,8 +410,6 @@
 				795856E32124E4FA00BECEDF /* SignInView.xib */,
 				799042DF211995EC0061DAA1 /* SignUpView.swift */,
 				797036D92125A31100A4AD16 /* SignUpView.xib */,
-				79214BE5211C2FF2001932D1 /* EditProfileView.swift */,
-				791809802127C52E0025345C /* EditProfileView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -430,7 +420,6 @@
 				799204E12113042C002BAC48 /* MyMenuViewController.swift */,
 				2CD6215720DF538600C81DF7 /* SignInViewController.swift */,
 				799042DD211995BB0061DAA1 /* SignUpViewController.swift */,
-				2CD6216220DF695A00C81DF7 /* EditProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -697,7 +686,6 @@
 			children = (
 				FEA3DA37210302DD007F69B6 /* MyMenuModel.swift */,
 				799042E3211AB6660061DAA1 /* SignUpModel.swift */,
-				79214BE7211CAB19001932D1 /* EditProfileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -825,7 +813,6 @@
 				79DFB6AD21230339009F031B /* ShopDetailDescriptionView.xib in Resources */,
 				75FC808B20F228F4007ED73B /* GoogleService-Info-Debug.plist in Resources */,
 				797036DA2125A31100A4AD16 /* SignUpView.xib in Resources */,
-				791809812127C52E0025345C /* EditProfileView.xib in Resources */,
 				7918097F2126C95D0025345C /* CouponConfirmationView.xib in Resources */,
 				795856E42124E4FA00BECEDF /* SignInView.xib in Resources */,
 				795856E821253A5700BECEDF /* CouponRoomCollectionViewCell.xib in Resources */,
@@ -999,13 +986,11 @@
 				79214C04211FBF7D001932D1 /* Member.swift in Sources */,
 				FEA3DA3C21030832007F69B6 /* MyMenuView.swift in Sources */,
 				FE9A3AB2210D5A9300603F4C /* CouponListCollectionView.swift in Sources */,
-				2CD6216320DF695A00C81DF7 /* EditProfileViewController.swift in Sources */,
 				2CD6215220DF52A900C81DF7 /* ShopDetailViewController.swift in Sources */,
 				2CD6215020DF529C00C81DF7 /* ShopListViewController.swift in Sources */,
 				2CA3DA6720E3C23D00D3A9CA /* ShopListCollectionView.swift in Sources */,
 				2CD6214820DF50D300C81DF7 /* MyCouponListViewController.swift in Sources */,
 				869A986020E731FB00BF924F /* ShopListCollectionModel.swift in Sources */,
-				79214BE8211CAB19001932D1 /* EditProfileModel.swift in Sources */,
 				FE9A3AB6210D65EA00603F4C /* CouponListCollectionModel.swift in Sources */,
 				79214BF6211F8DBB001932D1 /* CouponRoomCollectionViewCell.swift in Sources */,
 				799042E4211AB6660061DAA1 /* SignUpModel.swift in Sources */,
@@ -1028,7 +1013,6 @@
 				799042DE211995BB0061DAA1 /* SignUpViewController.swift in Sources */,
 				2C1541C120E22AA3001941ED /* CategoryCollectionViewCell.swift in Sources */,
 				FEA3DA38210302DD007F69B6 /* MyMenuModel.swift in Sources */,
-				79214BE6211C2FF2001932D1 /* EditProfileView.swift in Sources */,
 				FEA3DA3E21030DB2007F69B6 /* MyMenuTableViewCell.swift in Sources */,
 				79214BE4211C28E0001932D1 /* SignInView.swift in Sources */,
 				2C04E51320E0AFB500AECC8E /* NavigationController.swift in Sources */,
