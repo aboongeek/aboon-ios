@@ -15,7 +15,7 @@ aboonはもともと100%自社開発をしていましたがエンジニアの�
 まだリリース前ということもあり`help wanted`タグのissueを優先的に解決していただけるとありがたいです。また、当社のエンジニアはiOS開発においてまだ初心者のレベルであり、既に存在するソースコードの修正や改善の提案、全般的なアドバイスなども積極的にしていただけると大変助かります。
 
 ## 開発者コミュニティ
-* [Slack](https://aboon-dev.slack.com)
+* [Slack](https://join.slack.com/t/aboon-dev/shared_invite/enQtNDI4MTI0Njg2NjYyLTgwNmNlZTUxZTVkNWM5MjljNGQ5NWEzOTdkN2ExMDI1OGY5NjFjNDM3ZmI5Nzk2YjcyN2VkNjgxZGU5NmZjZDI)
 
 ## ライセンス
 [MIT](https://github.com/aboongeek/aboon-ios/blob/develop/LICENSE)
