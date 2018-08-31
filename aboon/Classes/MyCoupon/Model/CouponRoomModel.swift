@@ -188,7 +188,7 @@ class CouponRoomModel {
         if isAvailable {
             members.forEach { (member) in
                 let myCouponRef = usersRef.document(member.userId).collection("myCoupons").document(roomId)
-                myCouponRef.setData(["isAvailable" : true])
+                myCouponRef.setData(["isAvailable" : true], merge: true)
             }
         }
     }
