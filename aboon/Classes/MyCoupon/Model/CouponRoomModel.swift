@@ -76,7 +76,7 @@ class CouponRoomModel {
     
     private func fetchMembers(isInvited: Bool) {
         guard let roomId = roomId else { return }
-        roomsRef.document(roomId).collection("members").getDocuments { [weak self] (snapshot, error) in
+        roomsRef.document(roomId).collection("members").order(by: "addedAt").getDocuments { [weak self] (snapshot, error) in
             guard let `self` = self, let snapshot = snapshot else { return }
             
             let members = snapshot.documents.map { document -> Member in
@@ -169,7 +169,8 @@ class CouponRoomModel {
             "minimum"       : coupon.minimum,
             "shopId"        : coupon.shopId,
             "isAvailable"   : false,
-            "isUsed"        : false
+            "isUsed"        : false,
+            "addedAt"       : Date()
         ]) { error in
             if let error = error {
                 dLog((error as NSError).userInfo)

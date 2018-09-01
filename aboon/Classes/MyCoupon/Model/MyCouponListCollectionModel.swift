@@ -40,7 +40,7 @@ class MyCouponListCollectionModel {
     func fetchCoupons(userId: String) {
         collectionRef = collectionRef.document(userId).collection("myCoupons")
         
-        collectionRef.addSnapshotListener { [weak self] (snapshot, error) in
+        collectionRef.order(by: "addedAt").addSnapshotListener { [weak self] (snapshot, error) in
             guard let snapshot = snapshot, let `self` = self else { return }
             let documents = snapshot.documents
             let coupons = documents.map { document -> MyCoupon in
