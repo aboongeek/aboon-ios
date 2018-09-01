@@ -53,7 +53,7 @@ class ShopListCollectionModel {
             query = query.whereField("featuredId", isEqualTo: featuredId)
         }
         
-        query.addSnapshotListener { [weak self] (snapshot, error) in
+        query.order(by: "id").addSnapshotListener { [weak self] (snapshot, error) in
             guard let snapshot = snapshot, let `self` = self else { return }
             if let error = error {
                 dLog(error)
