@@ -14,6 +14,16 @@ aboonはもともと100%自社開発をしていましたがエンジニアの�
 ## How do I get started?
 まだリリース前ということもあり`help wanted`タグのissueを優先的に解決していただけるとありがたいです。また、当社のエンジニアはiOS開発においてまだ初心者のレベルであり、既に存在するソースコードの修正や改善の提案、全般的なアドバイスなども積極的にしていただけると大変助かります。
 
+### セットアップ
+
+bundlerからcoocapodsを導入して、ライブラリを入手します。
+
+```shell
+$ gem install bundler
+$ bundle install --path=vendor/bundle --binstubs=.bundle/bin
+$ bundle exec pod install
+```
+
 ## 開発者コミュニティ
 * [Slack](https://join.slack.com/t/aboon-dev/shared_invite/enQtNDI4MTI0Njg2NjYyLTgwNmNlZTUxZTVkNWM5MjljNGQ5NWEzOTdkN2ExMDI1OGY5NjFjNDM3ZmI5Nzk2YjcyN2VkNjgxZGU5NmZjZDI)
 
