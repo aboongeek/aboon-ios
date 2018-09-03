@@ -74,8 +74,8 @@
 		79DFB6AF21231B90009F031B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFB6AE21231B90009F031B /* WebViewController.swift */; };
 		79DFB6B221231C7B009F031B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFB6B121231C7B009F031B /* WebView.swift */; };
 		79DFB6B421231CD6009F031B /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79DFB6B321231CD6009F031B /* WebView.xib */; };
+		79E31E0E213D395300E709EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79E31E0D213D395300E709EC /* GoogleService-Info.plist */; };
 		79F482B12105B535003B28F5 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F482B02105B535003B28F5 /* Shop.swift */; };
-		79FACBD3212D7F430067C23D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79FACBD2212D7F430067C23D /* GoogleService-Info.plist */; };
 		869A985E20E725F300BF924F /* ShopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */; };
 		869A986020E731FB00BF924F /* ShopListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985F20E731FB00BF924F /* ShopListCollectionModel.swift */; };
 		C16F52F4E26C3847DB93EECD /* Pods_aboon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D2E58EE895C7FD73F73E24 /* Pods_aboon.framework */; };
@@ -189,8 +189,8 @@
 		79DFB6AE21231B90009F031B /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		79DFB6B121231C7B009F031B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		79DFB6B321231CD6009F031B /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
+		79E31E0D213D395300E709EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79F482B02105B535003B28F5 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
-		79FACBD2212D7F430067C23D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionViewCell.swift; sourceTree = "<group>"; };
 		869A985F20E731FB00BF924F /* ShopListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionModel.swift; sourceTree = "<group>"; };
 		8B1F13BE461DBB15F9848EB4 /* Pods_aboonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aboonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,8 +458,8 @@
 		75FC808920F228F4007ED73B /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				79FACBD2212D7F430067C23D /* GoogleService-Info.plist */,
 				75FC808A20F228F4007ED73B /* GoogleService-Info-Debug.plist */,
+				79E31E0D213D395300E709EC /* GoogleService-Info.plist */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -816,8 +816,8 @@
 				7918097F2126C95D0025345C /* CouponConfirmationView.xib in Resources */,
 				795856E42124E4FA00BECEDF /* SignInView.xib in Resources */,
 				795856E821253A5700BECEDF /* CouponRoomCollectionViewCell.xib in Resources */,
+				79E31E0E213D395300E709EC /* GoogleService-Info.plist in Resources */,
 				79DFB6A5212185A6009F031B /* ShopListCollectionViewCell.xib in Resources */,
-				79FACBD3212D7F430067C23D /* GoogleService-Info.plist in Resources */,
 				79DFB6B421231CD6009F031B /* WebView.xib in Resources */,
 				795856E62125337300BECEDF /* CouponListCollectionViewCell.xib in Resources */,
 				796A7EC32135112A0016D258 /* MyCouponListCollectionViewCell.xib in Resources */,
