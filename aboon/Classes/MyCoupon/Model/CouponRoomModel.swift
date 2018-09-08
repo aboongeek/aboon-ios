@@ -33,7 +33,7 @@ class CouponRoomModel {
     private let couponSubject = PublishSubject<Coupon>()
     var couponObservable: Observable<Coupon> { return couponSubject.asObservable() }
     
-    private let couponImageSubject = BehaviorSubject<UIImage>(value: UIImage())
+    private let couponImageSubject = PublishSubject<UIImage>()
     var couponImageObservable: Observable<UIImage> { return couponImageSubject.asObservable() }
     
     var roomId: String? = nil
@@ -197,7 +197,15 @@ class CouponRoomModel {
     func fetchCoupon(userId: String, roomId: String) {
         let docRef = Firestore.firestore().collection("users").document(userId).collection("myCoupons").document(roomId)
         docRef.getDocument { [weak self] (document, error) in
-            guard let `self` = self, let document = document, let data = document.data() else { return }
+            guard let `self` = self else {
+                return
+            }
+            guard let document = document else {
+                return
+            }
+            guard let data = document.data() else {
+                return                
+            }
             let name = data["name"] as! String
             let imagePath = data["imagePath"] as! String
             let description = data["description"] as! String

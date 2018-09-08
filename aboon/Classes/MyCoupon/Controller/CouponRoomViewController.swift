@@ -67,7 +67,7 @@ class CouponRoomViewController: UIViewController {
             setup(coupon: coupon)
         } else {
             Observable
-                .combineLatest(model.couponObservable, model.couponImageObservable)
+                .zip(model.couponObservable, model.couponImageObservable)
                 .asDriver(onErrorDriveWith: Driver.empty())
                 .drive (
                     onNext: {[weak self] (coupon, image) in
@@ -90,7 +90,6 @@ class CouponRoomViewController: UIViewController {
     
     func setup(coupon: (coupon : Coupon, image : UIImage)) {
         couponRoomView.couponRoomCollectionView.register(UINib(nibName: "CouponRoomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CouponRoomCollectionViewCell")
-        couponRoomView.couponRoomCollectionView.delegate = dataSource
         
         if isUserInvited {
             couponRoomView

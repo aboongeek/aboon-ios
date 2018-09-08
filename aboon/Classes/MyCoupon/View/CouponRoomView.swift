@@ -161,6 +161,10 @@ class CouponRoomView: UIView {
                 inviteButton.backgroundColor = UIColor(hex: "FF5C5C")
                 inviteButton.setTitleColor(.white, for: .normal)
                 
+//                inviteButton.isEnabled = false
+//                inviteButton.backgroundColor = UIColor(hex: "000000", alpha: 0.1)
+//                inviteButton.setTitleColor(UIColor(hex: "000000", alpha: 0.16), for: .disabled)
+                
                 issueButton.isHidden = true
             }
         }
