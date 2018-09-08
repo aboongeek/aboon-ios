@@ -27,7 +27,7 @@ class CouponRoomModel {
     private let minimumCheckRelay = BehaviorRelay<(Bool, Int)>(value: (false, 0))
     var minimumCheck: Observable<(Bool, Int)> { return minimumCheckRelay.asObservable() }
     
-    private let itemsToBeSharedSubject = PublishSubject<[Any]>()
+    private let itemsToBeSharedSubject = ReplaySubject<[Any]>.create(bufferSize: 1)
     var itemsToBeShared: Observable<[Any]> { return itemsToBeSharedSubject.asObservable() }
     
     private let couponSubject = PublishSubject<Coupon>()
