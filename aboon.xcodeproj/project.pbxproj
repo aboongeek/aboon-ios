@@ -75,12 +75,12 @@
 		79DFB6B221231C7B009F031B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFB6B121231C7B009F031B /* WebView.swift */; };
 		79DFB6B421231CD6009F031B /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79DFB6B321231CD6009F031B /* WebView.xib */; };
 		79E31E0E213D395300E709EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79E31E0D213D395300E709EC /* GoogleService-Info.plist */; };
-		79EA3D5F2125FC6E00A55724 /* CouponRoomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 797036CE21254C9300A4AD16 /* CouponRoomView.xib */; };
 		79F482B12105B535003B28F5 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F482B02105B535003B28F5 /* Shop.swift */; };
 		869A985E20E725F300BF924F /* ShopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */; };
 		869A986020E731FB00BF924F /* ShopListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985F20E731FB00BF924F /* ShopListCollectionModel.swift */; };
 		C16F52F4E26C3847DB93EECD /* Pods_aboon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D2E58EE895C7FD73F73E24 /* Pods_aboon.framework */; };
 		D084FE50CD8DB5999660C5CA /* Pods_aboonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABED289BBF482EDDFCBF9B9 /* Pods_aboonTests.framework */; };
+		D7A8DE20213D394300A5572F /* CouponRoomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7A8DE1F213D394300A5572F /* CouponRoomView.xib */; };
 		FE1F69DD20FB64F800CBF60A /* MyCouponListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */; };
 		FE1F69DF20FB657C00CBF60A /* TestCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */; };
 		FE9A3AAE210D59A600603F4C /* CouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A3AAD210D59A600603F4C /* CouponListViewController.swift */; };
@@ -168,7 +168,6 @@
 		795856E52125337300BECEDF /* CouponListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponListCollectionViewCell.xib; sourceTree = "<group>"; };
 		795856E721253A5700BECEDF /* CouponRoomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponRoomCollectionViewCell.xib; sourceTree = "<group>"; };
 		796A7EC22135112A0016D258 /* MyCouponListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCouponListCollectionViewCell.xib; sourceTree = "<group>"; };
-		797036CE21254C9300A4AD16 /* CouponRoomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CouponRoomView.xib; path = "/Users/wolf/aboon-ios/aboon/Classes/MyCoupon/View/CouponRoomView.xib"; sourceTree = "<absolute>"; };
 		797036D32125556800A4AD16 /* ShopListCollectionBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionBanner.swift; sourceTree = "<group>"; };
 		797036D42125556800A4AD16 /* ShopListCollectionBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopListCollectionBanner.xib; sourceTree = "<group>"; };
 		797036D7212557AB00A4AD16 /* Featured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Featured.swift; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		BA40E4C99D656DF5EFD3CD07 /* Pods-aboonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.release.xcconfig"; sourceTree = "<group>"; };
 		C98318E252737C6A37E482FE /* Pods-aboon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.release.xcconfig"; sourceTree = "<group>"; };
 		C9F010AEA949126B9A4B3709 /* Pods-aboon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.debug.xcconfig"; sourceTree = "<group>"; };
+		D7A8DE1F213D394300A5572F /* CouponRoomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponRoomView.xib; sourceTree = "<group>"; };
 		FABED289BBF482EDDFCBF9B9 /* Pods_aboonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aboonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponListCollectionModel.swift; sourceTree = "<group>"; };
 		FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoupon.swift; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 				79214BEB211F3B88001932D1 /* MyCouponListCollectionViewCell.swift */,
 				796A7EC22135112A0016D258 /* MyCouponListCollectionViewCell.xib */,
 				79214BF1211F8D7E001932D1 /* CouponRoomView.swift */,
-				797036CE21254C9300A4AD16 /* CouponRoomView.xib */,
+				D7A8DE1F213D394300A5572F /* CouponRoomView.xib */,
 				79214BF3211F8D9C001932D1 /* CouponRoomCollectionView.swift */,
 				79214BF5211F8DBB001932D1 /* CouponRoomCollectionViewCell.swift */,
 				795856E721253A5700BECEDF /* CouponRoomCollectionViewCell.xib */,
@@ -820,9 +820,9 @@
 				79DFB6A5212185A6009F031B /* ShopListCollectionViewCell.xib in Resources */,
 				79DFB6B421231CD6009F031B /* WebView.xib in Resources */,
 				795856E62125337300BECEDF /* CouponListCollectionViewCell.xib in Resources */,
-				79EA3D5F2125FC6E00A55724 /* CouponRoomView.xib in Resources */,
 				796A7EC32135112A0016D258 /* MyCouponListCollectionViewCell.xib in Resources */,
 				7942142A212BE5A1007AF27D /* Assets.xcassets in Resources */,
+				D7A8DE20213D394300A5572F /* CouponRoomView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
