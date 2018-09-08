@@ -20,7 +20,7 @@ class MyCouponListCollectionModel {
     private lazy var collectionRef = Firestore.firestore().collection("users")
     private let storageRef = Storage.storage().reference(withPath: "CouponImages")
     
-    private let couponsSubject = PublishSubject<[MyCoupon]>()
+    private let couponsSubject = ReplaySubject<[MyCoupon]>.create(bufferSize: 1)
     var coupons: Observable<[MyCoupon]> { return couponsSubject.asObservable() }
     
     private let noCouponRelay = BehaviorRelay<Bool>(value: false)
