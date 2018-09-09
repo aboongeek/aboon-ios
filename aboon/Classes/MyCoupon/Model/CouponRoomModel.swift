@@ -146,10 +146,15 @@ class CouponRoomModel {
         guard let user = user, let roomId = roomId else { return }
         guard let link = URL(string: "https://www.aboon.jp/?roomid=\(roomId)") else { return }
         
-        let dynamicLinkDomain = "aboonApp.page.link"
+        let dynamicLinkDomain = "aboonapp.page.link"
         let linkBuilder = DynamicLinkComponents(link: link, domain: dynamicLinkDomain)
         linkBuilder.iOSParameters = DynamicLinkIOSParameters(bundleID: "jp.aboon.aboonApp")
         linkBuilder.iOSParameters?.appStoreID = "1424181262"
+        linkBuilder.navigationInfoParameters = DynamicLinkNavigationInfoParameters()
+        linkBuilder.navigationInfoParameters?.isForcedRedirectEnabled = true
+        linkBuilder.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
+        linkBuilder.socialMetaTagParameters?.title = "aboon"
+        linkBuilder.socialMetaTagParameters?.descriptionText = "二人から始まるクーポンアプリ"
         
         guard let longDynamicLink = linkBuilder.url else { return }
         
