@@ -50,10 +50,11 @@ class MyCouponListCollectionModel {
                 let description = data["description"] as! String
                 let minimum = data["minimum"] as! Int
                 let shopId = data["shopId"] as! Int
+                let shopName = data["shopName"] as! String
                 let isAvailable = data["isAvailable"] as! Bool
                 let roomId = document.documentID
                 
-                return MyCoupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId, isAvailable: isAvailable, roomId: roomId)
+                return MyCoupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId, shopName: shopName, isAvailable: isAvailable, roomId: roomId)
                 
             }
             if coupons.isEmpty {

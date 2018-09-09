@@ -14,13 +14,15 @@ class Coupon {
     var description: String
     var minimum: Int
     var shopId: Int
+    var shopName: String
     
-    init(imagePath: String, name: String, description: String, minimum: Int, shopId: Int) {
+    init(imagePath: String, name: String, description: String, minimum: Int, shopId: Int, shopName: String) {
         self.imagePath = imagePath
         self.name = name
         self.description = description
         self.minimum = minimum
         self.shopId = shopId
+        self.shopName = shopName
     }
 }
 

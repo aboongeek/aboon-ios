@@ -96,12 +96,10 @@ class CouponListViewDataSource: NSObject, UICollectionViewDataSource, RxCollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponListCollectionViewCell", for: indexPath) as! CouponListCollectionViewCell
-        let name = items[indexPath.row].name
-        let description = items[indexPath.row].description
         if let image = images[items[indexPath.row].imagePath] {
-            cell.configure(name: name, description: description, image: image)
+            cell.configure(coupon: items[indexPath.row], image: image)
         } else {
-            cell.configure(name: name, description: description, image: UIImage())
+            cell.configure(coupon: items[indexPath.row], image: UIImage())
         }
         return cell
     }

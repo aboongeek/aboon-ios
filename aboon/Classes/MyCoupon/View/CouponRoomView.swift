@@ -20,6 +20,8 @@ class CouponRoomView: UIView {
     @IBOutlet weak var couponImageView: UIImageView!
     @IBOutlet weak var couponNameLabel: UILabel!
     @IBOutlet weak var couponDescriptionLabel: UILabel!
+    @IBOutlet weak var couponShopNameLabel: UILabel!
+    
     @IBOutlet weak var inviteButton: UIButton!
     @IBOutlet weak var issueButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
@@ -65,6 +67,7 @@ class CouponRoomView: UIView {
         couponImageView.image = image
         couponNameLabel.text = coupon.name
         couponDescriptionLabel.text = coupon.description
+        couponShopNameLabel.text = coupon.shopName
         addShadow(view: couponView)
     }
     
