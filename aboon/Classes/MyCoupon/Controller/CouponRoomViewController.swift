@@ -182,14 +182,14 @@ class CouponRoomViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        couponRoomView
-            .useCouponPressed
+        Observable
+            .combineLatest(couponRoomView.useCouponPressed, model.members)
             .asDriver(onErrorDriveWith: Driver.empty())
-            .drive(onNext: { [weak self] (isPressed) in
+            .drive(onNext: { [weak self] (isPressed, members) in
                 guard let `self` = self else { return }
                 if isPressed {
                     guard let roomId = self.model.roomId else { return }
-                    let couponConfirmationViewController = CouponConfirmationViewController(coupon: coupon.coupon, roomId: roomId, image: coupon.image)
+                    let couponConfirmationViewController = CouponConfirmationViewController(coupon: coupon.coupon, members: members, roomId: roomId, image: coupon.image)
                     self.present(couponConfirmationViewController, animated: true, completion: nil)
                 }
             })

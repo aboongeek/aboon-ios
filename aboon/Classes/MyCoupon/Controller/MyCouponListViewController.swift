@@ -69,6 +69,7 @@ class MyCouponListViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         model.removeUserListner()
+        model.removeListner()
     }
     
     required init?(coder aDecoder: NSCoder) {

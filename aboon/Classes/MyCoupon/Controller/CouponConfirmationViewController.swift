@@ -15,21 +15,22 @@ class CouponConfirmationViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     let coupon: Coupon
+    let members: [Member]
     let roomId: String
     let image: UIImage
     
     lazy var couponConfirmationView = CouponConfirmationView()
     lazy var model = CouponConfirmationModel()
     
-    init(coupon: Coupon, roomId: String, image: UIImage) {
+    init(coupon: Coupon, members: [Member], roomId: String, image: UIImage) {
         self.coupon = coupon
+        self.members = members
         self.roomId = roomId
         self.image = image
         
         super.init(nibName: nil, bundle: nil)
         
         self.modalPresentationStyle = .overCurrentContext
-        
     }
     
     override func loadView() {
@@ -46,7 +47,7 @@ class CouponConfirmationViewController: UIViewController {
             .subscribe(onNext: { [weak self] (isPressed) in
                 guard let `self` = self else { return }
                 if isPressed {
-                    self.model.useCoupon(roomId: self.roomId)
+                    self.model.useCoupon(roomId: self.roomId, members: self.members)
                     guard let presentingViewController = self.presentingViewController else {
                         return
                     }
