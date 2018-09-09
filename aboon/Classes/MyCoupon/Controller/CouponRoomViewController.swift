@@ -44,6 +44,7 @@ class CouponRoomViewController: UIViewController {
         self.isUserInvited = false
         
         super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
         self.model.generateShareItems()
     }
     
@@ -53,6 +54,7 @@ class CouponRoomViewController: UIViewController {
         self.isUserInvited = true
         
         super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
     }
     
     override func loadView() {
