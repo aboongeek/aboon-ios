@@ -56,15 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return handled
     }
     
-//    func application(_ app: UIApplication, open url: URL, options:
-//        [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-//        let isDynamicLink = DynamicLinks.dynamicLinks().shouldHandleDynamicLink(fromCustomSchemeURL: url)
-//        if isDynamicLink {
-//            let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)
-//            return handleDynamicLink(dynamicLink)
-//        }
-//        return false
-//    }
+    func application(_ app: UIApplication, open url: URL, options:
+        [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let isDynamicLink = DynamicLinks.dynamicLinks().shouldHandleDynamicLink(fromCustomSchemeURL: url)
+        if isDynamicLink {
+            let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)
+            handleDynamicLink(dynamicLink)
+        }
+        return false
+    }
     
     func handleDynamicLink(_ dynamicLink: DynamicLink?) {
         guard let dynamicLink = dynamicLink else { return }

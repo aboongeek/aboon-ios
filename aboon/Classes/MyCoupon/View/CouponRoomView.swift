@@ -25,6 +25,8 @@ class CouponRoomView: UIView {
     @IBOutlet weak var declineButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
     
+    var loadingView: UIView?
+    
     private var view: UIView!
     
     override init(frame: CGRect) {
@@ -69,6 +71,7 @@ class CouponRoomView: UIView {
     private func configureCollection(isRoomCreated: Bool, numberOfItems: Int) {
         if isRoomCreated {
             let height = (collectionLayout.itemSize.height + collectionLayout.minimumLineSpacing)  * CGFloat(numberOfItems) + collectionLayout.sectionInset.top
+            
             couponToInviteConstraint.constant = height
         }
     }
@@ -127,10 +130,12 @@ class CouponRoomView: UIView {
             acceptButton.isHidden = true
         } else {
             if !isInvited {
+                inviteButton.isHidden = false
+                issueButton.isHidden = false
                 if !isOver {
                     inviteButton.isEnabled = true
-                    inviteButton.backgroundColor = UIColor(hex: "FF5C5C")
-                    inviteButton.setTitleColor(.white, for: .normal)
+                    inviteButton.backgroundColor = .white
+                    inviteButton.setTitleColor(UIColor(hex: "000000", alpha: 0.5), for: .normal)
                     
                     issueButton.isEnabled = false
                     issueButton.backgroundColor = UIColor(hex: "000000", alpha: 0.1)
@@ -141,8 +146,8 @@ class CouponRoomView: UIView {
                     acceptButton.isHidden = true
                 } else {
                     inviteButton.isEnabled = true
-                    inviteButton.backgroundColor = UIColor(hex: "FF5C5C")
-                    inviteButton.setTitleColor(.white, for: .normal)
+                    inviteButton.backgroundColor = .white
+                    inviteButton.setTitleColor(UIColor(hex: "000000", alpha: 0.5), for: .normal)
                     
                     issueButton.isEnabled = true
                     issueButton.backgroundColor = UIColor(hex: "FF5C5C")
@@ -156,10 +161,11 @@ class CouponRoomView: UIView {
             } else {
                 declineButton.isHidden = false
                 acceptButton.isHidden = false
-                
-                inviteButton.isEnabled = true
-                inviteButton.backgroundColor = UIColor(hex: "FF5C5C")
-                inviteButton.setTitleColor(.white, for: .normal)
+
+                inviteButton.isHidden = true
+                inviteButton.isEnabled = false
+                inviteButton.backgroundColor = UIColor(hex: "000000", alpha: 0.1)
+                inviteButton.setTitleColor(UIColor(hex: "000000", alpha: 0.16), for: .disabled)
                 
                 issueButton.isHidden = true
             }
@@ -184,5 +190,26 @@ class CouponRoomView: UIView {
         view.layer.shadowOpacity = 0.16
         view.layer.shadowOffset = CGSize(width: 0, height: 3)
         view.layer.shadowRadius = 5
+    }
+    
+    func appendActiviryIndicator() {
+        let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        
+        blurEffectView.frame = view.frame
+        activityIndicator.frame = view.frame
+        
+        loadingView = UIView(frame: view.frame)
+        
+        loadingView!.addSubview(blurEffectView)
+        loadingView!.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
+        view.addSubview(loadingView!)
+    }
+    
+    func removeActivityIndicator() {
+        loadingView!.removeFromSuperview()
     }
 }

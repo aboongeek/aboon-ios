@@ -68,8 +68,9 @@ class CouponRoomViewController: UIViewController {
         if let coupon = coupon {
             setup(coupon: coupon)
         } else {
+            couponRoomView.appendActiviryIndicator()
             Observable
-                .combineLatest(model.couponObservable, model.couponImageObservable)
+                .zip(model.couponObservable, model.couponImageObservable)
                 .asDriver(onErrorDriveWith: Driver.empty())
                 .drive (
                     onNext: {[weak self] (coupon, image) in
@@ -95,6 +96,9 @@ class CouponRoomViewController: UIViewController {
         couponRoomView.couponRoomCollectionView.delegate = dataSource
         
         if isUserInvited {
+            
+            couponRoomView.removeActivityIndicator()
+            
             couponRoomView
                 .declinePressed
                 .asDriver(onErrorDriveWith: Driver.empty())
