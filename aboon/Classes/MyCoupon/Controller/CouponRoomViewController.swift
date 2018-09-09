@@ -44,6 +44,7 @@ class CouponRoomViewController: UIViewController {
         self.isUserInvited = false
         
         super.init(nibName: nil, bundle: nil)
+        self.model.generateShareItems()
     }
     
     init(withJustRoomId roomId: String) {
@@ -117,6 +118,7 @@ class CouponRoomViewController: UIViewController {
                         if let user = self.model.user {
                             self.isUserInvited = false
                             self.model.addMember(member: Member(userName: user.displayName!, userId: user.uid), isOwner: false)
+                            self.model.generateShareItems()
                         } else {
                             let signInViewController = SignInViewController()
                             self.present(signInViewController, animated: true, completion: nil)
