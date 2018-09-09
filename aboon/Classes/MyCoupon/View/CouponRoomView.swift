@@ -25,6 +25,8 @@ class CouponRoomView: UIView {
     @IBOutlet weak var declineButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
     
+    var loadingView: UIView?
+    
     private var view: UIView!
     
     override init(frame: CGRect) {
@@ -188,5 +190,26 @@ class CouponRoomView: UIView {
         view.layer.shadowOpacity = 0.16
         view.layer.shadowOffset = CGSize(width: 0, height: 3)
         view.layer.shadowRadius = 5
+    }
+    
+    func appendActiviryIndicator() {
+        let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        
+        blurEffectView.frame = view.frame
+        activityIndicator.frame = view.frame
+        
+        loadingView = UIView(frame: view.frame)
+        
+        loadingView!.addSubview(blurEffectView)
+        loadingView!.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
+        view.addSubview(loadingView!)
+    }
+    
+    func removeActivityIndicator() {
+        loadingView!.removeFromSuperview()
     }
 }
