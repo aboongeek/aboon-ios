@@ -39,8 +39,9 @@ class CouponListCollectionModel {
                 let description = data["description"] as! String
                 let minimum = data["minimum"] as! Int
                 let shopId = data["shopId"] as! Int
+                let shopName = data["shopName"] as! String
                 
-                return Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId)
+                return Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId, shopName: shopName)
             }
             self.couponsSubject.onNext(coupons)
             coupons.forEach({ [weak self] (coupon) in

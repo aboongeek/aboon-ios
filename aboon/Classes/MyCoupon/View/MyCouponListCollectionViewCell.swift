@@ -10,20 +10,21 @@ import UIKit
 
 class MyCouponListCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var availabilityView: UIView!
+    @IBOutlet weak var shopNameLabel: UILabel!
     
-    func configure(name: String, description: String, image: UIImage, isAvailable: Bool) {
+    func configure(coupon: MyCoupon, image: UIImage) {
         self.imageView.image = image
-        self.nameLabel.text = name
-        self.descriptionLabel.text = description
+        self.nameLabel.text = coupon.name
+        self.descriptionLabel.text = coupon.description
+        self.shopNameLabel.text = coupon.shopName
         
         availabilityView.layer.cornerRadius = availabilityView.frame.width / 2
         availabilityView.clipsToBounds = true
-        if isAvailable {
+        if coupon.isAvailable {
             self.availabilityView.backgroundColor = UIColor(hex: "93D3A6")
         } else {
             self.availabilityView.backgroundColor = UIColor(hex: "FFC6B7")

@@ -13,12 +13,13 @@ class CouponListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var shopNameLabel: UILabel!
     
-    func configure(name: String, description: String, image: UIImage) {
+    func configure(coupon: Coupon, image: UIImage) {
         self.imageView.image = image
-        self.nameLabel.text = name
-        self.descriptionLabel.text = description
-        
+        self.nameLabel.text = coupon.name
+        self.descriptionLabel.text = coupon.description
+        self.shopNameLabel.text = coupon.shopName
         addShadow()
     }
     

@@ -25,7 +25,7 @@ class CouponListCollectionView: UICollectionView {
         let flowLayout = UICollectionViewFlowLayout()
         let widthMargin = CGFloat(20)
         let heightMargin = CGFloat(16)
-        flowLayout.itemSize = CGSize(width: frame.width - 2 * widthMargin, height: 220)
+        flowLayout.itemSize = CGSize(width: frame.width - 2 * widthMargin, height: 250)
         flowLayout.minimumLineSpacing = heightMargin
         flowLayout.sectionInset = UIEdgeInsets(top: heightMargin, left: widthMargin, bottom: heightMargin, right: widthMargin)
         return flowLayout

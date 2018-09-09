@@ -178,6 +178,7 @@ class CouponRoomModel {
             "description"   : coupon.description,
             "minimum"       : coupon.minimum,
             "shopId"        : coupon.shopId,
+            "shopName"      : coupon.shopName,
             "isAvailable"   : false,
             "isUsed"        : false,
             "addedAt"       : Date()
@@ -221,8 +222,9 @@ class CouponRoomModel {
             let description = data["description"] as! String
             let minimum = data["minimum"] as! Int
             let shopId = data["shopId"] as! Int
+            let shopName = data["shopName"] as! String
             
-            let coupon = Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId)
+            let coupon = Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId, shopName: shopName)
             self.couponSubject.onNext(coupon)
             self.coupon = coupon
             self.fetchImage(ofShopId: shopId, withPath: imagePath)
