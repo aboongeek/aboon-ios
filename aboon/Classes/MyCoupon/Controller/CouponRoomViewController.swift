@@ -62,8 +62,6 @@ class CouponRoomViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = titleName
-    
-        self.model.generateShareItems()
         
         if let coupon = coupon {
             setup(coupon: coupon)
@@ -158,6 +156,7 @@ class CouponRoomViewController: UIViewController {
                         if let userName = user.displayName {
                             let member = Member(userName: userName, userId: user.uid)
                             self.model.createRoom(by: member)
+                            self.model.generateShareItems()
                         }
                     } else {
                         let signInViewController = SignInViewController()
@@ -178,27 +177,6 @@ class CouponRoomViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-        
-//        couponRoomView
-//            .invitePressed
-//            .asDriver(onErrorDriveWith: Driver.empty())
-//            .drive(onNext: { [weak self] (isPressed) in
-//                guard let `self` = self else { return }
-//                if isPressed {
-//                    self.model.generateShareItems()
-//                }
-//            })
-//            .disposed(by: disposeBag)
-//
-//        model
-//            .itemsToBeShared
-//            .asDriver(onErrorDriveWith: Driver.empty())
-//            .drive(onNext: { [weak self] items in
-//                guard let  `self` = self else { return }
-//                let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-//                self.present(activityController, animated: true, completion: nil)
-//            })
-//            .disposed(by: disposeBag)
         
         couponRoomView
             .useCouponPressed
