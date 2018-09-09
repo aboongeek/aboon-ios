@@ -92,6 +92,7 @@ class CouponRoomViewController: UIViewController {
     
     func setup(coupon: (coupon : Coupon, image : UIImage)) {
         couponRoomView.couponRoomCollectionView.register(UINib(nibName: "CouponRoomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CouponRoomCollectionViewCell")
+        couponRoomView.couponRoomCollectionView.delegate = dataSource
         
         if isUserInvited {
             couponRoomView

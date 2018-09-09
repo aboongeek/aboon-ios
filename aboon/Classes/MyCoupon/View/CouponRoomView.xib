@@ -82,7 +82,7 @@
                         <constraint firstAttribute="height" constant="56" id="nGC-po-t5j"/>
                     </constraints>
                     <state key="normal" title="友達を誘う">
-                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="disabled" title="友達を誘う">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -143,12 +143,13 @@
                 <constraint firstItem="E9h-vh-heE" firstAttribute="trailing" secondItem="FdA-oE-jdb" secondAttribute="trailing" constant="20" id="Mry-Oc-V5q"/>
                 <constraint firstItem="xuH-5F-PSW" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" constant="20" id="PjF-Ry-45d"/>
                 <constraint firstItem="gkH-3p-Ozr" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" id="QQs-i9-YO1"/>
+                <constraint firstItem="cJM-c0-xAI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FdA-oE-jdb" secondAttribute="bottom" constant="20" id="Z9M-Uo-Kqc"/>
                 <constraint firstItem="gkH-3p-Ozr" firstAttribute="top" secondItem="r00-YP-HkF" secondAttribute="bottom" id="aF7-gI-scT"/>
                 <constraint firstItem="E9h-vh-heE" firstAttribute="bottom" secondItem="xuH-5F-PSW" secondAttribute="bottom" constant="20" id="arE-uo-IbU"/>
                 <constraint firstItem="E9h-vh-heE" firstAttribute="trailing" secondItem="gkH-3p-Ozr" secondAttribute="trailing" id="lK2-4g-Eee"/>
                 <constraint firstItem="xuH-5F-PSW" firstAttribute="top" secondItem="gkH-3p-Ozr" secondAttribute="bottom" id="ldA-ql-u2F"/>
                 <constraint firstItem="r00-YP-HkF" firstAttribute="top" secondItem="E9h-vh-heE" secondAttribute="top" constant="16" id="lkE-cz-uyd"/>
-                <constraint firstItem="FdA-oE-jdb" firstAttribute="top" secondItem="r00-YP-HkF" secondAttribute="bottom" constant="20" id="oDV-K9-bLn"/>
+                <constraint firstItem="FdA-oE-jdb" firstAttribute="top" secondItem="r00-YP-HkF" secondAttribute="bottom" priority="750" constant="20" id="oDV-K9-bLn"/>
                 <constraint firstItem="E9h-vh-heE" firstAttribute="trailing" secondItem="r00-YP-HkF" secondAttribute="trailing" constant="20" id="piF-tA-jaw"/>
                 <constraint firstItem="FdA-oE-jdb" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" constant="20" id="piI-tI-I6T"/>
                 <constraint firstItem="r00-YP-HkF" firstAttribute="leading" secondItem="E9h-vh-heE" secondAttribute="leading" constant="20" id="vFL-rj-jQb"/>

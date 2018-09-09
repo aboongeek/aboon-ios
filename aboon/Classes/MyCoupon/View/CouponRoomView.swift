@@ -69,6 +69,7 @@ class CouponRoomView: UIView {
     private func configureCollection(isRoomCreated: Bool, numberOfItems: Int) {
         if isRoomCreated {
             let height = (collectionLayout.itemSize.height + collectionLayout.minimumLineSpacing)  * CGFloat(numberOfItems) + collectionLayout.sectionInset.top
+            
             couponToInviteConstraint.constant = height
         }
     }
@@ -127,10 +128,12 @@ class CouponRoomView: UIView {
             acceptButton.isHidden = true
         } else {
             if !isInvited {
+                inviteButton.isHidden = false
+                issueButton.isHidden = false
                 if !isOver {
                     inviteButton.isEnabled = true
-                    inviteButton.backgroundColor = UIColor(hex: "FF5C5C")
-                    inviteButton.setTitleColor(.white, for: .normal)
+                    inviteButton.backgroundColor = .white
+                    inviteButton.setTitleColor(UIColor(hex: "000000", alpha: 0.5), for: .normal)
                     
                     issueButton.isEnabled = false
                     issueButton.backgroundColor = UIColor(hex: "000000", alpha: 0.1)
@@ -141,8 +144,8 @@ class CouponRoomView: UIView {
                     acceptButton.isHidden = true
                 } else {
                     inviteButton.isEnabled = true
-                    inviteButton.backgroundColor = UIColor(hex: "FF5C5C")
-                    inviteButton.setTitleColor(.white, for: .normal)
+                    inviteButton.backgroundColor = .white
+                    inviteButton.setTitleColor(UIColor(hex: "000000", alpha: 0.5), for: .normal)
                     
                     issueButton.isEnabled = true
                     issueButton.backgroundColor = UIColor(hex: "FF5C5C")
@@ -156,14 +159,11 @@ class CouponRoomView: UIView {
             } else {
                 declineButton.isHidden = false
                 acceptButton.isHidden = false
-                
-                inviteButton.isEnabled = true
-                inviteButton.backgroundColor = UIColor(hex: "FF5C5C")
-                inviteButton.setTitleColor(.white, for: .normal)
-                
-//                inviteButton.isEnabled = false
-//                inviteButton.backgroundColor = UIColor(hex: "000000", alpha: 0.1)
-//                inviteButton.setTitleColor(UIColor(hex: "000000", alpha: 0.16), for: .disabled)
+
+                inviteButton.isHidden = true
+                inviteButton.isEnabled = false
+                inviteButton.backgroundColor = UIColor(hex: "000000", alpha: 0.1)
+                inviteButton.setTitleColor(UIColor(hex: "000000", alpha: 0.16), for: .disabled)
                 
                 issueButton.isHidden = true
             }

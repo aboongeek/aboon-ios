@@ -54,13 +54,13 @@ class CouponRoomModel {
         self.coupon = coupon
         
         subscribeMembers()
-        
         fetchMembers(isInvited: false)
     }
     
     init(withJustRoomId roomId: String) {
         self.roomId = roomId
         
+        subscribeMembers()
         fetchMembers(isInvited: true)
     }
     
@@ -128,7 +128,11 @@ class CouponRoomModel {
         membersRef.addDocument(data: ["userId" : member.userId,
                                       "userName" : member.userName,
                                       "isOwner" : isOwner,
-                                      "addedAt" : Date()])
+                                      "addedAt" : Date()]) { error in
+                                        if let error = error {
+                                            dLog(error as NSError)
+                                        }
+        }
         
         updateMyCoupon(userId: member.userId, completion: { [weak self] in
             guard let `self` = self else { return }
@@ -160,7 +164,13 @@ class CouponRoomModel {
     }
     
     private func updateMyCoupon(userId: String, completion: @escaping ()->()) {
-        guard let coupon = self.coupon, let roomId = self.roomId else { return }
+        guard let coupon = self.coupon else {
+            return
+        }
+        guard let roomId = self.roomId else {
+            return
+        }
+        
         let myCouponRef = usersRef.document(userId).collection("myCoupons").document(roomId)
         myCouponRef.setData([
             "name"          : coupon.name,
@@ -214,7 +224,7 @@ class CouponRoomModel {
             
             let coupon = Coupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId)
             self.couponSubject.onNext(coupon)
-            self.couponSubject.onCompleted()
+            self.coupon = coupon
             self.fetchImage(ofShopId: shopId, withPath: imagePath)
         }
     }
