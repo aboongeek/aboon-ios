@@ -38,8 +38,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //      Storyboardの代わりにViewControllerのViewをセットする
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = TabBarController(isInvited: false, roomId: nil)
+        let tabBarController = TabBarController(isInvited: false, roomId: nil)
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
+        
+        let userDefault = UserDefaults.standard
+        let dict = ["firstLaunch" : true]
+        userDefault.register(defaults: dict)
+        if userDefault.bool(forKey: "firstLaunch") {
+            userDefault.set(false, forKey: "firstLaunch")
+            let tutorialViewController = TutorialViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            tabBarController.present(tutorialViewController, animated: true, completion: nil)
+        }
         
         // Override point for customization after application launch.
         return true
