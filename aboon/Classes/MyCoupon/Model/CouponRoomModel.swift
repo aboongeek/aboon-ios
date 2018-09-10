@@ -151,10 +151,11 @@ class CouponRoomModel {
         linkBuilder.iOSParameters = DynamicLinkIOSParameters(bundleID: "jp.aboon.aboonApp")
         linkBuilder.iOSParameters?.appStoreID = "1424181262"
         linkBuilder.navigationInfoParameters = DynamicLinkNavigationInfoParameters()
-        linkBuilder.navigationInfoParameters?.isForcedRedirectEnabled = true
+        //linkBuilder.navigationInfoParameters?.isForcedRedirectEnabled = true
         linkBuilder.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
         linkBuilder.socialMetaTagParameters?.title = "aboon"
         linkBuilder.socialMetaTagParameters?.descriptionText = "二人から始まるクーポンアプリ"
+        linkBuilder.socialMetaTagParameters?.imageURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/aboon-f68b2.appspot.com/o/SocialMetaImage%2Faboon_invitation.png?alt=media&token=c5987ece-bf73-4426-94ce-e62cd0df666e")
         
         guard let longDynamicLink = linkBuilder.url else { return }
         
