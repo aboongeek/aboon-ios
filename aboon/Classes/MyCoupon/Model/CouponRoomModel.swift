@@ -193,7 +193,7 @@ class CouponRoomModel {
                 dLog((error as NSError).userInfo)
             } else {
                 completion()
-                dLog("a room has been created successfully!")
+//                dLog("a room has been created successfully!")
             }
         }
     }
