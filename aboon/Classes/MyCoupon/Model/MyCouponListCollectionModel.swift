@@ -16,6 +16,7 @@ class MyCouponListCollectionModel {
     var firUser = Auth.auth().currentUser
     
     var handle: AuthStateDidChangeListenerHandle?
+    var listner: ListenerRegistration?
     
     private lazy var collectionRef = Firestore.firestore().collection("users")
     private let storageRef = Storage.storage().reference(withPath: "CouponImages")
@@ -30,17 +31,22 @@ class MyCouponListCollectionModel {
     var images: Observable<[String : UIImage]> { return imagesRelay.asObservable() }
     
     init() {
-        self.handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-            guard let `self` = self, let user = user else { return }
-            self.firUser = user
-            self.fetchCoupons(userId: user.uid)
+        if handle == nil {
+            self.handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+                guard let `self` = self, let user = user else { return }
+                self.firUser = user
+                self.fetchCoupons(userId: user.uid)
+            }
         }
     }
     
     func fetchCoupons(userId: String) {
         collectionRef = collectionRef.document(userId).collection("myCoupons")
         
-        collectionRef.order(by: "addedAt").addSnapshotListener { [weak self] (snapshot, error) in
+        listner = collectionRef.whereField("isUsed", isEqualTo: false).order(by: "addedAt").addSnapshotListener { [weak self] (snapshot, error) in
+            if let error = error {
+                dLog(error as NSError)
+            }
             guard let snapshot = snapshot, let `self` = self else { return }
             let documents = snapshot.documents
             let coupons = documents.map { document -> MyCoupon in
@@ -70,6 +76,12 @@ class MyCouponListCollectionModel {
         }
     }
     
+    func removeListner() {
+        if let listner = listner {
+            listner.remove()
+        }
+    }
+    
     func fetchImage (from imageRef: StorageReference, withPath imagePath: String) {
         imageRef.child(imagePath).getData(maxSize: 1 * 2048 * 2048) { [weak self] (data, error) in
             guard let data = data, let image = UIImage(data: data), let `self` = self else { return }
@@ -82,6 +94,9 @@ class MyCouponListCollectionModel {
     func setUserListner() {
         self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             self.firUser = user
+            if let user = user {
+                self.fetchCoupons(userId: user.uid)
+            }
         }
     }
     
