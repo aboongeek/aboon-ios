@@ -75,6 +75,8 @@
 		79DFB6B221231C7B009F031B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFB6B121231C7B009F031B /* WebView.swift */; };
 		79DFB6B421231CD6009F031B /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79DFB6B321231CD6009F031B /* WebView.xib */; };
 		79E31E0E213D395300E709EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79E31E0D213D395300E709EC /* GoogleService-Info.plist */; };
+		79E31E1121462A7C00E709EC /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E31E1021462A7C00E709EC /* TutorialViewController.swift */; };
+		79E31E142146314A00E709EC /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E31E122146314A00E709EC /* TutorialPageViewController.swift */; };
 		79F482B12105B535003B28F5 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F482B02105B535003B28F5 /* Shop.swift */; };
 		869A985E20E725F300BF924F /* ShopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */; };
 		869A986020E731FB00BF924F /* ShopListCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A985F20E731FB00BF924F /* ShopListCollectionModel.swift */; };
@@ -190,6 +192,8 @@
 		79DFB6B121231C7B009F031B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		79DFB6B321231CD6009F031B /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		79E31E0D213D395300E709EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79E31E1021462A7C00E709EC /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		79E31E122146314A00E709EC /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		79F482B02105B535003B28F5 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionViewCell.swift; sourceTree = "<group>"; };
 		869A985F20E731FB00BF924F /* ShopListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionModel.swift; sourceTree = "<group>"; };
@@ -473,6 +477,7 @@
 				2C0EDC4620DE1E0700F0F8E8 /* MyCoupon */,
 				2CD6215320DF533B00C81DF7 /* MyPage */,
 				2C0EDC3920DE0FAC00F0F8E8 /* NavigationTabBar */,
+				79E31E0F2146279200E709EC /* Tutorial */,
 				79DFB6B021231C33009F031B /* WebView */,
 				75FC809320F22C6E007ED73B /* Login */,
 				75FC809520F22CA3007ED73B /* Error */,
@@ -631,6 +636,15 @@
 				79DFB6B321231CD6009F031B /* WebView.xib */,
 			);
 			path = WebView;
+			sourceTree = "<group>";
+		};
+		79E31E0F2146279200E709EC /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				79E31E1021462A7C00E709EC /* TutorialViewController.swift */,
+				79E31E122146314A00E709EC /* TutorialPageViewController.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		86D7F2D23514E05DD8DC2A1C /* Frameworks */ = {
@@ -1009,6 +1023,7 @@
 				79214BF4211F8D9C001932D1 /* CouponRoomCollectionView.swift in Sources */,
 				2C0EDC3E20DE108500F0F8E8 /* TabBarController.swift in Sources */,
 				799042E22119A1460061DAA1 /* User.swift in Sources */,
+				79E31E1121462A7C00E709EC /* TutorialViewController.swift in Sources */,
 				869A985E20E725F300BF924F /* ShopListCollectionViewCell.swift in Sources */,
 				799042DE211995BB0061DAA1 /* SignUpViewController.swift in Sources */,
 				2C1541C120E22AA3001941ED /* CategoryCollectionViewCell.swift in Sources */,
@@ -1038,6 +1053,7 @@
 				79214BF0211F8C8C001932D1 /* CouponRoomModel.swift in Sources */,
 				79214C06212025C8001932D1 /* CouponConfirmationViewController.swift in Sources */,
 				799204E22113042D002BAC48 /* MyMenuViewController.swift in Sources */,
+				79E31E142146314A00E709EC /* TutorialPageViewController.swift in Sources */,
 				79214BFE211FB5D3001932D1 /* ShopSummary.swift in Sources */,
 				79DFB6AF21231B90009F031B /* WebViewController.swift in Sources */,
 				79214BF8211F933D001932D1 /* Room.swift in Sources */,
