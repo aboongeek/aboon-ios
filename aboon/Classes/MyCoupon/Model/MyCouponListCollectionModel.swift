@@ -15,8 +15,8 @@ class MyCouponListCollectionModel {
     
     var firUser = Auth.auth().currentUser
     
-    var handle: AuthStateDidChangeListenerHandle?
-    var listner: ListenerRegistration?
+    var userListner: AuthStateDidChangeListenerHandle?
+    var dbListner: ListenerRegistration?
     
     private lazy var collectionRef = Firestore.firestore().collection("users")
     private let storageRef = Storage.storage().reference(withPath: "CouponImages")
@@ -31,8 +31,8 @@ class MyCouponListCollectionModel {
     var images: Observable<[String : UIImage]> { return imagesRelay.asObservable() }
     
     init() {
-        if handle == nil {
-            self.handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+        if userListner == nil {
+            self.userListner = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
                 guard let `self` = self, let user = user else { return }
                 self.firUser = user
                 self.fetchCoupons(userId: user.uid)
@@ -43,7 +43,7 @@ class MyCouponListCollectionModel {
     func fetchCoupons(userId: String) {
         collectionRef = collectionRef.document(userId).collection("myCoupons")
         
-        listner = collectionRef.whereField("isUsed", isEqualTo: false).order(by: "addedAt").addSnapshotListener { [weak self] (snapshot, error) in
+        dbListner = collectionRef.whereField("isUsed", isEqualTo: false).order(by: "addedAt").addSnapshotListener { [weak self] (snapshot, error) in
             if let error = error {
                 dLog(error as NSError)
             }
@@ -76,8 +76,8 @@ class MyCouponListCollectionModel {
         }
     }
     
-    func removeListner() {
-        if let listner = listner {
+    func removeDbListner() {
+        if let listner = dbListner {
             listner.remove()
         }
     }
@@ -92,7 +92,7 @@ class MyCouponListCollectionModel {
     }
     
     func setUserListner() {
-        self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        self.userListner = Auth.auth().addStateDidChangeListener { (auth, user) in
             self.firUser = user
             if let user = user {
                 self.fetchCoupons(userId: user.uid)
@@ -101,7 +101,7 @@ class MyCouponListCollectionModel {
     }
     
     func removeUserListner() {
-        Auth.auth().removeStateDidChangeListener(self.handle!)
+        Auth.auth().removeStateDidChangeListener(self.userListner!)
     }
 }
 
