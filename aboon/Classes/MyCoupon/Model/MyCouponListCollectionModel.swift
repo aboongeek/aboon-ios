@@ -64,7 +64,7 @@ class MyCouponListCollectionModel {
                 
             }
             if coupons.isEmpty {
-                self.noCouponRelay.accept(true)
+                self.couponsSubject.onNext([])
             } else {
                 self.couponsSubject.onNext(coupons)
                 coupons.forEach({ [weak self] (coupon) in
@@ -73,12 +73,6 @@ class MyCouponListCollectionModel {
                     self.fetchImage(from: imageRef, withPath: coupon.imagePath)
                 })
             }
-        }
-    }
-    
-    func removeDbListner() {
-        if let listner = dbListner {
-            listner.remove()
         }
     }
     
@@ -94,9 +88,6 @@ class MyCouponListCollectionModel {
     func setUserListner() {
         self.userListner = Auth.auth().addStateDidChangeListener { (auth, user) in
             self.firUser = user
-            if let user = user {
-                self.fetchCoupons(userId: user.uid)
-            }
         }
     }
     
