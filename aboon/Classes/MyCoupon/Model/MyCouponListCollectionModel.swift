@@ -18,7 +18,7 @@ class MyCouponListCollectionModel {
     var userListner: AuthStateDidChangeListenerHandle?
     var dbListner: ListenerRegistration?
     
-    private lazy var collectionRef = Firestore.firestore().collection("users")
+    private let collectionRef = Firestore.firestore().collection("users")
     private let storageRef = Storage.storage().reference(withPath: "CouponImages")
     
     private let couponsSubject = ReplaySubject<[MyCoupon]>.create(bufferSize: 1)
@@ -30,20 +30,10 @@ class MyCouponListCollectionModel {
     private let imagesRelay = BehaviorRelay<[String : UIImage]>(value: [String : UIImage]())
     var images: Observable<[String : UIImage]> { return imagesRelay.asObservable() }
     
-    init() {
-        if userListner == nil {
-            self.userListner = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-                guard let `self` = self, let user = user else { return }
-                self.firUser = user
-                self.fetchCoupons(userId: user.uid)
-            }
-        }
-    }
-    
     func fetchCoupons(userId: String) {
-        collectionRef = collectionRef.document(userId).collection("myCoupons")
+        let query = collectionRef.document(userId).collection("myCoupons").whereField("isUsed", isEqualTo: false).order(by: "addedAt")
         
-        dbListner = collectionRef.whereField("isUsed", isEqualTo: false).order(by: "addedAt").addSnapshotListener { [weak self] (snapshot, error) in
+        dbListner = query.addSnapshotListener { [weak self] (snapshot, error) in
             if let error = error {
                 dLog(error as NSError)
             }
@@ -61,10 +51,11 @@ class MyCouponListCollectionModel {
                 let roomId = document.documentID
                 
                 return MyCoupon(imagePath: imagePath, name: name, description: description, minimum: minimum, shopId: shopId, shopName: shopName, isAvailable: isAvailable, roomId: roomId)
-                
             }
             if coupons.isEmpty {
-                self.couponsSubject.onNext([])
+                if !snapshot.documentChanges.isEmpty {
+                    self.couponsSubject.onNext([])
+                }
             } else {
                 self.couponsSubject.onNext(coupons)
                 coupons.forEach({ [weak self] (coupon) in
@@ -86,8 +77,15 @@ class MyCouponListCollectionModel {
     }
     
     func setUserListner() {
-        self.userListner = Auth.auth().addStateDidChangeListener { (auth, user) in
+        self.userListner = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+            guard let `self` = self else { return }
             self.firUser = user
+            
+            if let user = user {
+                self.fetchCoupons(userId: user.uid)
+            } else {
+                self.couponsSubject.onNext([])
+            }
         }
     }
     
