@@ -125,6 +125,7 @@
 		082E9D7C20D13A1B00ED6A22 /* aboonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aboonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		082E9D8020D13A1B00ED6A22 /* aboonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboonUITests.swift; sourceTree = "<group>"; };
 		082E9D8220D13A1B00ED6A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		117F23FE16D9EC2F86AF0B29 /* Pods-aboonUITests.pre-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonUITests.pre-release.xcconfig"; path = "Pods/Target Support Files/Pods-aboonUITests/Pods-aboonUITests.pre-release.xcconfig"; sourceTree = "<group>"; };
 		2B35FBDFE453D9603C5F4A35 /* Pods-aboonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboonUITests/Pods-aboonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C04E51220E0AFB500AECC8E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		2C04E51420E0B5A900AECC8E /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -198,11 +199,13 @@
 		869A985D20E725F300BF924F /* ShopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionViewCell.swift; sourceTree = "<group>"; };
 		869A985F20E731FB00BF924F /* ShopListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListCollectionModel.swift; sourceTree = "<group>"; };
 		8B1F13BE461DBB15F9848EB4 /* Pods_aboonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aboonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F012B410901761C64F8E2C1 /* Pods-aboon.pre-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.pre-release.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.pre-release.xcconfig"; sourceTree = "<group>"; };
 		95D2E58EE895C7FD73F73E24 /* Pods_aboon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aboon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA40E4C99D656DF5EFD3CD07 /* Pods-aboonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.release.xcconfig"; sourceTree = "<group>"; };
 		C98318E252737C6A37E482FE /* Pods-aboon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.release.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.release.xcconfig"; sourceTree = "<group>"; };
 		C9F010AEA949126B9A4B3709 /* Pods-aboon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aboon/Pods-aboon.debug.xcconfig"; sourceTree = "<group>"; };
 		D7A8DE1F213D394300A5572F /* CouponRoomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponRoomView.xib; sourceTree = "<group>"; };
+		E67AF65DF9D1948BBB3ACB56 /* Pods-aboonTests.pre-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aboonTests.pre-release.xcconfig"; path = "Pods/Target Support Files/Pods-aboonTests/Pods-aboonTests.pre-release.xcconfig"; sourceTree = "<group>"; };
 		FABED289BBF482EDDFCBF9B9 /* Pods_aboonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aboonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1F69DC20FB64F800CBF60A /* MyCouponListCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponListCollectionModel.swift; sourceTree = "<group>"; };
 		FE1F69DE20FB657B00CBF60A /* TestCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoupon.swift; sourceTree = "<group>"; };
@@ -437,6 +440,9 @@
 				BA40E4C99D656DF5EFD3CD07 /* Pods-aboonTests.release.xcconfig */,
 				2B35FBDFE453D9603C5F4A35 /* Pods-aboonUITests.debug.xcconfig */,
 				07892BA0F681465FD4AB1CB7 /* Pods-aboonUITests.release.xcconfig */,
+				8F012B410901761C64F8E2C1 /* Pods-aboon.pre-release.xcconfig */,
+				E67AF65DF9D1948BBB3ACB56 /* Pods-aboonTests.pre-release.xcconfig */,
+				117F23FE16D9EC2F86AF0B29 /* Pods-aboonUITests.pre-release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1381,7 +1387,7 @@
 		};
 		79421424212BC52B007AF27D /* Pre-release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9F010AEA949126B9A4B3709 /* Pods-aboon.debug.xcconfig */;
+			baseConfigurationReference = 8F012B410901761C64F8E2C1 /* Pods-aboon.pre-release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = aboon/aboon.entitlements;
@@ -1399,7 +1405,7 @@
 		};
 		79421425212BC52B007AF27D /* Pre-release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5AE6F603202A8DA8EA190F33 /* Pods-aboonTests.debug.xcconfig */;
+			baseConfigurationReference = E67AF65DF9D1948BBB3ACB56 /* Pods-aboonTests.pre-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1416,7 +1422,7 @@
 		};
 		79421426212BC52B007AF27D /* Pre-release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B35FBDFE453D9603C5F4A35 /* Pods-aboonUITests.debug.xcconfig */;
+			baseConfigurationReference = 117F23FE16D9EC2F86AF0B29 /* Pods-aboonUITests.pre-release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
