@@ -86,6 +86,7 @@ class MyCouponListCollectionModel {
             } else {
                 self.couponsSubject.onNext([])
             }
+
         }
     }
     
