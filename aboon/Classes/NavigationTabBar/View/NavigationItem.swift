@@ -13,7 +13,7 @@ extension UINavigationItem {
      func configureBarItems (title: String, navigationController: NavigationController) {
         
         self.title = title
-        self.setRightBarButton(UIBarButtonItem(image: R.image.circleUser7(), style: .plain, target: navigationController, action: #selector(navigationController.showMyMenu)), animated: true)
+        self.setRightBarButton(UIBarButtonItem(image: R.image.user(), style: .plain, target: navigationController, action: #selector(navigationController.showMyMenu)), animated: true)
     
     }
     

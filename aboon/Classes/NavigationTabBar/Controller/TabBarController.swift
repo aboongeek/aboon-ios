@@ -41,8 +41,8 @@ class TabBarController: UITabBarController {
         homeNavigationController.viewControllers = [ShopListViewController()]
         myCouponNavigationController.viewControllers = [MyCouponListViewController()]
         
-        homeNavigationController.tabBarItem.image = R.image.home7()
-        myCouponNavigationController.tabBarItem.image = R.image.wallet7()
+        homeNavigationController.tabBarItem.image = R.image.home()
+        myCouponNavigationController.tabBarItem.image = R.image.mycoupon()
         
         setViewControllers([homeNavigationController, myCouponNavigationController], animated: false)
         
