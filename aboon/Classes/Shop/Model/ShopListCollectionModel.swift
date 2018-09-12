@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import RxSwift
 import RxCocoa
+import Alamofire
+import AlamofireImage
 
 class ShopListCollectionModel {
     
