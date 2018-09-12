@@ -106,4 +106,15 @@ class ShopListCollectionModel {
             imagesRelay.accept(temp)
         }
     }
+    
+    func downloadImages(requests: [URLRequest], imagesRelay: BehaviorRelay<[String : UIImage]>, at imagePath: String) {
+        ImageDownloader().download(requests, filter: nil, progress: nil, progressQueue: DispatchQueue.global()) { (response) in
+            if let image = response.result.value {
+                var temp = imagesRelay.value
+                temp[imagePath] = image
+                imagesRelay.accept(temp)
+            }
+        }
+    }
+    
 }

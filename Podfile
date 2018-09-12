@@ -18,6 +18,7 @@ target 'aboon' do
   pod 'Firebase/Firestore'    , '~>5.3.0'
   #pod 'Firebase/Functions'    , '~>5.3.0'  
 
+  pod 'AlamofireImage'	     , '~> 3.3'
   pod 'Alamofire-SwiftyJSON' , '~> 3.0.0'
   pod 'XLPagerTabStrip'      , '~> 8.0.1'
   pod 'R.swift'              , '~> 4.0.0'
