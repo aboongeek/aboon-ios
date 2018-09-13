@@ -58,18 +58,19 @@ class SignUpViewController: UIViewController {
                                 Auth.auth().createUser(withEmail: emailText, password: passwordText, completion:
                                     { [weak self] (FirUser, error) in
                                         
-                                        guard let `self` = self,
-                                            let FirUser = FirUser,
-                                            let userNameText = signUpInfo.userName,
-                                            let gender = signUpInfo.gender,
-                                            let dob = signUpInfo.dob
-                                            else { return }
+                                        guard let `self` = self else { return }
                                         
                                         if let error = error {
                                             self.present(AuthErrorHandling.showErrorAlert(from: error as NSError), animated: true, completion: nil)
                                             activityIndicator.stopAnimating()
                                             
                                         } else {
+                                            
+                                           guard let FirUser = FirUser,
+                                                let userNameText = signUpInfo.userName,
+                                                let gender = signUpInfo.gender,
+                                                let dob = signUpInfo.dob
+                                                else { return }
                                             
                                             let user = User(userName: userNameText,
                                                             email: emailText,
